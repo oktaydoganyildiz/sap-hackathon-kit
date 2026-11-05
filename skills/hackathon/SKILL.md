@@ -18,7 +18,7 @@ Kit kökü: bu skill'in kurulduğu repo (`sap-hackathon-kit`). Yol bilinmiyorsa 
 ## Bilinen tuzaklar
 
 - **Joule Studio'nun iki zinciri var, ikisine de hazır ol** (karşılaştırma tablosu `katalog/01-joule-studio.md`):
-  - **Yol A (öncelikli):** yeni `jl` CLI, Claude Code ile Intent-Based Development. Kurulum `jl login` → `jl init claude` → `jl skills init claude`; test `jl a2a card` / `jl a2a message`. Ortamda `jl` varsa ve login çalışıyorsa bu yolu varsay. `jl` alpha, komutlar değişebilir: emin olmadan önce `jl <komut> --help`.
+  - **Yol A (öncelikli):** yeni `jl` CLI, Claude Code ile Intent-Based Development. Kurulum `jl login` → `jl init claude` → `jl skills init claude`; test `jl a2a card` / `jl a2a message`. Ortamda `jl` varsa ve login çalışıyorsa bu yolu varsay. `jl` hızlı değişiyor (2026-11: v1.0.9, `@sap/joule-studio-cli` 2.0.4 ile gelir): emin olmadan önce `jl <komut> --help`.
   - **Yol B (yedek):** classic `joule` CLI + LangGraph A2A agent + CF deploy + DAS capability YAML. Toolkit skill'leri (`joule-a2a-agent` vb.) bu yol içindir; Yol A'da kullanma.
   - Hangisi kullanılıyor belli değilse kullanıcıya tek soru sor, karıştırma.
 - **Hyperspace (`hai`) ≠ Generative AI Hub.** `hai` bizim kodlama asistanımızın LLM kanalı. Agent'ın runtime LLM çağrısı her zaman AI Core / Generative AI Hub üzerinden.
