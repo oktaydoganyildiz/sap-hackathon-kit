@@ -26,15 +26,53 @@ Step 'joule-a2a-agent-toolkit skill-leri (joule-a2a-agent, joule-cli, btp-cli, c
 
 if (Get-Command claude -ErrorAction SilentlyContinue) {
     $markets = @('SAP/ai-skills-library', 'capire/skills', 'SAP/ai-native-architecture-advisor', 'secondsky/sap-skills')
+    $mpDir = Join-Path $ClaudeHome 'plugins\marketplaces'
     foreach ($m in $markets) {
-        Step "marketplace: $m" { claude plugin marketplace add $m; if ($LASTEXITCODE -ne 0) { throw 'marketplace add hata' } }
+        Step "marketplace: $m" {
+            $short = ($m -split '/')[1]
+            for ($i = 1; $i -le 3; $i++) {
+                $out = claude plugin marketplace add $m 2>&1 | Out-String
+                if ($LASTEXITCODE -eq 0) { return }
+                if ($out -notmatch 'EPERM') { throw 'marketplace add hata' }
+                Write-Host "    EPERM (dosya kilidi), temizleyip tekrar deniyorum ($i/3)"
+                Get-ChildItem $mpDir -Directory -ErrorAction SilentlyContinue |
+                    Where-Object { $_.Name -like "*$short*" } |
+                    Remove-Item -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue
+                Start-Sleep -Seconds 5
+            }
+            throw 'EPERM devam ediyor; elle: claude plugin marketplace add ' + $m
+        }
     }
     $plugins = @('aicore-skills@ai-skills-library', 'cap-developer@cap', 'ai-native-architecture-advisor@sap-ai-native-architecture-advisor', 'sap-ai-core@sap-skills', 'sap-btp-cloud-platform@sap-skills')
+    $script:failed = @()
     foreach ($p in $plugins) {
-        Step "plugin: $p" { claude plugin install $p; if ($LASTEXITCODE -ne 0) { throw 'plugin install hata' } }
+        Step "plugin: $p" { claude plugin install $p; if ($LASTEXITCODE -ne 0) { $script:failed += $p; throw 'plugin install hata' } }
     }
 } else {
-    Write-Host '==> claude CLI bulunamadi, plugin adimlari atlandi. Komutlar: katalog\08-skill-repolari.md' -ForegroundColor Yellow
+    Write-Host '==> claude CLI bulunamadi, plugin yerine skill kopyalanacak.' -ForegroundColor Yellow
+    $script:failed = @('aicore-skills@ai-skills-library', 'sap-ai-core@sap-skills', 'sap-btp-cloud-platform@sap-skills')
+}
+
+function Copy-SkillsFromRepo([string]$Repo, [string[]]$Globs) {
+    $tmp = Join-Path ([IO.Path]::GetTempPath()) "sk-$([guid]::NewGuid().ToString('N').Substring(0,8))"
+    git clone --depth 1 "https://github.com/$Repo.git" $tmp 2>&1 | Out-Null
+    if ($LASTEXITCODE -ne 0) { throw "git clone $Repo basarisiz" }
+    foreach ($g in $Globs) {
+        Get-ChildItem (Join-Path $tmp $g) -Directory -ErrorAction SilentlyContinue |
+            ForEach-Object { Copy-Item -Recurse -Force $_.FullName $Skills; Write-Host "    + $($_.Name)" }
+    }
+    Remove-Item -Recurse -Force $tmp -Confirm:$false -ErrorAction SilentlyContinue
+}
+
+if ($script:failed | Where-Object { $_ -like '*@ai-skills-library' }) {
+    Step 'yedek yol: SAP/ai-skills-library skill-lerini dogrudan kopyala' {
+        Copy-SkillsFromRepo 'SAP/ai-skills-library' @('plugins\aicore-skills\skills\*', 'skills\aicore-sdk-*')
+    }
+}
+if ($script:failed | Where-Object { $_ -like '*@sap-skills' }) {
+    Step 'yedek yol: secondsky/sap-skills AI/BTP/CAP skill-lerini dogrudan kopyala' {
+        Copy-SkillsFromRepo 'secondsky/sap-skills' @('plugins\sap-ai-core\skills\*', 'plugins\sap-btp-cloud-platform\skills\*', 'plugins\sap-cap-capire\skills\*', 'plugins\sap-cloud-sdk-ai\skills\*', 'plugins\sap-cloud-sdk-ai-python\skills\*')
+    }
 }
 
 Write-Host ''
