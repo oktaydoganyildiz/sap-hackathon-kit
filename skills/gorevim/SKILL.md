@@ -7,6 +7,8 @@ description: Hackathon takım üyesinin kendi görevini alıp çakışmadan çal
 
 Repo kökündeki `CLAUDE.md` takım kurallarıdır, önce onu oku. Sahiplik tablosu ve `docs/contract.md` bağlayıcıdır.
 
+**Yönlendirme:** Her cevabın sonunda `▶ Sen şimdi:` ile kullanıcının yapacağı tek somut adımı yaz. Repo kökünde `BASLA.md` varsa önce oradaki kişinin bölümünü oku.
+
 ## Başlarken
 
 1. `git pull --rebase origin main`

@@ -18,7 +18,7 @@ github.com açılmazsa: 3. satıra kadar yap, kiti atla; kaptan aşağıdaki §2
 5. Repo: SAP verdiyse clone · yoksa `gh repo create <org>/<ad> --private --clone` · yoksa kendi kullanıcın altında.
 6. Kök `CLAUDE.md`: sahiplik tablosu (klasör → kişi) + kurallar: kendi klasörüne yaz · contract'a dokunma · `<kullanıcı>/<no>-<ad>` branch · küçük PR `Closes #n` · kendi PR'ını merge etme · sır commit'leme.
 7. Görevler: `gh issue create --title "[rol] ..." --assignee @x --body "Klasör / Bitti tanımı / Blocked by / Hedef"`. Issues olmazsa `TASKS.md` tablosu.
-8. Herkese: `git clone <repo>` → `claude` → "takıma katılıyorum, görevim ne?"
+8. Repo'ya `BASLA.md` (kişi başı: rol, klasör, issue'lar, komutlar). Her arkadaşa ayrı mesaj at: `gh auth login --hostname github.tools.sap` → `git clone <repo>` → `cd <repo>` → `claude` → "takıma katılıyorum, görevim ne?" + ilk issue numarası.
 
 ## 3. Takım üyesi
 `git pull --rebase origin main` → `gh issue list --assignee @me` → `git switch -c <ben>/<no>-<ad>` → sadece kendi klasörün → `gh pr create --body "Closes #<no>"`.

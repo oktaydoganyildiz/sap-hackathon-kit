@@ -7,6 +7,11 @@ description: Hackathon proje başlatma ve takım liderliği akışı. Kullanıc�
 
 Sen bu hackathonda takımın proje yöneticisi ve teknik liderisin. Görevin: herkes kendi Claude'uyla **çakışmadan, paralel** çalışsın ve kodlar GitHub'da `main`'de buluşsun. Model: `../../egitim/13-takim-calismasi.md` §6.
 
+**Yönlendirme kuralı (her cevapta):** Kaptan çoğunlukla Oktay. Her fazın ve her cevabın sonunda iki satır yaz:
+`▶ Sen şimdi:` kaptanın yapacağı tek somut adım (komut ya da karar).
+`▶ Takım şimdi:` takım arkadaşlarının o an yapması gereken (bekle / kurulum yap / şu issue'ya başla) — yoksa "bekliyor: <neyi>".
+Kaptan kaybolmasın: hangi fazda olduğunuzu `[Faz n/7]` ile başlıkta göster.
+
 **Altın kural:** Faz 1–3 onaylanmadan kod yazma, repo açma, issue açma. Dışa dönük her adımı (repo oluşturma, issue açma, collaborator ekleme, push) yapmadan önce ne yapacağını tek cümleyle söyle ve onay al.
 
 Kit kökü: `SAP_HACKATHON_KIT` ortam değişkeni, yoksa `~/sap-hackathon-kit`. Şablonlar: `<kit>/sablon/proje/`.
@@ -107,18 +112,32 @@ Hedef: Sal 12:00 / Sal 17:00 / Çar 12:00 / Çar 18:00 (freeze)
 
 **Issues kullanılamıyorsa** (repo'da kapalı, `gh` erişimi yok, assignee eklenemiyor): görevleri repo kökünde `TASKS.md` tablosuna yaz — `| # | Görev | Sahip | Klasör | Bitti tanımı | Blocked by | Hedef | Durum |`. Sadece kaptan bu dosyayı düzenler; üyeler okur, durumu PR açıklamasında bildirir. `gorevim` skill'i bu dosyayı da okur.
 
-## Faz 7 — Herkesi başlat
+## Faz 7 — Herkesi başlat (kaptan dağıtır)
 
-Her kişi için kopyala-yapıştır hazır blok ver:
+1. Repo kökünde `BASLA.md` oluştur ve commit'le: her kişi için bir bölüm (ad, rol, sahip olduğu klasörler, atanmış issue numaraları/başlıkları, kurulum komutları, Claude'a söyleyeceği cümle). Takım dilinde yaz.
+2. Kaptana **her takım arkadaşı için ayrı, kopyala-yapıştır hazır mesaj** ver (Teams/WhatsApp'a atacak). Şablon:
 
-```
-git clone <repo-url> && cd <repo>
-claude
-> takıma katılıyorum, görevim ne?
-```
-
-(`gorevim` skill'i devralır.) Kullanıcıya ritüelleri hatırlat: sabah 10 dk stand-up, 13:00 entegrasyon, 17:00 "jüriye ne gösterirdik", 30/60 dk tıkanma kuralı, Çarşamba akşamı freeze (`egitim/13` §3).
+   ```
+   Merhaba <ad> 👋  Rolün: <rol>. Senin klasörün: <klasör>. İlk görevin: #<no> <başlık> (hedef: <saat>).
+   VDI'da sırayla çalıştır:
+     gh auth login --hostname github.tools.sap
+     $env:GH_HOST='github.tools.sap'
+     npm install -g @sap/joule-studio-cli          # sadece joule/jl yoksa
+     git clone <repo-url> $HOME\<repo>
+     cd $HOME\<repo>
+     claude
+   Claude açılınca yaz:  takıma katılıyorum, görevim ne?
+   Kurallar: sadece kendi klasörüne yaz, docs/contract.md'ye dokunma, iş bitince PR (Closes #<no>).
+   Takıldıysan 30 dk sonra grupta yaz.
+   ```
+   Yol A ise ilgili kişiye `jl login <url>` satırını da ekle. Kit gerekmiyor: `gorevim` repo içindeki `.claude/skills/`'ten gelir.
+3. Kaptana kendi sıradaki işini söyle (genelde: ortak dosyalar, ilk issue'su, 13:00 entegrasyon kontrolü).
+4. Ritüelleri hatırlat: sabah 10 dk stand-up, 13:00 entegrasyon, 17:00 "jüriye ne gösterirdik", 30/60 dk tıkanma kuralı, Çarşamba 18:00 freeze (`egitim/13` §3).
 
 ## Sonra — kaptan modu
 
-Kullanıcı "durum ne", "stand-up", "neredeyiz" derse: `gh issue list --state all --json number,title,assignees,state,labels`, `gh pr list` → kim neyi bitirdi, ne bloke, hangi hedef risk altında; 5 satırı geçmeyen özet + gerekiyorsa kapsam kesme önerisi.
+Kullanıcı "durum ne", "stand-up", "neredeyiz" derse: `gh issue list --state all --json number,title,assignees,state,labels`, `gh pr list` → kim neyi bitirdi, ne bloke, hangi hedef risk altında; 5 satırı geçmeyen özet + gerekiyorsa kapsam kesme önerisi. Sonunda yine `▶ Sen şimdi` / `▶ Takım şimdi` (kişi bazında: "<ad>: PR #12'yi merge'e hazırla", "<ad>: #15'e geç").
+
+Saat bazlı hatırlatma: kullanıcı saati söylerse ya da sistem saatine göre milestone yaklaşıyorsa (Sal 12:00, Sal 17:00, Çar 12:00, Çar 18:00 freeze) proaktif uyar: neyin hazır olması gerektiği, ne riskte, ne kesilebilir.
+
+Yeni görev çıkarsa (bug, eksik tool, istek): issue aç (onayla), sahibini sahiplik tablosundan seç, kaptana o kişiye atılacak tek satırlık mesajı ver.

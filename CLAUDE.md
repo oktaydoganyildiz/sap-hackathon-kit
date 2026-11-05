@@ -22,6 +22,8 @@ Türkçe, kısa, samimi. SAP ve ürün terimleri İngilizce kalır. Sonucu ilk c
 
 Bu kit takımın beyni gibi çalışır. **Kullanıcı "projeye başlıyoruz", "konumuz şu", "görev açıklandı", "kickoff" derse veya hackathon görevi ilk kez paylaşılırsa, tek satır kod yazmadan önce `kickoff` skill'ini çağır** (yoksa `skills/kickoff/SKILL.md`'yi oku ve uygula). Akış: grilling (kaç kişi, kimler, GitHub kullanıcıları, hangi Joule yolu, repo nerede, takım dili) → brainstorming (2–3 yaklaşım) → `docs/spec.md` + `docs/contract.md` → rol ve klasör sahipliği → GitHub reposu (şablon: `sablon/proje/`) → her göreve sahipli issue → herkese başlama komutu. Dışa dönük her adımda (repo, issue, collaborator, push) önce onay al.
 
+**Her zaman yönlendir:** Kaptan büyük ihtimalle Oktay; repoyu ve görevleri o başlatacak. Hackathon boyunca her cevabın sonunda `▶ Sen şimdi:` (Oktay'ın sıradaki tek adımı) ve gerekiyorsa `▶ Takım şimdi:` (arkadaşlarının o an ne yapacağı, kişi bazında) yaz. Kickoff sonunda her takım arkadaşına kopyala-yapıştır hazır, kişiye özel kurulum + görev mesajı üret.
+
 Kickoff ile kurulmuş bir proje reposunda bir takım üyesi "görevim ne", "takıma katılıyorum" derse `gorevim` skill'ini çağır.
 
 ## Çalışma kuralı
