@@ -13,5 +13,10 @@
 | `07-degerlendirme-guvenlik.md` | Agent evaluation, red-teaming, izleme |
 | `08-skill-repolari.md` | Claude Code skill/plugin repoları ve kurulum komutları |
 | `09-mimari-dokuman.md` | Architecture Center ref-arch, genel doküman girişleri |
+| `10-teched-sapphire-2026.md` | Sapphire ve TechEd 2026 agent duyuruları, sunum dili, 78 TechEd hands-on reposu |
+| `11-hazir-agentlar.md` | SAP'nin hazır Joule agent'ları, agent extension kısıtları, boşluklar (fikir fırsatı) |
+| `12-agent-tasarim-rehberi.md` | SAP'nin tasarım kuralları, agent mı otomasyon mu testi, mimari kontrol listesi, kazananların ortak yanları, fikir çerçevesi |
+
+**Fikir ve mimari aşamasında önce 12, sonra 11, sonra 10'u oku.**
 
 Derin anlatım: `../egitim/` (13 ders notu). Saha notları ve tarifler: `../beyin/` (SAP Beyni'nden seçme).

@@ -15,7 +15,20 @@ Kit kökü: bu skill'in kurulduğu repo (`sap-hackathon-kit`). Yol bilinmiyorsa 
 4. **Kataloğun dışına çık** — katalog cevap vermiyorsa ya da bilgi bayat görünüyorsa: WebSearch, SAP Help (help.sap.com), SAP Community, `github.com/SAP-samples` / `SAP` / `cap-js` / `a2aproject` org'larında ara. `https://github.com/marianfoo/sap-ai-mcp-servers` güncel SAP MCP/skill listesidir. Kurulu başka bir skill (ör. `joule-a2a-agent`, `aicore-skills`, `cap-developer`) konuya daha uygunsa onu çağır.
 5. **Kaynağı yaz** — cevabın başında `Kaynak: <katalog dosyası / link / skill> → <ne baktın>`. Doğrulayamadığın sürüm, limit, özellik adına `(doğrulanmadı)` ekle.
 
+## Fikir ve mimari aşaması
+
+Görev açıklandığında ya da "ne yapalım / nasıl kuralım" sorusunda:
+1. `katalog/12-agent-tasarim-rehberi.md` → 5 soruluk agent testi, mimari kontrol listesi, fikir çerçevesi.
+2. `katalog/11-hazir-agentlar.md` → SAP bunu zaten yapıyor mu? Boşluk var mı? Extension GA kısıtı.
+3. `katalog/10-teched-sapphire-2026.md` → sunum dili (Autonomous Enterprise, governed by design...) ve en yakın TechEd hands-on reposu.
+4. Fikri öner: persona + sorunun sayısı + KPI + en küçük mimari + demo hikâyesi. Tahmin olduğunu söyle, kullanıcı onaylamadan kod yazma.
+
 ## Bilinen tuzaklar
+
+- **Agent Extension GA'da sadece Instructions:** Tools (MCP) ve Hooks (n8n) feature flag arkasında, CLI'dan yapılamıyor. Extension fikrini ancak sahada flag açıksa öner.
+- **Agent Gateway'in iki yönlü trafiği yok:** Joule agent'ının dış agent'a geri çağrı yaptığı bir demo kurma.
+- **Joule Studio bazı tenant'larda hâlâ EAC'ye kapalı:** erişim yoksa Yol B'ye geç.
+- **SAP IS-U meter-to-cash yol haritası** (billing, outsorting, implausible reading, tariff): utilities'de bu alanlara fikir önerme.
 
 - **Joule Studio'nun iki zinciri var, ikisine de hazır ol** (karşılaştırma tablosu `katalog/01-joule-studio.md`):
   - **Yol A (öncelikli):** yeni `jl` CLI, Claude Code ile Intent-Based Development. Kurulum `jl login` → `jl init claude` → `jl skills init claude`; test `jl a2a card` / `jl a2a message`. Ortamda `jl` varsa ve login çalışıyorsa bu yolu varsay. `jl` hızlı değişiyor (2026-11: v1.0.9, `@sap/joule-studio-cli` 2.0.4 ile gelir): emin olmadan önce `jl <komut> --help`.
