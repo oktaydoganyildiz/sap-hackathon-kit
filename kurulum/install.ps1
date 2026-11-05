@@ -97,3 +97,11 @@ Write-Host ''
 Write-Host "Bitti. Kit: $Kit  |  Skill klasoru: $Skills"
 Write-Host 'Ortam kontrolu:'
 & (Join-Path $PSScriptRoot 'kontrol.ps1')
+
+Write-Host ''
+Write-Host 'SIRADAKI ADIM' -ForegroundColor Cyan
+Write-Host "  cd `"$Kit`""
+Write-Host '  claude'
+Write-Host '  Kaptan isen yaz:  "kiti kurdum, arkadaslarima ne gondereyim?"'
+Write-Host '     -> Claude takim arkadaslarin icin (kendi dillerinde) hazir kurulum mesajini verir.'
+Write-Host '  Takim uyesiysen: kaptanin Pazartesi gonderecegi takim reposunu bekle.'

@@ -45,3 +45,7 @@ command -v jl >/dev/null || echo "  (jl kurulu degil; Pro-Code Setup: katalog/01
 echo
 echo "Bitti. Kit: $KIT  |  export SAP_HACKATHON_KIT=\"$KIT\" satirini shell profiline ekle."
 bash "$KIT/kurulum/kontrol.sh"
+echo
+echo "SIRADAKI ADIM: cd \"$KIT\" && claude"
+echo "  Kaptan: \"kiti kurdum, arkadaslarima ne gondereyim?\" -> hazir kurulum mesaji."
+echo "  Takim uyesi: kaptanin gonderecegi takim reposunu bekle."

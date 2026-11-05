@@ -24,6 +24,8 @@ Then start `claude` inside the repo folder. `CLAUDE.md` and the `hackathon` skil
 - **Captain:** in this kit folder say *"projeye başlıyoruz, konumuz …"* → the `kickoff` skill interviews (team size, members, GitHub users, Joule path, repo), proposes 2–3 approaches, writes spec + tool contract, assigns folder ownership, creates the GitHub repo from `sablon/proje/` and one assigned issue per task.
 - **Everyone else:** install the kit (above), then clone the project repo, run `claude`, say *"I'm joining the team, what's my task?"* (any language) → the `gorevim` skill picks your issue, keeps you inside your folders and opens a PR with `Closes #n`. The kit's catalogue, troubleshooting card and SAP skills are available to you too.
 
+**Order:** the captain installs first, then opens `claude` in the kit and says *"kiti kurdum, arkadaşlarıma ne göndereyim?"* — Claude produces a ready setup message per teammate (their language), inviting them if the kit is private (`sablon/takim-kurulum-mesaji.md`).
+
 **Everyone installs the kit** (teammates are added as read collaborators). Only the captain runs `kickoff` and full `takip`; both skills check the captain in the team repo's `CLAUDE.md` and hand over to `gorevim` for everyone else.
 
 **If github.com is blocked in the VDI:** the team repo still works — `kickoff` copies `gorevim`, the environment check and the troubleshooting card into the repo's `.claude/`. If even the captain can't get the kit, use `CEP.md` (one-page pocket card, read on phone or print).
