@@ -54,7 +54,7 @@ Kaynak: SAP'den gelen mail ve ön hazırlık PDF'i. Kişisel ID, e-posta ve SAP 
 | Kyma CLI (opsiyonel) | `kyma version` |
 | BTP Trial hesabı | https://account.hanatrial.ondemand.com, Tour of SAP BTP Trial |
 
-**Ek (araştırmadan):** Yeni Joule Studio `jl` CLI kullanıyor (Node 24+). PDF'te yok ama TechEd 2026 AD263 ve SAP Help bu yolu gösteriyor. Bkz. `katalog/01-joule-studio.md`.
+**Ek (araştırmadan):** PDF'teki "Joule Studio CLI" linki `@sap/joule-studio-cli` paketine gidiyor. Bu paket iki komut kurar: `joule` (legacy, classic) ve `jl` (Joule Work CLI, yeni Joule Studio). Kontrol: `joule -V` ve `jl version`. Node 20.12–24. Eski `@sap/joule-work-dev-cli-early-adopters` kuruluysa önce kaldır. Bkz. `katalog/01-joule-studio.md`.
 
 ## Hackathon konusu (tahmin)
 

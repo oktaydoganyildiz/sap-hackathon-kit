@@ -10,13 +10,16 @@ Hackathonda hangisi kullanılıyor, Pazartesi brifingte netleştir. Tahminimiz y
 
 | | **Yol A: Yeni Joule Studio (`jl`)** — öncelikli | **Yol B: Classic Joule + A2A** — yedek |
 |---|---|---|
-| CLI | `jl` (Solution Management CLI, 2026-11 itibarıyla `v0.1.20-alpha`) | `joule` (`@sap/joule-studio-cli` / `@sap/joule-cli`) |
+| CLI | `jl` = "Joule Work CLI" (`jl version`) | `joule` = "Joule Studio CLI Legacy" (`joule -V`) |
+| Paket | **Aynı paket:** `npm install -g @sap/joule-studio-cli` ikisini birlikte kurar (Node 20.12–24). SAP'nin hazırlık PDF'indeki link de bu pakete gidiyor. | ← aynı |
 | Claude Code bağlantısı | `jl init claude` → proje + IBD MCP server; `jl skills init claude` → SAP'nin sistem skill'leri | `SAP-archive/joule-a2a-agent-toolkit` plugin'i (Nisan 2026'dan beri güncellenmiyor) |
 | Akış | Intent-Based Development: niyet → spec → kod → `jl solution` deploy | LangGraph agent → CF/MTA deploy → BTP destination → `joule deploy` capability (DAS YAML) |
 | Parçalar | `jl asset`: `agent`, `agent-extension`, `cap-app`, `mcp-server`, `base-ui`, `domain-model-extension` | Agent uygulaması + capability YAML + destination |
 | Test | `jl a2a card`, `jl a2a message "<metin>"` | `joule launch <assistant>`, a2a-inspector |
 | Login | `jl login <url>` (AI Core instance'ı; oturum `~/.joulestudio/credentials.json`) | `joule login` (IAS App2App, `Cli2Joule` client) |
 | Referans repo | `SAP-samples/teched2026-AD263` | `SAP-samples/btp-joule-a2a-pro-code-agent`, `SAP-samples/partner-reference-application-joule-a2a-agent-workshop` |
+
+**Kurulum tuzağı:** Eski ayrı paket `@sap/joule-work-dev-cli-early-adopters` (eski `jl`) kuruluysa `@sap/joule-studio-cli` ile binary çakışır (`EEXIST ... bin/jl`). Çözüm: `npm uninstall -g @sap/joule-work-dev-cli-early-adopters` → `npm install -g @sap/joule-studio-cli --force`. Kontrol: `npm ls -g --depth=0`. Kaynak: https://help.sap.com/docs/JOULE/ba88d1ec6a1b442098863d577c19b0c0/5270f042bdb2459fa2875e241ebae2e7.html
 
 Yol A ilk dakika: `jl login` → `jl init claude` → `jl skills init claude` → `claude` aç, niyeti yaz.
 Yol B ilk dakika: toolkit skill'leri kurulu → Claude'a "Joule için A2A agent kur" de → `cf deploy` → `joule deploy -c -n <ad>`.
