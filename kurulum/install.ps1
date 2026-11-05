@@ -10,8 +10,8 @@ function Step([string]$Name, [scriptblock]$Action) {
     catch { Write-Host "    atlandi: $($_.Exception.Message)" -ForegroundColor Yellow }
 }
 
-Step 'hackathon router skill' {
-    Copy-Item -Recurse -Force (Join-Path $Kit 'skills\hackathon') $Skills
+Step 'kit skill-leri (hackathon, kickoff, gorevim)' {
+    Get-ChildItem (Join-Path $Kit 'skills') -Directory | ForEach-Object { Copy-Item -Recurse -Force $_.FullName $Skills; Write-Host "    + $($_.Name)" }
 }
 
 [Environment]::SetEnvironmentVariable('SAP_HACKATHON_KIT', $Kit, 'User')
@@ -25,7 +25,7 @@ Step 'joule-a2a-agent-toolkit skill-leri (joule-a2a-agent, joule-cli, btp-cli, c
 }
 
 if (Get-Command claude -ErrorAction SilentlyContinue) {
-    $markets = @('SAP/ai-skills-library', 'capire/skills', 'SAP/ai-native-architecture-advisor', 'secondsky/sap-skills')
+    $markets = @('SAP/ai-skills-library', 'capire/skills', 'SAP/ai-native-architecture-advisor', 'secondsky/sap-skills', 'mattpocock/skills')
     $mpDir = Join-Path $ClaudeHome 'plugins\marketplaces'
     foreach ($m in $markets) {
         Step "marketplace: $m" {
@@ -43,14 +43,14 @@ if (Get-Command claude -ErrorAction SilentlyContinue) {
             throw 'EPERM devam ediyor; elle: claude plugin marketplace add ' + $m
         }
     }
-    $plugins = @('aicore-skills@ai-skills-library', 'cap-developer@cap', 'ai-native-architecture-advisor@sap-ai-native-architecture-advisor', 'sap-ai-core@sap-skills', 'sap-btp-cloud-platform@sap-skills')
+    $plugins = @('superpowers@claude-plugins-official', 'mattpocock-skills@mattpocock', 'aicore-skills@ai-skills-library', 'cap-developer@cap', 'ai-native-architecture-advisor@sap-ai-native-architecture-advisor', 'sap-ai-core@sap-skills', 'sap-btp-cloud-platform@sap-skills')
     $script:failed = @()
     foreach ($p in $plugins) {
         Step "plugin: $p" { claude plugin install $p; if ($LASTEXITCODE -ne 0) { $script:failed += $p; throw 'plugin install hata' } }
     }
 } else {
     Write-Host '==> claude CLI bulunamadi, plugin yerine skill kopyalanacak.' -ForegroundColor Yellow
-    $script:failed = @('aicore-skills@ai-skills-library', 'sap-ai-core@sap-skills', 'sap-btp-cloud-platform@sap-skills')
+    $script:failed = @('superpowers@claude-plugins-official', 'mattpocock-skills@mattpocock', 'aicore-skills@ai-skills-library', 'sap-ai-core@sap-skills', 'sap-btp-cloud-platform@sap-skills')
 }
 
 function Copy-SkillsFromRepo([string]$Repo, [string[]]$Globs) {
@@ -58,12 +58,23 @@ function Copy-SkillsFromRepo([string]$Repo, [string[]]$Globs) {
     git clone --depth 1 "https://github.com/$Repo.git" $tmp 2>&1 | Out-Null
     if ($LASTEXITCODE -ne 0) { throw "git clone $Repo basarisiz" }
     foreach ($g in $Globs) {
-        Get-ChildItem (Join-Path $tmp $g) -Directory -ErrorAction SilentlyContinue |
-            ForEach-Object { Copy-Item -Recurse -Force $_.FullName $Skills; Write-Host "    + $($_.Name)" }
+        $p = Join-Path $tmp $g
+        $dirs = if ($g -match '[\*\?]') { Get-ChildItem $p -Directory -ErrorAction SilentlyContinue } else { Get-Item $p -ErrorAction SilentlyContinue }
+        $dirs | ForEach-Object { Copy-Item -Recurse -Force $_.FullName $Skills; Write-Host "    + $($_.Name)" }
     }
     Remove-Item -Recurse -Force $tmp -Confirm:$false -ErrorAction SilentlyContinue
 }
 
+if ($script:failed | Where-Object { $_ -like 'superpowers@*' }) {
+    Step 'yedek yol: obra/superpowers brainstorming (+ plan, debug) skill-lerini kopyala' {
+        Copy-SkillsFromRepo 'obra/superpowers' @('skills\brainstorming', 'skills\writing-plans', 'skills\systematic-debugging', 'skills\verification-before-completion')
+    }
+}
+if ($script:failed | Where-Object { $_ -like 'mattpocock-skills@*' }) {
+    Step 'yedek yol: mattpocock/skills grilling (+ tdd, diagnosing-bugs) skill-lerini kopyala' {
+        Copy-SkillsFromRepo 'mattpocock/skills' @('skills\productivity\grilling', 'skills\engineering\tdd', 'skills\engineering\diagnosing-bugs')
+    }
+}
 if ($script:failed | Where-Object { $_ -like '*@ai-skills-library' }) {
     Step 'yedek yol: SAP/ai-skills-library skill-lerini dogrudan kopyala' {
         Copy-SkillsFromRepo 'SAP/ai-skills-library' @('plugins\aicore-skills\skills\*', 'skills\aicore-sdk-*')

@@ -12,7 +12,16 @@ Türkçe, kısa, samimi. SAP ve ürün terimleri İngilizce kalır. Sonucu ilk c
 - `egitim/` — 13 ders notu (A2A, Joule Studio, BTP, IAS, AI Core, MCP, pro-code agent, Joule CLI, Agent Gateway, strateji).
 - `beyin/` — Oktay'ın SAP Beyni'nden seçilmiş agent/BTP tarifleri, araç notları, dersler, kaynaklar.
 - `NOTLAR.md` — etkinlik bilgisi, ön hazırlık listesi, brifingte sorulacaklar.
-- `skills/hackathon/` — router skill'i. `kurulum/` — kurulum script'leri.
+- `skills/hackathon/` — bilgi router'ı. `skills/kickoff/` — proje başlatma ve takım liderliği. `skills/gorevim/` — takım üyesinin kendi görevini alması.
+- `sablon/proje/` — proje reposu şablonu: `CLAUDE.md` (sahiplik), `docs/spec.md`, `docs/contract.md`, `.github/` (CODEOWNERS, PR ve issue şablonu).
+- `egitim/13-takim-calismasi.md` — roller, ritüeller, paralel Claude çalışma modeli.
+- `kurulum/` — kurulum script'leri (grilling, brainstorming dahil süreç skill'lerini de kurar).
+
+## Rolün: takım lideri ve proje yöneticisi
+
+Bu kit takımın beyni gibi çalışır. **Kullanıcı "projeye başlıyoruz", "konumuz şu", "görev açıklandı", "kickoff" derse veya hackathon görevi ilk kez paylaşılırsa, tek satır kod yazmadan önce `kickoff` skill'ini çağır** (yoksa `skills/kickoff/SKILL.md`'yi oku ve uygula). Akış: grilling (kaç kişi, kimler, GitHub kullanıcıları, hangi Joule yolu, repo nerede, takım dili) → brainstorming (2–3 yaklaşım) → `docs/spec.md` + `docs/contract.md` → rol ve klasör sahipliği → GitHub reposu (şablon: `sablon/proje/`) → her göreve sahipli issue → herkese başlama komutu. Dışa dönük her adımda (repo, issue, collaborator, push) önce onay al.
+
+Kickoff ile kurulmuş bir proje reposunda bir takım üyesi "görevim ne", "takıma katılıyorum" derse `gorevim` skill'ini çağır.
 
 ## Çalışma kuralı
 

@@ -15,6 +15,10 @@ Kit kökü: bu skill'in kurulduğu repo (`sap-hackathon-kit`). Yol bilinmiyorsa 
 4. **Kataloğun dışına çık** — katalog cevap vermiyorsa ya da bilgi bayat görünüyorsa: WebSearch, SAP Help (help.sap.com), SAP Community, `github.com/SAP-samples` / `SAP` / `cap-js` / `a2aproject` org'larında ara. `https://github.com/marianfoo/sap-ai-mcp-servers` güncel SAP MCP/skill listesidir. Kurulu başka bir skill (ör. `joule-a2a-agent`, `aicore-skills`, `cap-developer`) konuya daha uygunsa onu çağır.
 5. **Kaynağı yaz** — cevabın başında `Kaynak: <katalog dosyası / link / skill> → <ne baktın>`. Doğrulayamadığın sürüm, limit, özellik adına `(doğrulanmadı)` ekle.
 
+## Proje başlıyorsa
+
+Kullanıcı "projeye başlıyoruz / konumuz şu / görev açıklandı" diyorsa bilgi vermeden önce `kickoff` skill'ine devret. Takım üyesi kendi görevini soruyorsa `gorevim`'e devret.
+
 ## Fikir ve mimari aşaması
 
 Görev açıklandığında ya da "ne yapalım / nasıl kuralım" sorusunda:

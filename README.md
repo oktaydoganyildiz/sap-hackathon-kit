@@ -19,6 +19,11 @@ The script copies the `hackathon` skill into `~/.claude/skills`, pulls the skill
 
 Then start `claude` inside the repo folder. `CLAUDE.md` and the `hackathon` skill take over from there.
 
+## Team flow
+
+- **Captain:** in this kit folder say *"projeye başlıyoruz, konumuz …"* → the `kickoff` skill interviews (team size, members, GitHub users, Joule path, repo), proposes 2–3 approaches, writes spec + tool contract, assigns folder ownership, creates the GitHub repo from `sablon/proje/` and one assigned issue per task.
+- **Everyone else:** clone the project repo, run `claude`, say *"takıma katılıyorum, görevim ne?"* → the `gorevim` skill picks your issue, keeps you inside your folders and opens a PR with `Closes #n`.
+
 ## Layout
 
 | Path | Content |
@@ -27,7 +32,8 @@ Then start `claude` inside the repo folder. `CLAUDE.md` and the `hackathon` skil
 | `egitim/` | 13 training notes |
 | `beyin/` | Curated notes from the personal SAP knowledge base |
 | `NOTLAR.md` | Event info, prerequisites, open questions |
-| `skills/hackathon/` | Router skill |
+| `skills/` | `hackathon` (router), `kickoff` (team lead), `gorevim` (member) |
+| `sablon/proje/` | Project repo template: ownership CLAUDE.md, spec, contract, CODEOWNERS, PR/issue templates |
 | `kurulum/` | Install scripts |
 
 No credentials, user IDs or SAP-internal documents are stored here. Pull only; don't push from SAP environments.

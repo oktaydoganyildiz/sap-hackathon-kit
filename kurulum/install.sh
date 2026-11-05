@@ -6,7 +6,15 @@ mkdir -p "$SKILLS"
 
 step() { echo "==> $1"; shift; if "$@"; then echo "    ok"; else echo "    atlandi"; fi; }
 
-step "hackathon router skill" cp -r "$KIT/skills/hackathon" "$SKILLS/"
+step "kit skill-leri (hackathon, kickoff, gorevim)" cp -r "$KIT/skills/"* "$SKILLS/"
+
+copy_from_repo() {
+  repo="$1"; shift
+  tmp="$(mktemp -d)"
+  git clone --depth 1 "https://github.com/$repo.git" "$tmp/r" || return 1
+  for p in "$@"; do cp -r "$tmp/r/"$p "$SKILLS/" 2>/dev/null && echo "    + $p"; done
+  rm -rf "$tmp"
+}
 
 toolkit() {
   tmp="$(mktemp -d)"
@@ -16,15 +24,20 @@ toolkit() {
 step "joule-a2a-agent-toolkit skill-leri" toolkit
 
 if command -v claude >/dev/null; then
-  for m in SAP/ai-skills-library capire/skills SAP/ai-native-architecture-advisor secondsky/sap-skills; do
+  for m in SAP/ai-skills-library capire/skills SAP/ai-native-architecture-advisor secondsky/sap-skills mattpocock/skills; do
     step "marketplace: $m" claude plugin marketplace add "$m"
   done
-  for p in aicore-skills@ai-skills-library cap-developer@cap ai-native-architecture-advisor@sap-ai-native-architecture-advisor sap-ai-core@sap-skills sap-btp-cloud-platform@sap-skills; do
-    step "plugin: $p" claude plugin install "$p"
+  for p in superpowers@claude-plugins-official mattpocock-skills@mattpocock aicore-skills@ai-skills-library cap-developer@cap ai-native-architecture-advisor@sap-ai-native-architecture-advisor sap-ai-core@sap-skills sap-btp-cloud-platform@sap-skills; do
+    claude plugin install "$p" >/dev/null 2>&1 && echo "==> plugin: $p ok" || FAILED="$FAILED $p"
   done
 else
-  echo "==> claude CLI yok, plugin adimlari atlandi. Komutlar: katalog/08-skill-repolari.md"
+  echo "==> claude CLI yok, plugin yerine skill kopyalanacak."
+  FAILED="superpowers@ mattpocock-skills@ aicore-skills@ sap-skills@"
 fi
+case "$FAILED" in *superpowers@*) step "yedek: superpowers skill-leri" copy_from_repo obra/superpowers skills/brainstorming skills/writing-plans skills/systematic-debugging skills/verification-before-completion;; esac
+case "$FAILED" in *mattpocock-skills@*) step "yedek: mattpocock skill-leri" copy_from_repo mattpocock/skills skills/productivity/grilling skills/engineering/tdd skills/engineering/diagnosing-bugs;; esac
+case "$FAILED" in *aicore-skills@*) step "yedek: SAP ai-skills-library" copy_from_repo SAP/ai-skills-library "plugins/aicore-skills/skills/*" "skills/aicore-sdk-*";; esac
+case "$FAILED" in *sap-skills@*) step "yedek: secondsky/sap-skills" copy_from_repo secondsky/sap-skills "plugins/sap-ai-core/skills/*" "plugins/sap-btp-cloud-platform/skills/*" "plugins/sap-cap-capire/skills/*" "plugins/sap-cloud-sdk-ai/skills/*";; esac
 
 echo
 echo "Yol A (yeni Joule Studio): hackathon proje klasorunde: jl login <url> && jl init claude && jl skills init claude"

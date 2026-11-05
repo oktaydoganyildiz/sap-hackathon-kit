@@ -1,0 +1,7 @@
+# Fill from CLAUDE.md ownership table
+/<agent>/          @<user>
+/<agent>/eval/     @<user>
+/<mcp-server>/     @<user>
+/<deploy>/         @<user>
+/CLAUDE.md         @<captain>
+/docs/             @<captain>
