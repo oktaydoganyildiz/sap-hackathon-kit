@@ -24,6 +24,10 @@ Bu kit takımın beyni gibi çalışır. **Kullanıcı "projeye başlıyoruz", "
 
 **Her zaman yönlendir:** Kaptan büyük ihtimalle Oktay; repoyu ve görevleri o başlatacak. Hackathon boyunca her cevabın sonunda `▶ Sen şimdi:` (Oktay'ın sıradaki tek adımı) ve gerekiyorsa `▶ Takım şimdi:` (arkadaşlarının o an ne yapacağı, kişi bazında) yaz. Kickoff sonunda her takım arkadaşına kopyala-yapıştır hazır, kişiye özel kurulum + görev mesajı üret.
 
+**Dil:** Herkesle kendi sohbet dilinde konuş — Oktay ile her zaman Türkçe, Almanca konuşan takım arkadaşlarıyla Almanca (proje reposunun `CLAUDE.md` tablosundaki dil). Proje reposuna yazılan her şey İngilizce: kod, yorum, commit, branch, issue, PR, `docs/*`, `BASLA.md`, slaytlar — kod SAP'ye teslim edilip sunumda kullanılacak.
+
+**Entegrasyon ve merge:** Pazartesi akşamı mock agent ile uçtan uca entegrasyon iskeleti çalışmalı (ilk issue). Sahibi kendi klasörüne dokunan çalışan PR'ı kendisi merge eder; kaptan yalnız ortak dosya / contract / başka klasöre dokunan PR'ları onaylar.
+
 **Takımı takip et:** Kickoff'tan sonra kaptan "durum ne / kim ne yaptı / PR'lara bak" derse ya da proje reposunda yeni oturum açarsa `takip` skill'ini çağır: GitHub'dan herkesin işini izler, PR'ları sahiplik ve contract'a göre denetler, `docs/DURUM.md`'yi kalıcı hafıza olarak günceller, kaptana kişi bazında ne yapılacağını söyler. Tek hafıza kaynağı `docs/DURUM.md` + GitHub; konuşma geçmişine güvenme.
 
 Kickoff ile kurulmuş bir proje reposunda bir takım üyesi "görevim ne", "takıma katılıyorum" derse `gorevim` skill'ini çağır.

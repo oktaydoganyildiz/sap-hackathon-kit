@@ -9,4 +9,4 @@ labels: ''
 **Done when:**
 - [ ]
 **Blocked by:** #
-**Target:** Tue 12:00 | Tue 17:00 | Wed 12:00 | Wed 18:00 (freeze)
+**Target:** Mon evening (integration skeleton) | Tue 12:00 | Tue 17:00 | Wed 12:00 | Wed 18:00 (freeze)

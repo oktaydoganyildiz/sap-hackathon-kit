@@ -7,7 +7,9 @@ description: Hackathon takım üyesinin kendi görevini alıp çakışmadan çal
 
 Repo kökündeki `CLAUDE.md` takım kurallarıdır, önce onu oku. Sahiplik tablosu ve `docs/contract.md` bağlayıcıdır.
 
-**Yönlendirme:** Her cevabın sonunda `▶ Sen şimdi:` ile kullanıcının yapacağı tek somut adımı yaz. Repo kökünde `BASLA.md` varsa önce oradaki kişinin bölümünü oku.
+**Yönlendirme:** Her cevabın sonunda `▶ Sen şimdi:` (İngilizce: `▶ You now:`, Almanca: `▶ Du jetzt:`) ile kullanıcının yapacağı tek somut adımı yaz. Repo kökünde `BASLA.md` varsa önce oradaki kişinin bölümünü oku.
+
+**Dil:** Kullanıcıyla `CLAUDE.md` takım tablosundaki **sohbet dilinde** konuş (Türkçe, Almanca…). Repoya yazdığın her şey **İngilizce**: kod, yorum, isimler, commit, branch, issue yorumu, PR.
 
 ## Başlarken
 
@@ -29,5 +31,6 @@ Repo kökündeki `CLAUDE.md` takım kurallarıdır, önce onu oku. Sahiplik tabl
 
 1. `git pull --rebase origin main`, test/çalıştırma kontrolü.
 2. `git push -u origin HEAD` → `gh pr create --fill --body "Closes #<no>"` (şablonu doldur: ne yapıldı, nasıl denenir, ekran görüntüsü). `gh` yoksa push'tan sonra PR'ı tarayıcıdan açması için linki kullanıcıya ver; `TASKS.md` kullanılıyorsa görev numarasını PR başlığına yaz.
-3. Kendi PR'ını merge etme; bir takım arkadaşı baksın. Çarşamba akşamı freeze'den sonra sadece kaptan merge eder.
-4. Sıradaki görevi öner (Başlarken §3).
+3. **Merge:** PR sadece senin klasörlerine dokunuyor ve çalışıyorsa kendin merge et: `gh pr merge <no> --squash --delete-branch`. Ortak dosyalara, `docs/contract.md`'ye veya başkasının klasörüne dokunuyorsa merge etme, kaptandan onay iste. Çarşamba 18:00 freeze'den sonra sadece kaptan merge eder.
+4. Merge sonrası entegrasyon hattı (main) hâlâ çalışıyor mu, hızlıca dene; bozulduysa hemen entegrasyon issue'suna yaz.
+5. Sıradaki görevi öner (Başlarken §3).

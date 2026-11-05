@@ -11,20 +11,20 @@ pwsh -File $HOME\sap-hackathon-kit\kurulum\install.ps1
 github.com açılmazsa: 3. satıra kadar yap, kiti atla; kaptan aşağıdaki §2'yi elle yürütür.
 
 ## 2. Kaptan — kickoff (kod yok, önce bu)
-1. Sor (her soruya tahminini ekle): görev/teslim/jüri · kaç kişi · isim + GitHub kullanıcı + güçlü yön · Yol A (`jl`) mı B (A2A) mı · repo nerede · takım dili.
+1. Sor (her soruya tahminini ekle): görev/teslim/jüri · kaç kişi · isim + GitHub kullanıcı + güçlü yön + **sohbet dili** · Yol A (`jl`) mı B (A2A) mı · repo nerede. **Repo dili her zaman İngilizce** (kod SAP'ye gider, sunumda görünür); Claude herkesle kendi dilinde konuşur (Oktay: Türkçe).
 2. 2–3 yaklaşım → test: adım önceki sonuca bağlı mı · 2+ tool seçimi · insan onaylı karar · tek KPI · "sadece bul getir" değil · SAP zaten yapıyor mu.
 3. `docs/spec.md` (problem, persona, KPI, 5 dk demo, mimari, kapsam dışı) + `docs/contract.md` (tool: ad, okuma/yazma, girdi, çıktı, örnek).
 4. Roller: 3 kişi = kaptan+platform · agent · veri+tool. 4 = +platform ayrı. 5 = +ikinci agent (istisna/HITL/eval).
 5. Repo: SAP verdiyse clone · yoksa `gh repo create <org>/<ad> --private --clone` · yoksa kendi kullanıcın altında.
-6. Kök `CLAUDE.md`: sahiplik tablosu (klasör → kişi) + kurallar: kendi klasörüne yaz · contract'a dokunma · `<kullanıcı>/<no>-<ad>` branch · küçük PR `Closes #n` · kendi PR'ını merge etme · sır commit'leme.
-7. Görevler: `gh issue create --title "[rol] ..." --assignee @x --body "Klasör / Bitti tanımı / Blocked by / Hedef"`. Issues olmazsa `TASKS.md` tablosu.
-8. Repo'ya `BASLA.md` (kişi başı: rol, klasör, issue'lar, komutlar). Her arkadaşa ayrı mesaj at: `gh auth login --hostname github.tools.sap` → `git clone <repo>` → `cd <repo>` → `claude` → "takıma katılıyorum, görevim ne?" + ilk issue numarası.
+6. Kök `CLAUDE.md` (İngilizce): takım tablosu (kişi · sohbet dili · GitHub · rol · klasör) + kurallar: kendi klasörüne yaz · contract'a dokunma · `<kullanıcı>/<no>-<ad>` branch · 1–2 saatte push · PR `Closes #n` · **sadece kendi klasörün ise kendin merge et**, ortak dosya/contract → kaptan · sır commit'leme. Entegrasyon sahibi = kaptan veya platform.
+7. Görevler: **önce** `[integration] mock agent end to end` (Pzt akşamı) + `[integration] daily check`; sonra `gh issue create --title "[rol] ..." --assignee @x --body "Folder / Done when / Blocked by / Target"`. Issues olmazsa `TASKS.md` tablosu.
+8. Repo'ya `BASLA.md` (kişi başı: rol, klasör, issue'lar, komutlar). Her arkadaşa **kendi dilinde** ayrı mesaj at: `gh auth login --hostname github.tools.sap` → `git clone <repo>` → `cd <repo>` → `claude` → "takıma katılıyorum, görevim ne?" + ilk issue numarası.
 
 ## 3. Takım üyesi
-`git pull --rebase origin main` → `gh issue list --assignee @me` → `git switch -c <ben>/<no>-<ad>` → sadece kendi klasörün → `gh pr create --body "Closes #<no>"`.
+`git pull --rebase origin main` → `gh issue list --assignee @me` → `git switch -c <ben>/<no>-<ad>` → sadece kendi klasörün → `gh pr create --body "Closes #<no>"` → sadece kendi klasörünse `gh pr merge --squash` → main hâlâ çalışıyor mu dene.
 
 ## 4. Takvim ve ritüel
-Sal 12:00 "Merhaba Joule" uçtan uca · Sal 17:00 gerçek veri (salt okunur) · Çar 12:00 istisna + HITL + eval · **Çar 18:00 freeze + yedek video** · Per prova/sunum.
+**Pzt akşam entegrasyon iskeleti (mock agent deploy, Joule'dan uçtan uca)** · Sal 12:00 gerçek agent aynı hatta · Sal 17:00 gerçek veri (salt okunur) · Çar 12:00 istisna + HITL + eval · **Çar 18:00 freeze + yedek video** · Per prova/sunum.
 Her sabah 10 dk stand-up · 13:00 entegrasyon · 17:00 "jüriye ne gösterirdik" · 30 dk tıkandıysan söyle, 60 dk mentora.
 
 ## 5. Yol A (`jl`) ilk dakika

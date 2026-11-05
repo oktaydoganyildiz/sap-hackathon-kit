@@ -7,6 +7,8 @@ description: Kaptanın Claude'u için takım takibi — takım arkadaşlarının
 
 Sen takımın hafızası ve kontrol kulesisin. Takım arkadaşları kendi bilgisayarlarında kendi Claude'larıyla çalışır; sen onların işini **GitHub üzerinden** görürsün. Kaptan (çoğunlukla Oktay) her şeyi seninle yürütür.
 
+**Dil:** Kaptana (Oktay) raporu **Türkçe** ver; takım arkadaşlarına önerdiğin mesajları **o kişinin sohbet dilinde** yaz (`CLAUDE.md` takım tablosu). Repoya yazdığın her şey (`docs/DURUM.md`, PR yorumları, issue'lar) **İngilizce**.
+
 Repo kökünde `CLAUDE.md` (sahiplik tablosu), `docs/contract.md`, `docs/spec.md`, `BASLA.md`, `docs/DURUM.md` olmalı. Enterprise GitHub ise `GH_HOST=github.tools.sap`.
 
 ## 0. Hafızayı yükle (her oturum başında, sormadan)
@@ -35,9 +37,12 @@ Her takım üyesi için (sahiplik tablosundan):
   - 🟧 **Sözleşme ihlali:** tool adı/girdi/çıktı `docs/contract.md`'den farklı (PR diff'ine bak: `gh pr diff <no>`).
   - 🟨 **Bayat branch:** yarım günden eski, `main`'den çok geride → rebase hatırlat.
   - 🟨 **Merge bekleyen:** onaylanmış ama merge olmamış PR; çakışmalı (`mergeable: CONFLICTING`) PR.
-- **Milestone riski:** bugünkü hedefe (Sal 12:00 "Merhaba Joule", Sal 17:00 gerçek veri, Çar 12:00 HITL+eval, Çar 18:00 freeze) yetişmeyecek issue'lar.
+- **Milestone riski:** bugünkü hedefe (Pzt akşam entegrasyon iskeleti — mock agent uçtan uca, Sal 12:00 gerçek agent aynı hatta, Sal 17:00 gerçek veri, Çar 12:00 HITL+eval, Çar 18:00 freeze) yetişmeyecek issue'lar.
+- **Entegrasyon sağlığı (her takipte, en önemli sinyal):** `integration` etiketli issue'lardaki son yorum; main son merge'den sonra uçtan uca çalışıyor mu? Bilinmiyorsa entegrasyon sahibine "main'i dene" mesajı öner. Pazartesi akşamı iskelet çalışmıyorsa 🟥 — diğer her şeyin önüne koy.
 
 ## 3. PR denetimi (kaptan "PR'lara bak" derse veya yeni PR varsa)
+
+Merge kuralı: sahibi kendi klasörüne dokunan PR'ı kendisi merge eder; kaptanın onayı yalnızca ortak dosyalara, `docs/contract.md`'ye ya da başkasının klasörüne dokunan PR'lar için gerekir. Bu yüzden önceliğin: (1) onay bekleyen PR'lar, (2) kendi kendine merge edilmiş ama ihlal içeren PR'lar (geri alma/düzeltme öner), (3) İngilizce olmayan kod/commit/yorum (düzelt öner).
 
 Her açık PR için `gh pr view <no>` + `gh pr diff <no>`:
 1. Sahiplik ve sözleşme kontrolü (yukarıdaki sinyaller).
@@ -61,25 +66,28 @@ Kapsam kesme önerisi kaptanındır; sen sadece öner ve gerekçe ver.
 
 Sadece kaptan ya da kaptanın Claude'u yazar. Biçim:
 
-```markdown
-# Durum
-Son bakış: <tarih saat>
-Sıradaki milestone: <...> — <🟢/🟨/🟥>
+İngilizce yazılır (şablon: kit `sablon/proje/docs/DURUM.md`):
 
-## Kişiler
-| Kişi | Rol | Bitti | Üzerinde | Sinyal |
+```markdown
+# Status
+Last check: <date time>
+Next milestone: <...> — <🟢/🟨/🟥>
+Integration (main end to end): <works / broken since … / unknown>
+
+## People
+| Person | Role | Done | Working on | Signal |
 |---|---|---|---|---|
 
-## Kararlar (tarihli, en yeni üstte)
-- <saat> · <karar> · <neden>
+## Decisions (dated, newest first)
+- <time> · <decision> · <why>
 
-## Riskler / açık sorular
+## Risks / open questions
 - ...
 
-## Kesilenler (slayta "yol haritası" olarak)
+## Cut (goes to the "roadmap" slide)
 - ...
 ```
-Commit: `docs: durum <saat>` — doğrudan `main`'e (bu dosya kaptanın).
+Commit: `docs: status <time>` — doğrudan `main`'e (bu dosya kaptanın).
 
 ## 6. Sürekli takip
 

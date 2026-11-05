@@ -1,17 +1,18 @@
-# Durum
-Son bakış: <tarih saat>
-Sıradaki milestone: <Tue 12:00 Hello Joule> — 🟢
+# Status
+<!-- Written in English like everything in the repo. The captain's Claude keeps it current and reports it to the captain in their chat language. -->
+Last check: <date time>
+Next milestone: <Mon evening — integration skeleton> — 🟢
 
-## Kişiler
-| Kişi | Rol | Bitti | Üzerinde | Sinyal |
+## People
+| Person | Role | Done | Working on | Signal |
 |---|---|---|---|---|
-| <ad> | <rol> | — | #<no> | — |
+| <name> | <role> | — | #<no> | — |
 
-## Kararlar (tarihli, en yeni üstte)
-- <saat> · Kickoff: <seçilen yaklaşım> · <neden>
+## Decisions (dated, newest first)
+- <time> · Kickoff: <chosen approach> · <why>
 
-## Riskler / açık sorular
+## Risks / open questions
 - 
 
-## Kesilenler (slayta "yol haritası" olarak)
+## Cut (goes to the "roadmap" slide)
 - 

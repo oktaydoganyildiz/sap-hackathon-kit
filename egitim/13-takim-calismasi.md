@@ -38,7 +38,7 @@ Ortak işler herkesindir: eval sorularını yazmak (her rol 3–4 soru), demo pr
 
 | Gün | Kaptan / sunum | Agent geliştirici (2) | Veri + tool (Oktay) | Platform + deploy |
 |---|---|---|---|---|
-| **Pzt** | Brifing notu, fikir seçimini yönetir (`katalog/12` §5 çerçevesi), demo senaryosu taslağı | Brifingi dinler; öğleden sonra `jl init claude` veya agent iskeleti, "Merhaba" agent'ı lokal | Hangi veri, nereden, hangi 3–6 tool; örnek veriyi yükler | Erişimleri test eder: BTP, IAS, AI Core, `jl login` / `joule login`. **Akşama kadar hepsi çalışmalı** |
+| **Pzt** | Brifing notu, fikir seçimini yönetir (`katalog/12` §5 çerçevesi), demo senaryosu taslağı, kickoff | Brifingi dinler; öğleden sonra `jl init claude` veya agent iskeleti, mock agent (sabit cevap) | Hangi veri, nereden, hangi 3–6 tool; `docs/contract.md`'deki örnek cevapları döndüren mock tool | Erişimleri test eder: BTP, IAS, AI Core, `jl login` / `joule login`. **Akşam: entegrasyon iskeleti — mock agent deploy, Joule'dan bir kez uçtan uca çağrıldı** |
 | **Sal** | Slayt iskeleti, KPI hesabı, persona | Öğlene kadar **"Merhaba Joule"** uçtan uca; sonra asıl mantık | MCP/tool'lar salt okunur çalışır, agent'a bağlanır | İlk deploy, Joule'dan çağırma; deploy'u tekrarlanabilir yapar (script) |
 | **Çar** | Demo provası 1, hikâye düzeltme | İstisna/HITL, eval (10–20 soru), guardrail | Yazma tool'u (onaylı), demo verisini sabitler | Son deploy, yedek ortam; **akşam özellik dondurma**, yedek video çekimi |
 | **Per** | Sunum, Q&A hazırlığı | Q&A'da teknik sorular | Q&A'da veri soruları | Demo makinesi, ağ, yedek video hazır |
@@ -50,6 +50,9 @@ Ortak işler herkesindir: eval sorularını yazmak (her rol 3–4 soru), demo pr
 - **Kapsam kesme hakkı kaptanda.** Çarşamba öğlen bir özellik çalışmıyorsa kesilir, yerine slaytta "yol haritası" olur.
 - **Paylaşılan dosya:** karar listesi, linkler, erişim bilgileri (şifresiz), demo senaryosu. Tek yerde.
 - **Kod deposu:** SAP'nin verdiği repo (muhtemelen `github.tools.sap`). Kısa ömürlü branch, sık merge; Çarşamba akşamdan sonra sadece kaptan onayıyla merge.
+- **Entegrasyon bir görevdir, yan etki değil.** Hackathon retrospektiflerinde en sık çöken yer parçaların birleşmesi ve geç yapılan deploy. Kaptan veya platform kişisi "entegrasyon sahibi" olur; Pazartesi akşamı mock agent ile iskelet uçtan uca çalışır, her gün 13:00'te main birlikte test edilir.
+- **Dil:** Claude herkesle kendi dilinde konuşur (Oktay ile Türkçe, Almanca konuşanlarla Almanca). Repoya giren her şey İngilizce: kod, yorum, commit, issue, PR, doküman, slayt — kod SAP'ye teslim edilip sunumda gösterilecek.
+- **Roller esnek:** Kaptan bir görevi başka kişiye kaydırabilir (issue'yu yeniden ata).
 
 ## 6. Herkesin kendi Claude Code'u ile aynı repoda çalışma (çakışmasız)
 
@@ -79,6 +82,7 @@ Kaptan'ın Claude'u ──(spec + ticket'lar)──► GitHub Issues (tek görev
    - PR'lar küçük olur ve günde birkaç kez merge edilir. Branch ömrü en fazla yarım gün.
    - İşe başlamadan önce `git pull --rebase origin main`.
    - Aynı makinede iki Claude çalışıyorsa her biri ayrı git worktree'de çalışır.
+   - **Merge:** PR sadece sahibinin klasörüne dokunuyor ve çalışıyorsa sahibi kendisi merge eder (her PR'a başkasının bakması 2 günde kaptanı darboğaz yapar). Ortak dosyalara, `docs/contract.md`'ye veya başkasının klasörüne dokunan PR kaptan onayı ister; `takip` skill'i ihlalleri yakalar.
    - Çarşamba akşamından sonra main'e sadece kaptan onayıyla merge yapılır.
 5. **Ortak dosyalar tek sahipli.** `package.json`, `mta.yaml` / solution manifest, `.env.example`, `CLAUDE.md` ve `docs/contract.md` sadece platform kişisinde ya da kaptanda olur. Başkasının Claude'u bu dosyalarda değişiklik gerekirse doğrudan dokunmaz, issue açar.
 
@@ -100,7 +104,8 @@ Kaptan'ın Claude'u ──(spec + ticket'lar)──► GitHub Issues (tek görev
 1. İşe başlarken: `git pull --rebase origin main` → `gh issue list --assignee @me`
 2. Sadece kendi klasörüne yaz. Başka klasör gerekiyorsa issue aç, sahibine ata, dur.
 3. Arayüz `docs/contract.md`'de; değiştirme, değişiklik gerekiyorsa kaptana issue aç.
-4. Küçük PR, açıklamada `Closes #<no>`. Kendi PR'ını merge etme, bir kişi baksın (Çarşamba akşamından sonra sadece kaptan).
+4. Küçük PR, açıklamada `Closes #<no>`. Sadece kendi klasörün ve çalışıyorsa kendin merge et; ortak dosya/contract/başka klasör → kaptan onayı. Çarşamba 18:00'den sonra sadece kaptan.
+5. Repoya her şey İngilizce; kullanıcıyla tablodaki sohbet dilinde konuş.
 5. Şifre/token commit'leme.
 ```
 
@@ -147,7 +152,7 @@ github.com/<oktay>/sap-hackathon-kit ──clone (okuma)──► ~/sap-hackatho
 | `gh` github.tools.sap'ta çalışır mı / Issues var mı? | Evet (PDF `gh`'yi "PRs, issues & repos" için istiyor) | Çalışmazsa `TASKS.md` tablosu; `gorevim` onu da okur, PR linki tarayıcıdan açılır. |
 | Joule Studio (`jl`) erişimi var mı? | Muhtemelen var, ama bazı tenant'lar hâlâ EAC'ye kapalı | Yol B (kendi agent + A2A + `joule` CLI) hazır: `btp-joule-a2a-pro-code-agent`, partner workshop. |
 | VDI'da Claude Code / Hyperspace çalışır mı? | PDF istiyor, çalışır | Çalışmazsa skill'ler düz Markdown: VS Code'daki herhangi bir AI asistanına ya da elle okunarak uygulanır. |
-| Takım dili? | Takımda Almanca konuşanlar var → İngilizce | Şablonlar İngilizce, `kickoff` Faz 1'de sorar. |
+| Dil? | Karar verildi: sohbet kişiye göre (Oktay Türkçe, diğerleri Almanca/Türkçe), repo her zaman İngilizce | Şablonlar İngilizce; `kickoff` Faz 1'de herkesin sohbet dilini sorar ve `CLAUDE.md` tablosuna yazar. |
 
 **Dikkat:** SAP ortamında üretilen kod ve bilgi kişisel github.com kitine push edilmez. Kit sadece okunur; çalışma `github.tools.sap`'ta kalır.
 
