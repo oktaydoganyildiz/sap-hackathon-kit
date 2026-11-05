@@ -24,6 +24,8 @@ Then start `claude` inside the repo folder. `CLAUDE.md` and the `hackathon` skil
 - **Captain:** in this kit folder say *"projeye başlıyoruz, konumuz …"* → the `kickoff` skill interviews (team size, members, GitHub users, Joule path, repo), proposes 2–3 approaches, writes spec + tool contract, assigns folder ownership, creates the GitHub repo from `sablon/proje/` and one assigned issue per task.
 - **Everyone else:** clone the project repo, run `claude`, say *"takıma katılıyorum, görevim ne?"* → the `gorevim` skill picks your issue, keeps you inside your folders and opens a PR with `Closes #n`.
 
+**If github.com is blocked in the VDI:** only the captain needs the kit — `kickoff` copies itself and `gorevim` into the team repo's `.claude/skills/`. If even the captain can't get it, use `CEP.md` (one-page pocket card, read on phone or print).
+
 ## Layout
 
 | Path | Content |

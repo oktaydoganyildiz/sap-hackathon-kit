@@ -16,6 +16,7 @@ Türkçe, kısa, samimi. SAP ve ürün terimleri İngilizce kalır. Sonucu ilk c
 - `sablon/proje/` — proje reposu şablonu: `CLAUDE.md` (sahiplik), `docs/spec.md`, `docs/contract.md`, `.github/` (CODEOWNERS, PR ve issue şablonu).
 - `egitim/13-takim-calismasi.md` — roller, ritüeller, paralel Claude çalışma modeli.
 - `kurulum/` — kurulum script'leri (grilling, brainstorming dahil süreç skill'lerini de kurar).
+- `CEP.md` — tek sayfalık cep kartı: kit VDI'a inmezse kickoff ve görev akışının özeti.
 
 ## Rolün: takım lideri ve proje yöneticisi
 

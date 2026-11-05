@@ -11,6 +11,8 @@ Sen bu hackathonda takımın proje yöneticisi ve teknik liderisin. Görevin: he
 
 Kit kökü: `SAP_HACKATHON_KIT` ortam değişkeni, yoksa `~/sap-hackathon-kit`. Şablonlar: `<kit>/sablon/proje/`.
 
+**Kit yoksa da çalış:** Bu skill takım reposunun `.claude/skills/` klasöründen de yüklenmiş olabilir (kit VDI'a inmediyse). O durumda `<kit>/...` dosyalarını okuyamazsan atla; bu dosyadaki kurallar ve aşağıdaki gömülü şablonlar yeterli. Hiçbir adımı "kit yok" diye durdurma.
+
 ---
 
 ## Faz 0 — Bağlamı yükle (soru sormadan)
@@ -71,7 +73,11 @@ Tabloyu göster, onay al.
 
 ## Faz 5 — Repo kurulumu (onaylı)
 
-1. Repo: kullanıcının Faz 1'de söylediği yerde. Enterprise ise `export GH_HOST=github.tools.sap` (PowerShell: `$env:GH_HOST='github.tools.sap'`). Yeni repo ise `gh repo create <org>/<ad> --private --clone`; varsa `gh repo clone`.
+1. Repo: kullanıcının Faz 1'de söylediği yerde. Enterprise ise `export GH_HOST=github.tools.sap` (PowerShell: `$env:GH_HOST='github.tools.sap'`). Sırayla dene, ilk çalışanı kullan:
+   - SAP hazır repo verdiyse: `gh repo clone <org>/<ad>` (repo açma).
+   - Org'da yetki varsa: `gh repo create <org>/<ad> --private --clone`.
+   - İkisi de yoksa: kaptanın kendi kullanıcısı altında `gh repo create <ad> --private --clone`, sonra collaborator ekle.
+   - `gh` hiç çalışmıyorsa: tarayıcıdan repo açtır, `git clone <url>` ile devam et.
 2. Yol A ise repo kökünde `jl init claude` ve `jl skills init claude` (önce `jl login` gerekiyorsa söyle).
 3. `sablon/proje/` içeriğini kopyala ve doldur:
    - `CLAUDE.md` → sahiplik tablosu (klasör, sahip, GitHub kullanıcı), akış kuralları, takım dili.
@@ -79,6 +85,8 @@ Tabloyu göster, onay al.
    - `.github/pull_request_template.md`, `.github/ISSUE_TEMPLATE/gorev.md`.
    - `docs/spec.md`, `docs/contract.md` (Faz 3'ten).
    - Her sahip klasörüne boş bir `README.md` (klasörün amacı + sahibi).
+   - **Takım skill'lerini repoya göm:** `<kit>/skills/gorevim/` ve `<kit>/skills/kickoff/` → `<repo>/.claude/skills/`. Böylece takım üyelerinin kiti kurmasına gerek kalmaz; repoyu clone'layıp `claude` açınca `gorevim` hazırdır. (Kit yoksa ve bu skill zaten `.claude/skills/`'ten geliyorsa atla.)
+   - Kit'te `sablon/proje/` yoksa (kit inmediyse) şablonları bu dosyadaki tanımlardan sıfırdan yaz: sahiplik tablosu + 5 akış kuralı (`CLAUDE.md`), spec başlıkları (Problem, Persona, KPI, Demo story, Architecture, Out of scope, Risks), contract (tool başına: kind, owner, description, input, output, example, errors).
 4. Commit + push `main`. Collaborator eklemek gerekiyorsa listeyi göster, onayla, `gh api -X PUT repos/<org>/<ad>/collaborators/<kullanıcı>`.
 5. Etiketler: `gh label create rol:agent`, `rol:veri`, `rol:platform`, `rol:kaptan`, `blocked`.
 
@@ -96,6 +104,8 @@ Hedef: Sal 12:00 / Sal 17:00 / Çar 12:00 / Çar 18:00 (freeze)
 ```
 
 `gh issue create --title ... --body ... --assignee ... --label ...` ile aç. Önce listeyi tablo olarak göster, onay al, sonra toplu aç. Milestone kullanacaksan günlere göre: `Sal-oglen-merhaba-joule`, `Car-aksam-freeze`.
+
+**Issues kullanılamıyorsa** (repo'da kapalı, `gh` erişimi yok, assignee eklenemiyor): görevleri repo kökünde `TASKS.md` tablosuna yaz — `| # | Görev | Sahip | Klasör | Bitti tanımı | Blocked by | Hedef | Durum |`. Sadece kaptan bu dosyayı düzenler; üyeler okur, durumu PR açıklamasında bildirir. `gorevim` skill'i bu dosyayı da okur.
 
 ## Faz 7 — Herkesi başlat
 

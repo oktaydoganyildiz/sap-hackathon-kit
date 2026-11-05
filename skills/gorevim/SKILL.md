@@ -11,7 +11,7 @@ Repo kökündeki `CLAUDE.md` takım kurallarıdır, önce onu oku. Sahiplik tabl
 
 1. `git pull --rebase origin main`
 2. Kimsin: `gh api user --jq .login` → sahiplik tablosunda hangi klasörler senin?
-3. Görevlerin: `gh issue list --assignee @me --state open`. Bloke olmayan (`Blocked by` kapalı) ve hedef saati en yakın olanı öner, kullanıcıya onaylat.
+3. Görevlerin: `gh issue list --assignee @me --state open` (enterprise ise önce `GH_HOST=github.tools.sap`). `gh` çalışmıyor ya da repoda `TASKS.md` varsa oradan, `Sahip` sütununda sen olan satırları oku. Bloke olmayan ve hedef saati en yakın olanı öner, kullanıcıya onaylat.
 4. Başla: `gh issue comment <no> --body "Başladım"`, branch `git switch -c <kullanıcı>/<no>-<kısa-ad>`.
 
 ## Çalışırken
@@ -25,6 +25,6 @@ Repo kökündeki `CLAUDE.md` takım kurallarıdır, önce onu oku. Sahiplik tabl
 ## Bitirirken
 
 1. `git pull --rebase origin main`, test/çalıştırma kontrolü.
-2. `git push -u origin HEAD` → `gh pr create --fill --body "Closes #<no>"` (şablonu doldur: ne yapıldı, nasıl denenir, ekran görüntüsü).
+2. `git push -u origin HEAD` → `gh pr create --fill --body "Closes #<no>"` (şablonu doldur: ne yapıldı, nasıl denenir, ekran görüntüsü). `gh` yoksa push'tan sonra PR'ı tarayıcıdan açması için linki kullanıcıya ver; `TASKS.md` kullanılıyorsa görev numarasını PR başlığına yaz.
 3. Kendi PR'ını merge etme; bir takım arkadaşı baksın. Çarşamba akşamı freeze'den sonra sadece kaptan merge eder.
 4. Sıradaki görevi öner (Başlarken §3).

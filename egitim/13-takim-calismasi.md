@@ -104,6 +104,53 @@ Kaptan'ın Claude'u ──(spec + ticket'lar)──► GitHub Issues (tek görev
 5. Şifre/token commit'leme.
 ```
 
+### VDI'da bu akış nasıl işler
+
+SAP'nin hazırlık PDF'i `github.tools.sap` (workshop içeriği), `git` ve `gh` CLI'ı ister ve `gh`'yi "Manage GitHub PRs, **issues** & repos from the terminal" diye tanımlar. Yani Issues/PR akışı SAP'nin beklediği çalışma şekli. Issues GitHub'da her repoda varsayılan açıktır; asıl soru **takım reposunu kimin açtığı ve bizim yazma yetkimiz olup olmadığı**.
+
+```
+Bu PC (şimdi)                    VDI (hackathon, herkes kendi oturumunda)
+github.com/<oktay>/sap-hackathon-kit ──clone (okuma)──► ~/sap-hackathon-kit  → install.ps1 → skill'ler ~/.claude/skills
+                                                         │
+                                         claude (Hyperspace üzerinden)
+                                                         │
+                         github.tools.sap/<org>/<takım-repo> ◄── kickoff (kaptan) / gorevim (herkes)
+                         Issues + PR + main burada buluşur
+```
+
+**Adımlar (her kişi kendi VDI'ında):**
+1. `gh auth login --hostname github.tools.sap` (C-User/SSO ile). PowerShell'de kalıcı: `$env:GH_HOST='github.tools.sap'`.
+2. Kiti çek: `git clone https://github.com/oktaydoganyildiz/sap-hackathon-kit.git $HOME\sap-hackathon-kit` → `pwsh -File kurulum\install.ps1`. (Private repo: önce `gh auth login --hostname github.com` ile kendi hesabın; ya da kit'i takıma collaborator olarak aç.)
+3. Kaptan: kit klasöründe `claude` → "projeye başlıyoruz, konumuz …" → `kickoff` takım reposunu **github.tools.sap**'ta kurar/kullanır.
+4. Diğerleri: takım reposunu clone → `claude` → "takıma katılıyorum, görevim ne?" → `gorevim`.
+5. VS Code: VDI'daki VS Code ile aynı klasörü aç; Claude terminalde, sen editörde. Git işlemleri tek yerden (Claude ya da VS Code), ikisi aynı anda commit atmasın.
+
+**Takım reposu için üç olası durum:**
+
+| Durum | Ne yaparız |
+|---|---|
+| SAP hazır bir takım reposu verir (en olası) | `kickoff` Faz 5'te repo açmaz, verilen repoyu clone'lar, şablonu içine koyar. Collaborator'ları SAP ekler. |
+| Org'da repo açma yetkimiz var | `gh repo create <org>/<ad> --private` |
+| Yetki yok, repo da verilmedi | Kaptan kendi `github.tools.sap` kullanıcısı altında açar, diğerlerini collaborator ekler. |
+
+**VDI'dan github.com açılmıyorsa (kit çekilemez):**
+- Kit'in sadece **iki skill'i kritik**: `kickoff` ve `gorevim` (toplam ~2 sayfa). Kaptan bunları SAP takım reposuna `.claude/skills/` altına koyarsa (aynı metni elle oluşturarak; kit linkleri olmadan da çalışır) herkesin Claude'u repo açılınca otomatik görür.
+- Katalog/eğitim notları kendi laptopunda veya telefonda tarayıcıdan okunur (github.com).
+- Bunu önceden bilmek için Ayca'ya sor: "VDI'dan github.com'a erişim var mı?"
+
+### SAP'ye soramazsak: her bilinmeyen için hazır yedek
+
+| Bilinmeyen | Tahmin | Önceden hazır olan yedek |
+|---|---|---|
+| VDI'dan github.com açılıyor mu? | Belirsiz (SAP iç ağı çoğu zaman açık bırakır, doğrulanmadı) | Kiti sadece kaptan çeker; `kickoff` kendini ve `gorevim`'i takım reposunun `.claude/skills/`'ine kopyalar → diğerleri kitsiz çalışır. Kaptan da çekemezse `CEP.md` (telefondan oku/yazdır) ile `kickoff` adımları elle yürütülür; `kickoff` kit dosyaları olmadan da çalışacak şekilde yazıldı. |
+| Takım reposunu kim açar? | SAP hazır repo verir | `kickoff` Faz 5 sırayla dener: verilen repo → org'da yeni repo → kaptanın kullanıcısı altında → tarayıcıdan açıp `git clone`. |
+| `gh` github.tools.sap'ta çalışır mı / Issues var mı? | Evet (PDF `gh`'yi "PRs, issues & repos" için istiyor) | Çalışmazsa `TASKS.md` tablosu; `gorevim` onu da okur, PR linki tarayıcıdan açılır. |
+| Joule Studio (`jl`) erişimi var mı? | Muhtemelen var, ama bazı tenant'lar hâlâ EAC'ye kapalı | Yol B (kendi agent + A2A + `joule` CLI) hazır: `btp-joule-a2a-pro-code-agent`, partner workshop. |
+| VDI'da Claude Code / Hyperspace çalışır mı? | PDF istiyor, çalışır | Çalışmazsa skill'ler düz Markdown: VS Code'daki herhangi bir AI asistanına ya da elle okunarak uygulanır. |
+| Takım dili? | Takımda Almanca konuşanlar var → İngilizce | Şablonlar İngilizce, `kickoff` Faz 1'de sorar. |
+
+**Dikkat:** SAP ortamında üretilen kod ve bilgi kişisel github.com kitine push edilmez. Kit sadece okunur; çalışma `github.tools.sap`'ta kalır.
+
 ## 7. Pazartesiden önce ekipçe yapılacaklar
 
 - [ ] 5 kişinin güçlü yönleri konuşuldu, roller atandı, kaptan seçildi
