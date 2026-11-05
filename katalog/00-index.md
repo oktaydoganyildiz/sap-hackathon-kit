@@ -17,6 +17,8 @@
 | `11-hazir-agentlar.md` | SAP'nin hazır Joule agent'ları, agent extension kısıtları, boşluklar (fikir fırsatı) |
 | `12-agent-tasarim-rehberi.md` | SAP'nin tasarım kuralları, agent mı otomasyon mu testi, mimari kontrol listesi, kazananların ortak yanları, fikir çerçevesi |
 
-**Fikir ve mimari aşamasında önce 12, sonra 11, sonra 10'u oku.**
+| `13-sorun-giderme.md` | Giriş, deploy, log, Git sorunları: belirti → neden → komut |
+
+**Fikir ve mimari aşamasında önce 12, sonra 11, sonra 10'u oku. Hata alınca 13.**
 
 Derin anlatım: `../egitim/` (13 ders notu). Saha notları ve tarifler: `../beyin/` (SAP Beyni'nden seçme).

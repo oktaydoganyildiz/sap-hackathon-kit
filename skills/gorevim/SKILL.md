@@ -24,6 +24,7 @@ Repo kökündeki `CLAUDE.md` takım kurallarıdır, önce onu oku. Sahiplik tabl
 - **Sözleşmeye uy.** `docs/contract.md`'deki tool adı/girdi/çıktıyı değiştirme. Karşı taraf hazır değilse sözleşmeye göre mock kullan. Sözleşme yanlışsa kaptana issue aç.
 - **Ortak dosyalara dokunma** (`CLAUDE.md`, `docs/contract.md`, manifest, `package.json`, `.env.example`) — sahibi değilsen issue aç.
 - Küçük ve sık commit. Şifre/token commit'leme.
+- Hata/login/deploy sorununda önce `.claude/sorun-giderme.md`'de belirtiyi eşle (araç eksikse `.claude/tools/kontrol.ps1`). Hata metnini tam iste, tahminle düzeltme.
 - 30 dakika tıkandıysan kullanıcıya söyle; 60 dakikaysa mentora gitmesini öner.
 - **Kaptan seni GitHub'dan takip ediyor, görünür ol:** her 1–2 saatte bir push et (draft PR açık olabilir: `gh pr create --draft`). Tıkanınca issue'ya yorum + etiket: `gh issue comment <no> --body "Blocked: <neden, kime ihtiyaç var>"` ve `gh issue edit <no> --add-label blocked`. Çözülünce etiketi kaldır.
 

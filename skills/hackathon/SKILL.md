@@ -19,6 +19,10 @@ Kit kökü: bu skill'in kurulduğu repo (`sap-hackathon-kit`). Yol bilinmiyorsa 
 
 Kullanıcı "projeye başlıyoruz / konumuz şu / görev açıklandı" diyorsa bilgi vermeden önce `kickoff` skill'ine devret. Takım üyesi kendi görevini soruyorsa `gorevim`'e devret.
 
+## Hata / takılma
+
+Kullanıcı bir hata, login sorunu, deploy hatası ya da "çalışmıyor" ile gelirse: önce `kurulum/kontrol.ps1` (araç eksik mi?), sonra `katalog/13-sorun-giderme.md`'de belirtiyi eşle, komutu öner. Hata metnini tam iste, tahminle düzeltme yapma.
+
 ## Fikir ve mimari aşaması
 
 Görev açıklandığında ya da "ne yapalım / nasıl kuralım" sorusunda:

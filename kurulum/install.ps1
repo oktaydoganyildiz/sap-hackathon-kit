@@ -95,8 +95,5 @@ if (-not (Get-Command jl -ErrorAction SilentlyContinue)) { Write-Host '  (jl kur
 
 Write-Host ''
 Write-Host "Bitti. Kit: $Kit  |  Skill klasoru: $Skills"
-Write-Host 'Arac kontrolu:'
-foreach ($c in 'git','gh','claude','hai','node','python','podman','btp','cf','joule','jl','kubectl','kyma') {
-    $ok = [bool](Get-Command $c -ErrorAction SilentlyContinue)
-    Write-Host ("  {0,-8} {1}" -f $c, $(if ($ok) { 'var' } else { 'YOK' }))
-}
+Write-Host 'Ortam kontrolu:'
+& (Join-Path $PSScriptRoot 'kontrol.ps1')

@@ -25,7 +25,8 @@ Kit kökü: `SAP_HACKATHON_KIT` ortam değişkeni, yoksa `~/sap-hackathon-kit`. 
 ## Faz 0 — Bağlamı yükle (soru sormadan)
 
 1. `<kit>/NOTLAR.md`, `<kit>/katalog/12-agent-tasarim-rehberi.md`, `<kit>/katalog/11-hazir-agentlar.md`'yi oku.
-2. Ortamı kontrol et, sonucu tek satırda söyle: `jl version`, `joule -V`, `gh auth status` (ve `gh auth status --hostname github.tools.sap`), `git --version`, `node -v`. Eksik/başarısız olanı not et; bu bir soru değil, olgu.
+2. Ortamı kontrol et: `pwsh -File <kit>/kurulum/kontrol.ps1` (Mac/Linux: `bash <kit>/kurulum/kontrol.sh`; kit yoksa `jl version`, `joule -V`, `gh auth status --hostname github.tools.sap`, `git --version`, `node -v` tek tek). Sonucu tek satırda söyle, eksikleri `▶ Sen şimdi` ile çözdür. Bu bir soru değil, olgu.
+3. Uyumluluk hatırlatması (tek satır): SAP VDI'ına onaysız VS Code eklentisi / MCP server kurma; kurulumlar Software Hub'dan, VS Code telemetry kapalı.
 
 ## Faz 1 — Niyet sorgusu (grilling)
 
@@ -83,6 +84,7 @@ Tabloyu göster, onay al.
 ## Faz 5 — Repo kurulumu (onaylı)
 
 1. Repo: kullanıcının Faz 1'de söylediği yerde. Enterprise ise `export GH_HOST=github.tools.sap` (PowerShell: `$env:GH_HOST='github.tools.sap'`). Sırayla dene, ilk çalışanı kullan:
+   - **Yol A ise önce:** Joule Studio solution'ları Git tabanlı. `jl solution list` → solution zaten varsa `jl solution clone <ad>`; yoksa yeni repoda `jl solution create`. Takım reposu bu solution reposu olur (ayrı repo açma).
    - SAP hazır repo verdiyse: `gh repo clone <org>/<ad>` (repo açma).
    - Org'da yetki varsa: `gh repo create <org>/<ad> --private --clone`.
    - İkisi de yoksa: kaptanın kendi kullanıcısı altında `gh repo create <ad> --private --clone`, sonra collaborator ekle.
@@ -94,6 +96,7 @@ Tabloyu göster, onay al.
    - `.github/pull_request_template.md`, `.github/ISSUE_TEMPLATE/gorev.md`.
    - `docs/spec.md`, `docs/contract.md` (Faz 3'ten).
    - Her sahip klasörüne boş bir `README.md` (klasörün amacı + sahibi).
+   - **Takım araçlarını repoya göm:** `<kit>/kurulum/kontrol.ps1` ve `kontrol.sh` → `<repo>/.claude/tools/`; `<kit>/katalog/13-sorun-giderme.md` → `<repo>/.claude/sorun-giderme.md`. `.claude/` ekibin araç klasörüdür, SAP'ye teslim edilen ürün değildir; İngilizce kuralı ürün dosyaları içindir.
    - **Takım skill'lerini repoya göm:** `<kit>/skills/gorevim/` ve `<kit>/skills/kickoff/` → `<repo>/.claude/skills/`. Böylece takım üyelerinin kiti kurmasına gerek kalmaz; repoyu clone'layıp `claude` açınca `gorevim` hazırdır. (Kit yoksa ve bu skill zaten `.claude/skills/`'ten geliyorsa atla.)
    - Kit'te `sablon/proje/` yoksa (kit inmediyse) şablonları bu dosyadaki tanımlardan sıfırdan yaz: sahiplik tablosu + 5 akış kuralı (`CLAUDE.md`), spec başlıkları (Problem, Persona, KPI, Demo story, Architecture, Out of scope, Risks), contract (tool başına: kind, owner, description, input, output, example, errors).
 4. Commit + push `main`. Collaborator eklemek gerekiyorsa listeyi göster, onayla, `gh api -X PUT repos/<org>/<ad>/collaborators/<kullanıcı>`.
@@ -133,6 +136,7 @@ Hedef: Mon evening / Tue 12:00 / Tue 17:00 / Wed 12:00 / Wed 18:00 (freeze)
      npm install -g @sap/joule-studio-cli          # sadece joule/jl yoksa
      git clone <repo-url> $HOME\<repo>
      cd $HOME\<repo>
+     pwsh -File .claude\tools\kontrol.ps1     # eksik araç varsa önce onu çöz
      claude
    Claude açılınca yaz:  takıma katılıyorum, görevim ne?
    Kurallar: sadece kendi klasörüne yaz, docs/contract.md'ye dokunma, 1-2 saatte bir push,

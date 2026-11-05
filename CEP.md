@@ -9,6 +9,7 @@ git clone https://github.com/oktaydoganyildiz/sap-hackathon-kit.git $HOME\sap-ha
 pwsh -File $HOME\sap-hackathon-kit\kurulum\install.ps1
 ```
 github.com açılmazsa: 3. satıra kadar yap, kiti atla; kaptan aşağıdaki §2'yi elle yürütür.
+Ortam kontrolü: `pwsh -File kurulum\kontrol.ps1` (takım reposunda `.claude\tools\kontrol.ps1`) → ✅/❌ tablo + çözüm linkleri. Hata alınca: `katalog/13-sorun-giderme.md` (repoda `.claude/sorun-giderme.md`). En sık: `btp login --sso --url https://cli.btp.cloud.sap --subdomain <sub>` · `cf login -a <api> --sso-passcode <kod>` · `jl solution validate` · `jl solution traces` · `cf logs <app> --recent`.
 
 ## 2. Kaptan — kickoff (kod yok, önce bu)
 1. Sor (her soruya tahminini ekle): görev/teslim/jüri · kaç kişi · isim + GitHub kullanıcı + güçlü yön + **sohbet dili** · Yol A (`jl`) mı B (A2A) mı · repo nerede. **Repo dili her zaman İngilizce** (kod SAP'ye gider, sunumda görünür); Claude herkesle kendi dilinde konuşur (Oktay: Türkçe).
