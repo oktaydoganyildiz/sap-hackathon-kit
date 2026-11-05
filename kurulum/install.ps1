@@ -76,6 +76,13 @@ if ($script:failed | Where-Object { $_ -like '*@sap-skills' }) {
 }
 
 Write-Host ''
+Write-Host 'Yol A (yeni Joule Studio): hackathon proje klasorunde su sirayla calistir:' -ForegroundColor Cyan
+Write-Host '  jl login <AI Core / Joule Studio URL>'
+Write-Host '  jl init claude'
+Write-Host '  jl skills init claude'
+if (-not (Get-Command jl -ErrorAction SilentlyContinue)) { Write-Host '  (jl kurulu degil; Pro-Code Setup: katalog\01-joule-studio.md)' -ForegroundColor Yellow }
+
+Write-Host ''
 Write-Host "Bitti. Kit: $Kit  |  Skill klasoru: $Skills"
 Write-Host 'Arac kontrolu:'
 foreach ($c in 'git','gh','claude','hai','node','python','podman','btp','cf','joule','jl','kubectl','kyma') {

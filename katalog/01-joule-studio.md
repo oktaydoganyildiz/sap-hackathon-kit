@@ -4,7 +4,22 @@
 - **Yeni Joule Studio:** `jl` CLI + Claude Code/OpenCode, "Intent-Based Development" (niyet → spec → kod → deploy). Node 24+. SAP Help: CLI adımları early-adopter, GA'da değişecek.
 - **Classic edition:** `@sap/joule-cli` (`joule` / `sapdas` YAML capability). Lokal `joule-cli` skill'i bunu hedefler.
 
-Hackathonda hangisi kullanılıyor, Pazartesi brifingte netleştir. Önce `jl`'e bak.
+Hackathonda hangisi kullanılıyor, Pazartesi brifingte netleştir. Tahminimiz yeni yol; ikisine de hazırız.
+
+## İki yol yan yana
+
+| | **Yol A: Yeni Joule Studio (`jl`)** — öncelikli | **Yol B: Classic Joule + A2A** — yedek |
+|---|---|---|
+| CLI | `jl` (Solution Management CLI, 2026-11 itibarıyla `v0.1.20-alpha`) | `joule` (`@sap/joule-studio-cli` / `@sap/joule-cli`) |
+| Claude Code bağlantısı | `jl init claude` → proje + IBD MCP server; `jl skills init claude` → SAP'nin sistem skill'leri | `SAP-archive/joule-a2a-agent-toolkit` plugin'i (Nisan 2026'dan beri güncellenmiyor) |
+| Akış | Intent-Based Development: niyet → spec → kod → `jl solution` deploy | LangGraph agent → CF/MTA deploy → BTP destination → `joule deploy` capability (DAS YAML) |
+| Parçalar | `jl asset`: `agent`, `agent-extension`, `cap-app`, `mcp-server`, `base-ui`, `domain-model-extension` | Agent uygulaması + capability YAML + destination |
+| Test | `jl a2a card`, `jl a2a message "<metin>"` | `joule launch <assistant>`, a2a-inspector |
+| Login | `jl login <url>` (AI Core instance'ı; oturum `~/.joulestudio/credentials.json`) | `joule login` (IAS App2App, `Cli2Joule` client) |
+| Referans repo | `SAP-samples/teched2026-AD263` | `SAP-samples/btp-joule-a2a-pro-code-agent`, `SAP-samples/partner-reference-application-joule-a2a-agent-workshop` |
+
+Yol A ilk dakika: `jl login` → `jl init claude` → `jl skills init claude` → `claude` aç, niyeti yaz.
+Yol B ilk dakika: toolkit skill'leri kurulu → Claude'a "Joule için A2A agent kur" de → `cf deploy` → `joule deploy -c -n <ad>`.
 
 | Link | Özet | Son push |
 |---|---|---|

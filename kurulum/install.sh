@@ -27,6 +27,9 @@ else
 fi
 
 echo
+echo "Yol A (yeni Joule Studio): hackathon proje klasorunde: jl login <url> && jl init claude && jl skills init claude"
+command -v jl >/dev/null || echo "  (jl kurulu degil; Pro-Code Setup: katalog/01-joule-studio.md)"
+echo
 echo "Bitti. Kit: $KIT  |  export SAP_HACKATHON_KIT=\"$KIT\" satirini shell profiline ekle."
 for c in git gh claude hai node python3 podman btp cf joule jl kubectl kyma; do
   printf "  %-8s %s\n" "$c" "$(command -v $c >/dev/null && echo var || echo YOK)"
