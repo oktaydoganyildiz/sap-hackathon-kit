@@ -102,6 +102,6 @@ Write-Host ''
 Write-Host 'SIRADAKI ADIM' -ForegroundColor Cyan
 Write-Host "  cd `"$Kit`""
 Write-Host '  claude'
-Write-Host '  Kaptan isen yaz:  "kiti kurdum, arkadaslarima ne gondereyim?"'
-Write-Host '     -> Claude takim arkadaslarin icin (kendi dillerinde) hazir kurulum mesajini verir.'
-Write-Host '  Takim uyesiysen: kaptanin Pazartesi gonderecegi takim reposunu bekle.'
+Write-Host '  Kaptan isen yaz:  "kiti kurdum, takim reposunu kur ve ekibi hazirla"'
+Write-Host '     -> Claude bos takim reposunu acar, arkadaslarini davet eder, her birine kendi dilinde kurulum mesaji verir.'
+Write-Host '  Takim uyesiysen: kaptanin mesajindaki takim reposunu clone et, kontrol.ps1 calistir, gorevini bekle.'

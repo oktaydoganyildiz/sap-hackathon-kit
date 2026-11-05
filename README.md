@@ -2,6 +2,18 @@
 
 Private prep kit for the SAP Industry AI Hackathon (Munich, 9–12 Nov 2026): curated links, training notes and a Claude Code router skill for Joule Studio, A2A, SAP AI Core / Generative AI Hub, CAP + AI, MCP and BTP.
 
+## For Claude — if you were asked to "install this kit" from this link
+
+Talk to the user in **Turkish** if they are Oktay (the captain); otherwise in their language. Do these steps in order, telling the user one line per step:
+
+1. **Access:** `gh auth status --hostname github.com`. Not logged in → give the user `gh auth login --hostname github.com` to run (browser login), wait, re-check.
+2. **Clone:** `git clone https://github.com/oktaydoganyildiz/sap-hackathon-kit.git $HOME\sap-hackathon-kit` (already there → `git -C $HOME\sap-hackathon-kit pull`).
+3. **Install:** `pwsh -File $HOME\sap-hackathon-kit\kurulum\install.ps1` (Mac/Linux: `bash kurulum/install.sh`). It copies skills to `~/.claude/skills`, installs process/SAP skills and ends with an environment check. Summarise the check in one line; for each `[--]`/`[!!]` give the fix command.
+4. **Load the brain:** read `$HOME\sap-hackathon-kit\CLAUDE.md` and follow it from now on. Skills installed in step 3 become available in a **new** Claude session in the kit folder — tell the user: `cd $HOME\sap-hackathon-kit; claude` and continue there (or read `skills/kickoff/SKILL.md` directly and continue in this session).
+5. **Next:** ask "Are you the captain?" If yes → run the **early setup** (`kickoff` skill, section "Faz E — Erken iskelet"): team repo skeleton + teammate invitations + a ready setup message per teammate. If no → tell them to wait for the captain's team repo link.
+
+Never write secrets into files. Ask before anything outward-facing (creating repos, inviting people, pushing).
+
 ## Use on a new machine (e.g. VDI)
 
 ```powershell

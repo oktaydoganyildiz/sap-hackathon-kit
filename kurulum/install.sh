@@ -47,5 +47,5 @@ echo "Bitti. Kit: $KIT  |  export SAP_HACKATHON_KIT=\"$KIT\" satirini shell prof
 bash "$KIT/kurulum/kontrol.sh"
 echo
 echo "SIRADAKI ADIM: cd \"$KIT\" && claude"
-echo "  Kaptan: \"kiti kurdum, arkadaslarima ne gondereyim?\" -> hazir kurulum mesaji."
-echo "  Takim uyesi: kaptanin gonderecegi takim reposunu bekle."
+echo "  Kaptan: \"kiti kurdum, takim reposunu kur ve ekibi hazirla\" -> iskelet repo + davet + kurulum mesajlari."
+echo "  Takim uyesi: kaptanin mesajindaki takim reposunu clone et, kontrol.sh calistir, gorevini bekle."

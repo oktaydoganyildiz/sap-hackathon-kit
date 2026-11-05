@@ -126,7 +126,7 @@ github.com/<oktay>/sap-hackathon-kit ──clone (okuma)──► ~/sap-hackatho
 **Adımlar (her kişi kendi VDI'ında):**
 1. `gh auth login --hostname github.tools.sap` (C-User/SSO ile). PowerShell'de kalıcı: `$env:GH_HOST='github.tools.sap'`.
 2. **Herkes** kiti çeker: kaptan github.com kullanıcılarını kite collaborator (read) ekler, davet kabul edilir → `gh auth login --hostname github.com` → `git clone https://github.com/oktaydoganyildiz/sap-hackathon-kit.git $HOME\sap-hackathon-kit` → `pwsh -File kurulum\install.ps1` (sonunda ortam kontrolü çalışır). Herkes katalog, sorun giderme, SAP ve süreç skill'lerine sahip olur.
-3. Kaptan: kit klasöründe `claude` → "projeye başlıyoruz, konumuz …" → `kickoff` takım reposunu **github.tools.sap**'ta kurar/kullanır. `kickoff` ve tam `takip` kaptan korumalıdır; başkası çağırırsa `gorevim`'e yönlendirir.
+3. Kaptan, **konu belli olmadan** (Pazartesi sabahı): VDI'da Claude'a kit linkini verip "bu kiti kur" der → ardından "takım reposunu kur ve ekibi hazırla" → `kickoff` Faz E iskelet repoyu **github.tools.sap**'ta açar, arkadaşları davet eder, kişiye özel kurulum mesajları üretir; arkadaşlar kurup bekler. Brifingten sonra "projeye başlıyoruz, konumuz …" → aynı repoya spec, roller, görevler. `kickoff` ve tam `takip` kaptan korumalıdır; başkası çağırırsa `gorevim`'e yönlendirir.
 4. Diğerleri: takım reposunu clone → `claude` → "takıma katılıyorum, görevim ne?" → `gorevim`.
 5. VS Code: VDI'daki VS Code ile aynı klasörü aç; Claude terminalde, sen editörde. Git işlemleri tek yerden (Claude ya da VS Code), ikisi aynı anda commit atmasın.
 

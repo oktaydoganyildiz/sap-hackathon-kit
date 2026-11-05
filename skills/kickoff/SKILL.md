@@ -1,6 +1,6 @@
 ---
 name: kickoff
-description: Hackathon proje başlatma ve takım liderliği akışı. Kullanıcı "projeye başlıyoruz", "konumuz şu", "görev açıklandı", "kickoff", "let's start the project", "the challenge is" dediğinde veya hackathon görevi ilk kez paylaşıldığında TEK SATIR KOD YAZMADAN ÖNCE çağır. Sırayla niyeti sorgular (grilling), 2-3 yaklaşım çıkarır (brainstorming), spec ve agent↔tool sözleşmesini yazar, kişi sayısına göre rolleri dağıtır, GitHub reposunu klasör sahipliğiyle kurar, her görevi sahibine atanmış issue olarak açar ve herkese kendi başlama komutunu verir.
+description: Hackathon proje başlatma ve takım liderliği akışı (sadece kaptan). İki aşama — Erken iskelet: kullanıcı "kiti kurdum", "takım reposunu kur", "ekibi hazırla", "arkadaşlarıma ne göndereyim" dediğinde konu belli olmadan takım reposunu iskelet olarak açar, arkadaşları davet eder, kurulum mesajlarını üretir. Asıl kickoff: kullanıcı "projeye başlıyoruz", "konumuz şu", "görev açıklandı", "kickoff", "let's start the project", "the challenge is" dediğinde veya hackathon görevi ilk kez paylaşıldığında TEK SATIR KOD YAZMADAN ÖNCE çağır. Sırayla niyeti sorgular (grilling), 2-3 yaklaşım çıkarır (brainstorming), spec ve agent↔tool sözleşmesini yazar, kişi sayısına göre rolleri dağıtır, GitHub reposunu klasör sahipliğiyle kurar, her görevi sahibine atanmış issue olarak açar ve herkese kendi başlama komutunu verir.
 ---
 
 # Kickoff — takım lideri akışı
@@ -25,6 +25,27 @@ Kit kökü: `SAP_HACKATHON_KIT` ortam değişkeni, yoksa `~/sap-hackathon-kit`. 
 ## Kaptan koruması (her şeyden önce)
 
 Kit takımda herkeste kurulu. Bu skill **sadece kaptan** içindir. Çalışma klasöründe (veya üstünde) takım tablolu bir `CLAUDE.md` varsa: `gh api user --jq .login` ile kullanıcıyı al, tablodaki kaptanla karşılaştır. Kaptan değilse kickoff yapma; "Kickoff'u kaptan yapar; senin görevin için `gorevim`" de ve `gorevim`'e devret. Takım reposu henüz yoksa (ilk kickoff) kullanıcıya bir kez sor: "Kaptan sen misin?" — hayırsa dur.
+
+## İki aşama
+
+- **Faz E — Erken iskelet** (konu belli olmadan; kit kurulur kurulmaz, ideal Pazartesi sabahı brifingten önce): takım reposunu boş iskelet olarak aç, arkadaşları davet et, kurulumlarını yaptır. Herkes hazır beklesin.
+- **Faz 0–7 — Asıl kickoff** (konu açıklanınca): aynı repoya spec, sözleşme, roller ve görevler eklenir; arkadaşlar `git pull` ile alır.
+
+Kullanıcı "kiti kurdum", "repoyu kur", "ekibi hazırla" derse Faz E; "projeye başlıyoruz / konumuz" derse Faz 0. Repo zaten iskeletse (kökte `CLAUDE.md` takım tablosu + `BASLA.md` "waiting for kickoff") Faz 0–7 onu kullanır, yeni repo açmaz; Faz 1'de tabloda olan bilgileri tekrar sorma.
+
+## Faz E — Erken iskelet
+
+1. **Ortam:** Faz 0'daki kontrolü çalıştır (`kontrol.ps1`), eksikleri çözdür.
+2. **Sor (tek tur, her soruya tahmin):** takımda kimler · her kişinin sohbet dili · github.tools.sap kullanıcısı · github.com kullanıcısı (kit için) · güçlü yönü (henüz rol değil) · repo nerede (SAP org'u / kendi kullanıcın; SAP brifingte repo verecekse "sonra taşırız"). Kapsam/rol/görev sorma — konu belli değil.
+3. **Repo (onaylı):** Faz 5 §1'deki sırayla repoyu aç veya clone'la. İçine koy:
+   - `CLAUDE.md` (şablon `sablon/proje/CLAUDE.md`): takım tablosu dolu (kişi, dil, GitHub, güçlü yön); **Role / Owns sütunları `TBD at kickoff`**; dil, workflow, merge, milestone kuralları aynen.
+   - `BASLA.md`: "Waiting for kickoff — the captain will add your role and first task after the briefing. Until then: finish setup, run `.claude/tools/kontrol.ps1`, `git pull` from time to time."
+   - `docs/DURUM.md` (şablon), `.github/` (CODEOWNERS boş bırak — sahiplik kickoff'ta), `.claude/` (skills: `gorevim`, `kickoff`; tools: `kontrol.ps1/.sh`; `sorun-giderme.md`).
+   - Etiketler: `rol:*` henüz değil; `integration`, `blocked` oluştur.
+   - Commit `chore: team repo skeleton` + push.
+4. **Davet (onaylı):** takım reposuna collaborator (write) ve kite (read) — listeyi göster, onay al, Faz 5 §4 komutlarıyla.
+5. **Mesajlar:** `sablon/takim-kurulum-mesaji.md` → her arkadaşa kendi dilinde: kit kurulumu + takım reposu clone + kontrol script'i + "görevini bekle; kaptan haber verince `git pull` ve 'görevim ne?'".
+6. `docs/DURUM.md`'ye "Skeleton ready, waiting for kickoff" + kim kurulumu doğruladı tablosu. `▶ Sen şimdi: mesajları gönder, brifingi dinle; konu açıklanınca 'projeye başlıyoruz, konumuz …' de.`
 
 ## Faz 0 — Bağlamı yükle (soru sormadan)
 
@@ -87,6 +108,8 @@ Tabloyu göster, onay al.
 
 ## Faz 5 — Repo kurulumu (onaylı)
 
+**Faz E iskeleti varsa:** repo açma; `git pull`, `CLAUDE.md` tablosuna Role/Owns sütunlarını doldur, CODEOWNERS'ı yaz, sahip klasörlerini ve `docs/spec.md` + `docs/contract.md`'yi ekle, `BASLA.md`'yi kişi bölümleriyle yeniden yaz. Aşağıdaki adımlardan sadece eksik olanları yap. SAP brifingte ayrı bir repo verdiyse iskelet dosyalarını oraya kopyala, arkadaşlara yeni repo linkini ver.
+
 1. Repo: kullanıcının Faz 1'de söylediği yerde. Enterprise ise `export GH_HOST=github.tools.sap` (PowerShell: `$env:GH_HOST='github.tools.sap'`). Sırayla dene, ilk çalışanı kullan:
    - **Yol A ise önce:** Joule Studio solution'ları Git tabanlı. `jl solution list` → solution zaten varsa `jl solution clone <ad>`; yoksa yeni repoda `jl solution create`. Takım reposu bu solution reposu olur (ayrı repo açma).
    - SAP hazır repo verdiyse: `gh repo clone <org>/<ad>` (repo açma).
@@ -131,7 +154,8 @@ Hedef: Mon evening / Tue 12:00 / Tue 17:00 / Wed 12:00 / Wed 18:00 (freeze)
 ## Faz 7 — Herkesi başlat (kaptan dağıtır)
 
 1. Repo kökünde `BASLA.md` oluştur ve commit'le (İngilizce): her kişi için bir bölüm (ad, sohbet dili, rol, sahip olduğu klasörler, atanmış issue numaraları/başlıkları, kurulum komutları, Claude'a söyleyeceği cümle).
-2. Kaptana **her takım arkadaşı için ayrı, kopyala-yapıştır hazır mesaj** ver (Teams/WhatsApp'a atacak), **o kişinin dilinde** (aşağıdaki Türkçe şablonu çevir; komutlar aynı kalır). Şablon:
+   Faz E yapıldıysa arkadaşlar zaten kurulu: mesaj kısa olur — "Kickoff bitti. `git pull`, `claude`, 'görevim ne?'. Rolün: …, klasörün: …, ilk görevin: #… (hedef …)."
+2. Faz E yapılmadıysa kaptana **her takım arkadaşı için ayrı, kopyala-yapıştır hazır mesaj** ver (Teams/WhatsApp'a atacak), **o kişinin dilinde** (aşağıdaki Türkçe şablonu çevir; komutlar aynı kalır). Şablon:
 
    ```
    Merhaba <ad> 👋  Rolün: <rol>. Senin klasörün: <klasör>. İlk görevin: #<no> <başlık> (hedef: <saat>).

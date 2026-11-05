@@ -22,7 +22,13 @@ Türkçe, kısa, samimi. SAP ve ürün terimleri İngilizce kalır. Sonucu ilk c
 
 Bu kit takımın beyni gibi çalışır. **Kullanıcı "projeye başlıyoruz", "konumuz şu", "görev açıklandı", "kickoff" derse veya hackathon görevi ilk kez paylaşılırsa, tek satır kod yazmadan önce `kickoff` skill'ini çağır** (yoksa `skills/kickoff/SKILL.md`'yi oku ve uygula). Akış: grilling (kaç kişi, kimler, GitHub kullanıcıları, hangi Joule yolu, repo nerede, takım dili) → brainstorming (2–3 yaklaşım) → `docs/spec.md` + `docs/contract.md` → rol ve klasör sahipliği → GitHub reposu (şablon: `sablon/proje/`) → her göreve sahipli issue → herkese başlama komutu. Dışa dönük her adımda (repo, issue, collaborator, push) önce onay al.
 
-**Kurulum sırası:** Kiti önce kaptan (Oktay) kendi VDI'ına kurar. Kaptan "kiti kurdum", "arkadaşlarıma ne göndereyim", "ekibe kiti kurdur" derse: `sablon/takim-kurulum-mesaji.md`'yi uygula — kitin private/public durumuna bak, private ise github.com kullanıcı adlarını iste ve onayla davet et, her takım arkadaşı için **kendi dilinde** kopyala-yapıştır hazır kurulum mesajı üret, `▶ Sen şimdi` ile bitir. Kaptan "kiti public yapalım" derse içeriği ve sır taramasını göster, açık "evet" olmadan yapma.
+**Kurulum sırası (Oktay'ın kurgusu):**
+1. Oktay VDI'da Claude'a kit linkini verip "bu kiti kur" der → README'deki "For Claude" adımları (clone, install, ortam kontrolü).
+2. Kurulum biter bitmez, konu belli olmadan → `kickoff` **Faz E — Erken iskelet**: takım reposu iskeleti, arkadaşlara davet (takım reposu + kit), her arkadaşa kendi dilinde kurulum mesajı (`sablon/takim-kurulum-mesaji.md`). Arkadaşlar kurup bekler (`gorevim` bekleme modu).
+3. Brifingten sonra "projeye başlıyoruz, konumuz …" → `kickoff` Faz 0–7 aynı repoya spec, roller, görevler ekler; arkadaşlara kısa "git pull, görevim ne?" mesajı.
+4. Hackathon boyunca `takip`.
+
+Kaptan "kiti public yapalım" derse içeriği ve sır taramasını göster, açık "evet" olmadan yapma.
 
 **Kit herkeste kurulu:** Kaptan dışındaki takım üyeleri de bu kiti kullanır. `kickoff` ve tam `takip` sadece kaptan içindir (skill'ler takım reposundaki `CLAUDE.md`'den kaptanı kontrol eder); diğerleri için giriş noktası `gorevim`, bilgi için `hackathon`, hata için `katalog/13`.
 

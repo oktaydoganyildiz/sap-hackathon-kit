@@ -11,7 +11,10 @@ pwsh -File $HOME\sap-hackathon-kit\kurulum\install.ps1
 **Herkes** kiti kurar (önce kaptanın gönderdiği GitHub davetini kabul et). github.com açılmazsa: 3. satıra kadar yap, kiti atla; takım reposundaki `.claude/` yeter, kaptan §2'yi elle yürütür.
 Ortam kontrolü: `pwsh -File kurulum\kontrol.ps1` (takım reposunda `.claude\tools\kontrol.ps1`) → ✅/❌ tablo + çözüm linkleri. Hata alınca: `katalog/13-sorun-giderme.md` (repoda `.claude/sorun-giderme.md`). En sık: `btp login --sso --url https://cli.btp.cloud.sap --subdomain <sub>` · `cf login -a <api> --sso-passcode <kod>` · `jl solution validate` · `jl solution traces` · `cf logs <app> --recent`.
 
-## 2. Kaptan — kickoff (kod yok, önce bu)
+## 1b. Kaptan — en baştan (konu belli olmadan)
+VDI'da Claude'a: "https://github.com/oktaydoganyildiz/sap-hackathon-kit — bu kiti kur" → kurulum biter → "takım reposunu kur ve ekibi hazırla" → iskelet repo + davetler + her arkadaşa kendi dilinde mesaj → gönder → arkadaşlar kurup bekler.
+
+## 2. Kaptan — kickoff (konu açıklanınca, kod yok, önce bu)
 1. Sor (her soruya tahminini ekle): görev/teslim/jüri · kaç kişi · isim + GitHub kullanıcı + güçlü yön + **sohbet dili** · Yol A (`jl`) mı B (A2A) mı · repo nerede. **Repo dili her zaman İngilizce** (kod SAP'ye gider, sunumda görünür); Claude herkesle kendi dilinde konuşur (Oktay: Türkçe).
 2. 2–3 yaklaşım → test: adım önceki sonuca bağlı mı · 2+ tool seçimi · insan onaylı karar · tek KPI · "sadece bul getir" değil · SAP zaten yapıyor mu.
 3. `docs/spec.md` (problem, persona, KPI, 5 dk demo, mimari, kapsam dışı) + `docs/contract.md` (tool: ad, okuma/yazma, girdi, çıktı, örnek).

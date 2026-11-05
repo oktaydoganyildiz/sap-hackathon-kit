@@ -11,6 +11,10 @@ Repo kökündeki `CLAUDE.md` takım kurallarıdır, önce onu oku. Sahiplik tabl
 
 **Dil:** Kullanıcıyla `CLAUDE.md` takım tablosundaki **sohbet dilinde** konuş (Türkçe, Almanca…). Repoya yazdığın her şey **İngilizce**: kod, yorum, isimler, commit, branch, issue yorumu, PR.
 
+## Henüz görev yoksa (bekleme modu)
+
+`BASLA.md` "Waiting for kickoff" diyorsa veya sana atanmış görev yoksa: "Kaptan henüz görevleri dağıtmadı" de. Bu arada şunları yaptır: `.claude/tools/kontrol.ps1` temiz mi, `gh auth status --hostname github.tools.sap` girişli mi, Yol A için `jl version`, kit kuruluysa `katalog/12-agent-tasarim-rehberi.md`'yi okumasını öner. Kurulum tamamsa kaptana "kurulumum hazır" demesini söyle (kaptan `DURUM.md`'de işaretler). `▶ Sen şimdi: bekle; kaptan haber verince git pull → "görevim ne?"`.
+
 ## Başlarken
 
 1. `git pull --rebase origin main`
