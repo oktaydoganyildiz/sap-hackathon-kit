@@ -22,6 +22,10 @@ Kit kökü: `SAP_HACKATHON_KIT` ortam değişkeni, yoksa `~/sap-hackathon-kit`. 
 
 ---
 
+## Kaptan koruması (her şeyden önce)
+
+Kit takımda herkeste kurulu. Bu skill **sadece kaptan** içindir. Çalışma klasöründe (veya üstünde) takım tablolu bir `CLAUDE.md` varsa: `gh api user --jq .login` ile kullanıcıyı al, tablodaki kaptanla karşılaştır. Kaptan değilse kickoff yapma; "Kickoff'u kaptan yapar; senin görevin için `gorevim`" de ve `gorevim`'e devret. Takım reposu henüz yoksa (ilk kickoff) kullanıcıya bir kez sor: "Kaptan sen misin?" — hayırsa dur.
+
 ## Faz 0 — Bağlamı yükle (soru sormadan)
 
 1. `<kit>/NOTLAR.md`, `<kit>/katalog/12-agent-tasarim-rehberi.md`, `<kit>/katalog/11-hazir-agentlar.md`'yi oku.
@@ -36,7 +40,7 @@ Kit kökü: `SAP_HACKATHON_KIT` ortam değişkeni, yoksa `~/sap-hackathon-kit`. 
 
 1. **Görev özeti:** brifingte ne istendi, teslim ne (demo/kod/sunum), jüri kriterleri, sunum süresi.
 2. **Kaç kişi kodlayacak?** (3, 4, 5…) — rol tablosu buna göre değişir.
-3. **Kimler:** isim, GitHub kullanıcı adı (SAP repo'sundaki), güçlü yönü (kod / BTP-Basis / veri / sunum).
+3. **Kimler:** isim, GitHub kullanıcı adı (SAP repo'sundaki **ve** github.com — kit için), güçlü yönü (kod / BTP-Basis / veri / sunum).
 4. **Joule yolu:** Yol A (`jl`, Joule Studio managed runtime) mı Yol B (kendi agent + A2A) mı? Faz 0'daki `jl` durumuna göre öner.
 5. **Repo nerede:** SAP'nin verdiği org (`github.tools.sap/<org>`) mı, mevcut bir repo mu, yeni repo mu açılacak? Issues açık mı?
 6. **Her kişinin sohbet dili:** Claude onunla hangi dilde konuşsun? (Oktay: Türkçe; öneri: Almanca konuşanlarla Almanca.) Repo dili sorulmaz, her zaman İngilizce.
@@ -100,6 +104,7 @@ Tabloyu göster, onay al.
    - **Takım skill'lerini repoya göm:** `<kit>/skills/gorevim/` ve `<kit>/skills/kickoff/` → `<repo>/.claude/skills/`. Böylece takım üyelerinin kiti kurmasına gerek kalmaz; repoyu clone'layıp `claude` açınca `gorevim` hazırdır. (Kit yoksa ve bu skill zaten `.claude/skills/`'ten geliyorsa atla.)
    - Kit'te `sablon/proje/` yoksa (kit inmediyse) şablonları bu dosyadaki tanımlardan sıfırdan yaz: sahiplik tablosu + 5 akış kuralı (`CLAUDE.md`), spec başlıkları (Problem, Persona, KPI, Demo story, Architecture, Out of scope, Risks), contract (tool başına: kind, owner, description, input, output, example, errors).
 4. Commit + push `main`. Collaborator eklemek gerekiyorsa listeyi göster, onayla, `gh api -X PUT repos/<org>/<ad>/collaborators/<kullanıcı>`.
+   **Kit erişimi:** Kit private (`github.com/oktaydoganyildiz/sap-hackathon-kit`). Takım arkadaşlarının github.com kullanıcılarını collaborator (read) olarak ekle — onayla, sonra `GH_HOST=github.com gh api -X PUT repos/oktaydoganyildiz/sap-hackathon-kit/collaborators/<kullanıcı> -f permission=pull`. Davet e-postayla gider, kişinin kabul etmesi gerekir.
 5. Etiketler: `gh label create rol:agent`, `rol:veri`, `rol:platform`, `rol:kaptan`, `blocked`.
 
 ## Faz 6 — Görevleri böl ve ata (issue)
@@ -131,6 +136,11 @@ Hedef: Mon evening / Tue 12:00 / Tue 17:00 / Wed 12:00 / Wed 18:00 (freeze)
    ```
    Merhaba <ad> 👋  Rolün: <rol>. Senin klasörün: <klasör>. İlk görevin: #<no> <başlık> (hedef: <saat>).
    VDI'da sırayla çalıştır:
+     # 1) Kit (GitHub davetini kabul ettikten sonra; github.com açılmıyorsa bu bloğu atla)
+     gh auth login --hostname github.com
+     git clone https://github.com/oktaydoganyildiz/sap-hackathon-kit.git $HOME\sap-hackathon-kit
+     pwsh -File $HOME\sap-hackathon-kit\kurulum\install.ps1
+     # 2) Takım reposu
      gh auth login --hostname github.tools.sap
      $env:GH_HOST='github.tools.sap'
      npm install -g @sap/joule-studio-cli          # sadece joule/jl yoksa
@@ -143,7 +153,7 @@ Hedef: Mon evening / Tue 12:00 / Tue 17:00 / Wed 12:00 / Wed 18:00 (freeze)
    iş bitince PR (Closes #<no>) — sadece kendi klasörün ise kendin merge et. Repoya her şey İngilizce.
    Takıldıysan 30 dk sonra grupta yaz.
    ```
-   Yol A ise ilgili kişiye `jl login <url>` satırını da ekle. Kit gerekmiyor: `gorevim` repo içindeki `.claude/skills/`'ten gelir.
+   Yol A ise ilgili kişiye `jl login <url>` satırını da ekle. Kit kurulamazsa sorun değil: `gorevim`, kontrol script'i ve sorun giderme kartı repo içindeki `.claude/`'dan gelir.
 3. Kaptana kendi sıradaki işini söyle (genelde: ortak dosyalar, ilk issue'su, 13:00 entegrasyon kontrolü).
 4. Ritüelleri hatırlat: **bu akşam entegrasyon iskeleti (mock agent uçtan uca)**, sabah 10 dk stand-up, 13:00 entegrasyon, 17:00 "jüriye ne gösterirdik", 30/60 dk tıkanma kuralı, Çarşamba 18:00 freeze (`egitim/13` §3).
 

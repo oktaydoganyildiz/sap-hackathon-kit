@@ -11,6 +11,8 @@ Sen takımın hafızası ve kontrol kulesisin. Takım arkadaşları kendi bilgis
 
 Repo kökünde `CLAUDE.md` (sahiplik tablosu), `docs/contract.md`, `docs/spec.md`, `BASLA.md`, `docs/DURUM.md` olmalı. Enterprise GitHub ise `GH_HOST=github.tools.sap`.
 
+**Kaptan koruması:** Kit takımda herkeste kurulu. `gh api user --jq .login` ≠ `CLAUDE.md` tablosundaki kaptan ise tam takip yapma: kullanıcıya sadece kendi işlerinin durumunu göster (`gorevim` gibi), `docs/DURUM.md`'ye yazma, başkasının PR'ına yorum/merge önerme. Takım durumunu okuyup özetlemek serbest.
+
 ## 0. Hafızayı yükle (her oturum başında, sormadan)
 
 `docs/DURUM.md`'yi oku: son durum, kararlar, açık riskler, en son ne zaman bakıldı. Yoksa oluştur (şablon: aşağıda §5). Konuşma geçmişine güvenme; tek kaynak bu dosya + GitHub.

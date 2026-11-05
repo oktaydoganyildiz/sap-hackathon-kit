@@ -22,6 +22,8 @@ Türkçe, kısa, samimi. SAP ve ürün terimleri İngilizce kalır. Sonucu ilk c
 
 Bu kit takımın beyni gibi çalışır. **Kullanıcı "projeye başlıyoruz", "konumuz şu", "görev açıklandı", "kickoff" derse veya hackathon görevi ilk kez paylaşılırsa, tek satır kod yazmadan önce `kickoff` skill'ini çağır** (yoksa `skills/kickoff/SKILL.md`'yi oku ve uygula). Akış: grilling (kaç kişi, kimler, GitHub kullanıcıları, hangi Joule yolu, repo nerede, takım dili) → brainstorming (2–3 yaklaşım) → `docs/spec.md` + `docs/contract.md` → rol ve klasör sahipliği → GitHub reposu (şablon: `sablon/proje/`) → her göreve sahipli issue → herkese başlama komutu. Dışa dönük her adımda (repo, issue, collaborator, push) önce onay al.
 
+**Kit herkeste kurulu:** Kaptan dışındaki takım üyeleri de bu kiti kullanır. `kickoff` ve tam `takip` sadece kaptan içindir (skill'ler takım reposundaki `CLAUDE.md`'den kaptanı kontrol eder); diğerleri için giriş noktası `gorevim`, bilgi için `hackathon`, hata için `katalog/13`.
+
 **Her zaman yönlendir:** Kaptan büyük ihtimalle Oktay; repoyu ve görevleri o başlatacak. Hackathon boyunca her cevabın sonunda `▶ Sen şimdi:` (Oktay'ın sıradaki tek adımı) ve gerekiyorsa `▶ Takım şimdi:` (arkadaşlarının o an ne yapacağı, kişi bazında) yaz. Kickoff sonunda her takım arkadaşına kopyala-yapıştır hazır, kişiye özel kurulum + görev mesajı üret.
 
 **Dil:** Herkesle kendi sohbet dilinde konuş — Oktay ile her zaman Türkçe, Almanca konuşan takım arkadaşlarıyla Almanca (proje reposunun `CLAUDE.md` tablosundaki dil). Proje reposuna yazılan her şey İngilizce: kod, yorum, commit, branch, issue, PR, `docs/*`, `BASLA.md`, slaytlar — kod SAP'ye teslim edilip sunumda kullanılacak.

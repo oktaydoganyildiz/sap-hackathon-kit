@@ -125,8 +125,8 @@ github.com/<oktay>/sap-hackathon-kit ──clone (okuma)──► ~/sap-hackatho
 
 **Adımlar (her kişi kendi VDI'ında):**
 1. `gh auth login --hostname github.tools.sap` (C-User/SSO ile). PowerShell'de kalıcı: `$env:GH_HOST='github.tools.sap'`.
-2. Kiti çek: `git clone https://github.com/oktaydoganyildiz/sap-hackathon-kit.git $HOME\sap-hackathon-kit` → `pwsh -File kurulum\install.ps1`. (Private repo: önce `gh auth login --hostname github.com` ile kendi hesabın; ya da kit'i takıma collaborator olarak aç.)
-3. Kaptan: kit klasöründe `claude` → "projeye başlıyoruz, konumuz …" → `kickoff` takım reposunu **github.tools.sap**'ta kurar/kullanır.
+2. **Herkes** kiti çeker: kaptan github.com kullanıcılarını kite collaborator (read) ekler, davet kabul edilir → `gh auth login --hostname github.com` → `git clone https://github.com/oktaydoganyildiz/sap-hackathon-kit.git $HOME\sap-hackathon-kit` → `pwsh -File kurulum\install.ps1` (sonunda ortam kontrolü çalışır). Herkes katalog, sorun giderme, SAP ve süreç skill'lerine sahip olur.
+3. Kaptan: kit klasöründe `claude` → "projeye başlıyoruz, konumuz …" → `kickoff` takım reposunu **github.tools.sap**'ta kurar/kullanır. `kickoff` ve tam `takip` kaptan korumalıdır; başkası çağırırsa `gorevim`'e yönlendirir.
 4. Diğerleri: takım reposunu clone → `claude` → "takıma katılıyorum, görevim ne?" → `gorevim`.
 5. VS Code: VDI'daki VS Code ile aynı klasörü aç; Claude terminalde, sen editörde. Git işlemleri tek yerden (Claude ya da VS Code), ikisi aynı anda commit atmasın.
 
@@ -147,7 +147,7 @@ github.com/<oktay>/sap-hackathon-kit ──clone (okuma)──► ~/sap-hackatho
 
 | Bilinmeyen | Tahmin | Önceden hazır olan yedek |
 |---|---|---|
-| VDI'dan github.com açılıyor mu? | Belirsiz (SAP iç ağı çoğu zaman açık bırakır, doğrulanmadı) | Kiti sadece kaptan çeker; `kickoff` kendini ve `gorevim`'i takım reposunun `.claude/skills/`'ine kopyalar → diğerleri kitsiz çalışır. Kaptan da çekemezse `CEP.md` (telefondan oku/yazdır) ile `kickoff` adımları elle yürütülür; `kickoff` kit dosyaları olmadan da çalışacak şekilde yazıldı. |
+| VDI'dan github.com açılıyor mu? | Belirsiz (SAP iç ağı çoğu zaman açık bırakır, doğrulanmadı) | Varsayılan herkes kiti kurar. Açılmazsa: `kickoff` `gorevim`'i, kontrol script'ini ve sorun giderme kartını takım reposunun `.claude/`'una kopyalar → diğerleri kitsiz çalışır. Kaptan da çekemezse `CEP.md` (telefondan oku/yazdır) ile `kickoff` adımları elle yürütülür; `kickoff` kit dosyaları olmadan da çalışacak şekilde yazıldı. |
 | Takım reposunu kim açar? | SAP hazır repo verir | `kickoff` Faz 5 sırayla dener: verilen repo → org'da yeni repo → kaptanın kullanıcısı altında → tarayıcıdan açıp `git clone`. |
 | `gh` github.tools.sap'ta çalışır mı / Issues var mı? | Evet (PDF `gh`'yi "PRs, issues & repos" için istiyor) | Çalışmazsa `TASKS.md` tablosu; `gorevim` onu da okur, PR linki tarayıcıdan açılır. |
 | Joule Studio (`jl`) erişimi var mı? | Muhtemelen var, ama bazı tenant'lar hâlâ EAC'ye kapalı | Yol B (kendi agent + A2A + `joule` CLI) hazır: `btp-joule-a2a-pro-code-agent`, partner workshop. |
