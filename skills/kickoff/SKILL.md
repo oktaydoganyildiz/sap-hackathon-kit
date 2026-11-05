@@ -136,7 +136,9 @@ Hedef: Sal 12:00 / Sal 17:00 / Çar 12:00 / Çar 18:00 (freeze)
 
 ## Sonra — kaptan modu
 
-Kullanıcı "durum ne", "stand-up", "neredeyiz" derse: `gh issue list --state all --json number,title,assignees,state,labels`, `gh pr list` → kim neyi bitirdi, ne bloke, hangi hedef risk altında; 5 satırı geçmeyen özet + gerekiyorsa kapsam kesme önerisi. Sonunda yine `▶ Sen şimdi` / `▶ Takım şimdi` (kişi bazında: "<ad>: PR #12'yi merge'e hazırla", "<ad>: #15'e geç").
+Faz 5'te repoya `docs/DURUM.md`'yi de koy (`takip` skill'i §5 biçimi) ve kickoff kararlarını oraya yaz. Kickoff bitince takımı izleme işi **`takip` skill'ine** geçer: kullanıcı "durum ne", "stand-up", "PR'lara bak", "kim ne yaptı" derse ya da kaptan yeni oturum açarsa onu çağır. `takip` ayrıca repoya `.claude/skills/` altına kopyalanmaz (sadece kaptanın kitinde); kaptan kitsizse bu dosyanın aşağıdaki kurallarını uygula.
+
+Kısa yedek (takip skill'i yoksa): `gh issue list --state all --json number,title,assignees,state,labels`, `gh pr list` → kim neyi bitirdi, ne bloke, hangi hedef risk altında; 5 satırı geçmeyen özet + gerekiyorsa kapsam kesme önerisi. Sonunda yine `▶ Sen şimdi` / `▶ Takım şimdi` (kişi bazında: "<ad>: PR #12'yi merge'e hazırla", "<ad>: #15'e geç").
 
 Saat bazlı hatırlatma: kullanıcı saati söylerse ya da sistem saatine göre milestone yaklaşıyorsa (Sal 12:00, Sal 17:00, Çar 12:00, Çar 18:00 freeze) proaktif uyar: neyin hazır olması gerektiği, ne riskte, ne kesilebilir.
 
