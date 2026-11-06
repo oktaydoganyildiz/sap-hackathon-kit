@@ -78,12 +78,15 @@ Kickoff ile kurulmuş bir proje reposunda bir takım üyesi "görevim ne", "tak�
 
 ## 1. VDI'da ilk 15 dakika (herkes)
 ```
+hai --version                              # Hyperspace LLM proxy (SAP Quickstart, VPN/iç ağ)
+claude --version                           # Claude Code via Hyperspace
 gh auth login --hostname github.tools.sap
 $env:GH_HOST='github.tools.sap'
 npm install -g @sap/joule-studio-cli      # joule -V ve jl version
 git clone https://github.com/oktaydoganyildiz/sap-hackathon-kit.git $HOME\sap-hackathon-kit
 pwsh -File $HOME\sap-hackathon-kit\kurulum\install.ps1
 ```
+Day 1'den önce (SAP PDF'i): SAP mailinden IAS "Activate User Profile" · BTP Trial hesabı (account.hanatrial.ondemand.com, bölge fark etmez, "Tour of SAP BTP Trial") · Podman Desktop + VS Code kurulu. Teknoloji = SAP'nin araç seti (Python, Podman, Kyma/CF, `jl`); dışına çıkan her şeyi kaptana söyle.
 **Herkes** kiti kurar (önce kaptanın gönderdiği GitHub davetini kabul et). github.com açılmazsa: 3. satıra kadar yap, sonra `BOOTSTRAP.md`'yi (kendine SAP mailiyle at) Claude'a yapıştır → çekirdek kit kurulur; o da olmazsa takım reposundaki `.claude/` yeter, kaptan §2'yi elle yürütür.
 Ortam kontrolü: `pwsh -File kurulum\kontrol.ps1` (takım reposunda `.claude\tools\kontrol.ps1`) → ✅/❌ tablo + çözüm linkleri. Hata alınca: `katalog/13-sorun-giderme.md` (repoda `.claude/sorun-giderme.md`). En sık: `btp login --sso --url https://cli.btp.cloud.sap --subdomain <sub>` · `cf login -a <api> --sso-passcode <kod>` · `jl solution validate` · `jl solution traces` · `cf logs <app> --recent`.
 
@@ -244,7 +247,7 @@ Kullanıcı "kiti kurdum", "repoyu kur", "ekibi hazırla" derse Faz E; "projeye 
 1. **Görev özeti:** brifingte ne istendi, teslim ne (demo/kod/sunum), jüri kriterleri, sunum süresi.
 2. **Kaç kişi kodlayacak?** (3, 4, 5…) — rol tablosu buna göre değişir.
 3. **Kimler:** isim, GitHub kullanıcı adı (SAP repo'sundaki **ve** github.com — kit için), güçlü yönü (kod / BTP-Basis / veri / sunum).
-4. **Joule yolu:** Yol A (`jl`, Joule Studio managed runtime) mı Yol B (kendi agent + A2A) mı? Faz 0'daki `jl` durumuna göre öner.
+4. **Joule yolu:** Yol A (`jl`, Joule Studio managed runtime) mı Yol B (kendi agent + A2A) mı? Brifing ne derse o. Brifing açık bırakırsa varsayılan tahminin SAP'nin Prerequisites PDF'indeki araç setinden gelir (aşağıda "SAP araç seti"): Python + Podman + `kubectl`/`kyma` + `cf` + `joule`/`jl` → **pro-code agent** (Python, container, Kyma veya CF'ye deploy, Joule'a bağlanır). Tahmini böyle yaz, `jl` ile managed runtime'ı alternatif olarak sun.
 5. **Repo nerede:** SAP'nin verdiği org (`github.tools.sap/<org>`) mı, mevcut bir repo mu, yeni repo mu açılacak? Issues açık mı?
 6. **Her kişinin sohbet dili:** Claude onunla hangi dilde konuşsun? (Oktay: Türkçe; öneri: Almanca konuşanlarla Almanca.) Repo dili sorulmaz, her zaman İngilizce.
 
@@ -256,7 +259,10 @@ Durma şartı: ~%95 güven ve sonraki 3 sorunun cevabını tahmin edebiliyorsun.
 
 `superpowers:brainstorming` kuruluysa çağır ama sadece **2–3 yaklaşım + tradeoff** üretmek için; soru sorma işi Faz 1'de bitti.
 
+**SAP araç seti (kısıt, öneri değil):** SAP hackathon için şu araçları istedi (Prerequisites PDF, "Day 1: Foundations & First Agent"): Claude Code via Hyperspace (`hai`), VS Code, Python 3 + pip, Podman Desktop, `git` + `gh` (`github.tools.sap`), `btp`, `cf`, Joule Studio CLI (`joule`, `jl`), `kubectl`, `kyma` (opsiyonel), BTP Trial. Yaklaşımları **sadece bu araçlarla** kur; dil Python (CAP/Node ancak brifing veya `jl` şablonu öyle isterse). Listede olmayan bir araç/servis gerekiyorsa (başka dil, başka DB, dış SaaS, n8n…) açıkça "SAP araç setinin dışında" diye işaretle ve neden şart olduğunu yaz. Agent'ın runtime LLM'i AI Core / Generative AI Hub; `hai` sadece bizim kodlama asistanımızın kanalı.
+
 Her yaklaşımı şu süzgeçten geçir (`katalog/12` §2 ve §5):
+- SAP araç setine sığıyor mu? (deploy yolu: Podman image → Kyma/`kubectl` veya `cf push`)
 - 5 soruluk "agent mı otomasyon mu" testi
 - SAP zaten yapıyor mu? (`katalog/11`) — yapıyorsa extension mı, boşluk mu
 - En küçük mimari: 1 veri kaynağı, 3–6 tool, 1 HITL kapısı, masking, 10–20 eval

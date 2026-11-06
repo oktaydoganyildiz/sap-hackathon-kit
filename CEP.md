@@ -2,12 +2,15 @@
 
 ## 1. VDI'da ilk 15 dakika (herkes)
 ```
+hai --version                              # Hyperspace LLM proxy (SAP Quickstart, VPN/iç ağ)
+claude --version                           # Claude Code via Hyperspace
 gh auth login --hostname github.tools.sap
 $env:GH_HOST='github.tools.sap'
 npm install -g @sap/joule-studio-cli      # joule -V ve jl version
 git clone https://github.com/oktaydoganyildiz/sap-hackathon-kit.git $HOME\sap-hackathon-kit
 pwsh -File $HOME\sap-hackathon-kit\kurulum\install.ps1
 ```
+Day 1'den önce (SAP PDF'i): SAP mailinden IAS "Activate User Profile" · BTP Trial hesabı (account.hanatrial.ondemand.com, bölge fark etmez, "Tour of SAP BTP Trial") · Podman Desktop + VS Code kurulu. Teknoloji = SAP'nin araç seti (Python, Podman, Kyma/CF, `jl`); dışına çıkan her şeyi kaptana söyle.
 **Herkes** kiti kurar (önce kaptanın gönderdiği GitHub davetini kabul et). github.com açılmazsa: 3. satıra kadar yap, sonra `BOOTSTRAP.md`'yi (kendine SAP mailiyle at) Claude'a yapıştır → çekirdek kit kurulur; o da olmazsa takım reposundaki `.claude/` yeter, kaptan §2'yi elle yürütür.
 Ortam kontrolü: `pwsh -File kurulum\kontrol.ps1` (takım reposunda `.claude\tools\kontrol.ps1`) → ✅/❌ tablo + çözüm linkleri. Hata alınca: `katalog/13-sorun-giderme.md` (repoda `.claude/sorun-giderme.md`). En sık: `btp login --sso --url https://cli.btp.cloud.sap --subdomain <sub>` · `cf login -a <api> --sso-passcode <kod>` · `jl solution validate` · `jl solution traces` · `cf logs <app> --recent`.
 
