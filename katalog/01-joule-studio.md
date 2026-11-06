@@ -43,5 +43,7 @@ Yol B ilk dakika: toolkit skill'leri kurulu → Claude'a "Joule için A2A agent 
 | https://github.com/SAP/lifecycle-operation-actions-for-joule-studio | Joule Studio deploy için GitHub Actions. | 2026-08-27 |
 | https://github.com/SAP-samples/joule-studio-setup-terraform | Joule Studio subaccount'unu Terraform ile kur. | 2026-05-27 |
 | https://github.com/SAP-samples/concur-joule-ips-jobs | Joule kullanıcılarını IPS ile provision etme (IAS kurulumu için faydalı). | 2026-08-20 |
+| https://help.sap.com/docs/JOULESTUDIO/7e496fe6f81f4975aec07d9c1cbd2aef/f784ab604a2243f69819a245a10ed34c.html | Joule Studio MCP server'ı = çalışan program değil, `translation.json` tarifi; Agent Gateway çağırır, sadece principal propagation (formation + SPII). | 2026-11 |
+| https://github.com/SAP/cloud-sdk/blob/main/docs-python/troubleshooting.mdx | Cloud SDK Python sorun giderme: Agent Gateway'den tool gelmiyor, tool adı çakışması (`MCPToolFilter`), sonuç string'e düzleşiyor, Agent Memory hataları. | 2026-11 |
 
-İlgili kit dosyaları: `egitim/02-joule-ve-joule-studio.md`, `egitim/08-joule-cli-capability.md`, `beyin/ai/baglanti/joule-cli-login-sorunlari.md`, `beyin/dersler/2026-10-13-joule-studio-btp-cli-*`.
+İlgili kit dosyaları: `egitim/14-joule-studio-ornek-agent-incelemesi.md` (gerçek Joule Studio export'u, iyi/kötü yanları; referans, kalıp değil), `egitim/02-joule-ve-joule-studio.md`, `egitim/08-joule-cli-capability.md`, `beyin/ai/baglanti/joule-cli-login-sorunlari.md`, `beyin/dersler/2026-10-13-joule-studio-btp-cli-*`.

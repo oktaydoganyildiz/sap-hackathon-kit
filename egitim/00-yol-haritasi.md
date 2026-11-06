@@ -19,5 +19,6 @@ Her başlık ayrı bir dosya. Sıra, birbirinin üstüne kurulacak şekilde ayar
 | 11 | `11-hackathon-arastirma.md` | Etkinlik, organizatörler, SAP'nin Industry AI yönü, geçmiş jüri kriterleri | Ne beklemeli |
 
 | 12 | `12-a2a-joule-agent-yol-haritasi.md` | A2A ile Joule'ye bağlı agent kurma: şemalar + bilmen gerekenler | **Önce bunu oku**, özet |
+| 14 | `14-joule-studio-ornek-agent-incelemesi.md` | Gerçek Joule Studio export'u (pro-code A2A agent + MCP, agent extension): nasıl çalışıyor, kaynakla doğrulanmış iyi/kötü yanlar | Referans örnek, kalıp değil |
 
 **Durum (2026-11-04):** Hepsi yazıldı. Okuma sırası: 12 → 11 → 01 → 02 → 03 → 04 → 05 → 06 → 07 → 08 → 09 → 10.
