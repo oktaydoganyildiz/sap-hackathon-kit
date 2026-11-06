@@ -126,7 +126,7 @@ Tabloyu göster, onay al.
    - `.github/pull_request_template.md`, `.github/ISSUE_TEMPLATE/gorev.md`.
    - `docs/spec.md`, `docs/contract.md` (Faz 3'ten).
    - Her sahip klasörüne boş bir `README.md` (klasörün amacı + sahibi).
-- Kök dosyalar: `.gitattributes` (LF satır sonu, CRLF uyarısını önler), `.gitignore` (`.claude/ben.md` yerel kimlik dosyası git'e girmesin), `AGENTS.md` (opencode ve diğer ajanlar `CLAUDE.md`'ye yönlensin). Şablondan aynen kopyala.
+- Kök dosyalar: `.gitattributes` (LF satır sonu, CRLF uyarısını önler), `.gitignore` (`.claude/ben.md` yerel kimlik dosyası git'e girmesin). Şablondan aynen kopyala.
    - **Takım araçlarını repoya göm:** `<kit>/kurulum/kontrol.ps1` ve `kontrol.sh` → `<repo>/.claude/tools/`; `<kit>/katalog/13-sorun-giderme.md` → `<repo>/.claude/sorun-giderme.md`. `.claude/` ekibin araç klasörüdür, SAP'ye teslim edilen ürün değildir; İngilizce kuralı ürün dosyaları içindir.
    - **Takım skill'lerini repoya göm:** `<kit>/skills/gorevim/` ve `<kit>/skills/kickoff/` → `<repo>/.claude/skills/`. Böylece takım üyelerinin kiti kurmasına gerek kalmaz; repoyu clone'layıp `claude` açınca `gorevim` hazırdır. (Kit yoksa ve bu skill zaten `.claude/skills/`'ten geliyorsa atla.)
    - Kit'te `sablon/proje/` yoksa (kit inmediyse) şablonları bu dosyadaki tanımlardan sıfırdan yaz: sahiplik tablosu + 5 akış kuralı (`CLAUDE.md`), spec başlıkları (Problem, Persona, KPI, Demo story, Architecture, Out of scope, Risks), contract (tool başına: kind, owner, description, input, output, example, errors).
