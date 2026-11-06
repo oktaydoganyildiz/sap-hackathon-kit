@@ -4,7 +4,7 @@
 
 > **Bu bir referans örnek, kalıp değil.** SAP'nin ürettiği demo çıktılar bunlar. Bizim agent'ın konusunu, kapsamını, mimarisini ya da araç seçimini sınırlamaz. Buradan sadece iki şey alıyoruz: (1) SAP'nin araçları içeride nasıl çalışıyor, (2) neler iyi, nerelerde tuzak var. Hackathonda daha büyük, farklı ya da bambaşka bir yol seçmekte serbestiz (Yol A / Yol B, kendi MCP'miz, CAP, çoklu agent, fark etmez).
 
-Tam export kitte yok (SAP şablon kodu + SAP'nin IBD kılavuz dosyaları). Oktay'ın laptopunda duruyor: `SAP Hackathon/ornekler/joule-studio-export/`.
+Dosyalar kitte: `ornekler/joule-studio-export/` (kod, YAML, mock, intent/PRD; SAP'nin IBD kılavuz dosyaları hariç).
 
 ## 1. Ne var
 

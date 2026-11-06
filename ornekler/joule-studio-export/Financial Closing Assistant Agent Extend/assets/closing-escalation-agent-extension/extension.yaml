@@ -1,0 +1,96 @@
+_schema-version: "0.1.0"
+kind: Extension
+
+metadata:
+  name: "closing-escalation-agent-extension"
+
+agent:
+  ordId: "sap.agtcloass:agent:financial-closing-assistant:v1"
+
+capabilityImplementations:
+  - capabilityId: "default"
+    instruction: |
+      ## Stonebridge Equipment Group - Closing Escalation Rules
+
+      You are extended with company-specific period-end closing escalation logic for Stonebridge Equipment Group.
+      Apply the following rules automatically whenever the user asks about period-end closing status, escalations,
+      critical issues, or any related financial close query.
+
+      ### Escalation Classification Rules
+
+      Apply ALL three rules to the available closing data. An item may satisfy more than one rule - if so,
+      report it under EVERY applicable section with its respective escalation reason. Never collapse a
+      multi-rule item into a single section.
+
+      #### Rule 1 - Critical - Immediate Action Required
+      Condition: Any posting error where the document amount exceeds EUR 100,000.
+      - Classify as: Critical - Immediate Action Required
+      - Required output per item:
+        - Document reference (document ID)
+        - Amount in EUR
+        - Escalation reason: "Posting error exceeds EUR 100,000 threshold"
+        - Recommended next step (e.g., review with the responsible accountant, verify posting logic, engage finance controller)
+      - Milestone log: M1.achieved: Stonebridge escalation rules active - Critical rule fired for document {document_reference}
+
+      #### Rule 2 - Urgent - Deadline Imminent
+      Condition: Any incomplete closing task with fewer than four hours remaining before the official period-end deadline.
+      - Classify as: Urgent - Deadline Imminent
+      - Required output per item:
+        - Task reference (task ID or task name)
+        - Time remaining (in hours and minutes)
+        - Escalation reason: "Incomplete closing task with fewer than 4 hours to period-end deadline"
+        - Recommended next step (e.g., immediately assign to available team member, notify responsible owner, request deadline extension if appropriate)
+      - Milestone log: M1.achieved: Stonebridge escalation rules active - Urgent rule fired for task {task_reference}
+
+      #### Rule 3 - Flag - Schedule Risk
+      Condition: Any overdue closing task that blocks one or more downstream closing dependencies.
+      - Classify as: Flag - Schedule Risk
+      - Required output per item:
+        - Task reference (task ID or task name)
+        - Name(s) of the blocked downstream dependency task(s)
+        - Escalation reason: "Overdue closing task is blocking downstream closing dependencies"
+        - Recommended next step (e.g., escalate to closing manager, assess impact on downstream tasks, initiate workaround if available)
+      - Milestone log: M1.achieved: Stonebridge escalation rules active - Flag rule fired for task {task_reference}
+
+      ### Multi-Rule Reporting
+      If a single item satisfies more than one rule (e.g., a posting error that also blocks a downstream task),
+      include it in EVERY applicable section with the respective escalation reason for each section.
+      Emit: M3.achieved: Multi-rule item detected and reported under all applicable sections
+
+      ### Output Format - Consolidated Escalation Summary
+      Always produce a single structured escalation summary with exactly three labelled sections in this order:
+      1. Critical - Immediate Action Required
+      2. Urgent - Deadline Imminent
+      3. Flag - Schedule Risk
+
+      Rules:
+      - All three sections MUST always be present in the output.
+      - If no items qualify for a section, output: "No items found."
+      - Each item entry must include: reference, escalation reason, and recommended next step.
+      - Order items within each section by severity (highest amount or least time remaining first).
+
+      After delivering the full summary, emit:
+      M2.achieved: Consolidated escalation summary delivered - Critical: {critical_count}, Urgent: {urgent_count}, Flag: {flag_count}
+
+      ### Read-Only Advisory Constraint
+      IMPORTANT: This extension operates in strict read-only mode.
+      - You MUST NOT post documents, create journal entries, complete closing tasks, approve entries,
+        or modify closing schedules under any circumstance.
+      - All recommendations in the escalation summary are strictly advisory.
+      - Explicitly label your output as advisory when presenting the summary.
+      - If asked to take any write action during an escalation query, decline and explain that
+        all output is advisory only.
+      - Emit: M4.achieved: Read-only compliance confirmed - no write operations triggered during escalation cycle
+
+      ### Failure Handling
+      If closing data cannot be retrieved for any rule:
+      - State clearly which rule could not be evaluated and why.
+      - Do not silently omit the section - present the section header with a note explaining the data
+        retrieval failure.
+      - Emit: M2.missed: Summary generation incomplete - one or more sections missing from escalation output
+
+      ### Scope of These Instructions
+      These escalation instructions apply only to period-end closing escalation queries.
+      They do not modify, override, or interfere with any other Financial Closing Assistant capability,
+      including journal entry creation, accruals processing, receivables and payables clearing,
+      and analytical business insights. All existing capabilities remain fully intact.

@@ -1,0 +1,507 @@
+{
+  "mcpTranslationVersion": "0.8",
+  "target": {
+    "ordId": "sap.s4:apiResource:API_CABUSPARTPAYMENT_0002:v2",
+    "type": "openapi-v3"
+  },
+  "serverInfo": {
+    "name": "sap.mcp/contract_accounting_business_partner_payment_manage",
+    "title": "contract_accounting_business_partner_payment_manage",
+    "version": "1.0.0",
+    "description": "MCP server for the contract_accounting_business_partner_payment_manage service."
+  },
+  "tools": [
+    {
+      "name": "GET_CABPPaytEnhcdForDspCrcy_PDisplayCurrency_Set",
+      "title": "GET_CABPPaytEnhcdForDspCrcy_PDisplayCurrency_Set",
+      "description": "Get entities from related Set",
+      "openApiType": {
+        "path": "/CABPPaytEnhcdForDspCrcy/{P_DisplayCurrency}/Set",
+        "method": "get",
+        "parameters": [
+          {
+            "name": "P_DisplayCurrency",
+            "description": "Currency Key",
+            "in": "path",
+            "newParameterName": "p_displaycurrency"
+          },
+          {
+            "name": "$top",
+            "description": "Show only the first n items, see [Paging - Top](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptiontop)",
+            "in": "query",
+            "newParameterName": "top"
+          },
+          {
+            "name": "$skip",
+            "description": "Skip the first n items, see [Paging - Skip](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionskip)",
+            "in": "query",
+            "newParameterName": "skip"
+          },
+          {
+            "name": "$search",
+            "description": "Search items by search phrases, see [Searching](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionsearch)",
+            "in": "query",
+            "newParameterName": "search"
+          },
+          {
+            "name": "$filter",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "in": "query",
+            "newParameterName": "filter"
+          },
+          {
+            "name": "$count",
+            "description": "Include count of items, see [Count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount)",
+            "in": "query",
+            "newParameterName": "count"
+          },
+          {
+            "name": "$orderby",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "in": "query",
+            "newParameterName": "orderby"
+          },
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "newParameterName": "select"
+          },
+          {
+            "name": "$expand",
+            "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "newParameterName": "expand"
+          }
+        ],
+        "requestBody": {},
+        "responseHeaders": [
+          {
+            "name": "age"
+          },
+          {
+            "name": "cache-control"
+          },
+          {
+            "name": "expires"
+          },
+          {
+            "name": "last-modified"
+          },
+          {
+            "name": "x-request-id"
+          },
+          {
+            "name": "x-correlation-id"
+          },
+          {
+            "name": "content-type"
+          },
+          {
+            "name": "content-encoding"
+          },
+          {
+            "name": "content-language"
+          },
+          {
+            "name": "content-length"
+          }
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true
+      }
+    },
+    {
+      "name": "GET_CABPPaytEnhcdForDspCrcy_PDisplayCurrency_Set_CABusPartnerPay",
+      "title": "GET_CABPPaytEnhcdForDspCrcy_PDisplayCurrency_Set_CABusPartnerPaymentUUID1",
+      "description": "Get entity from related Set by key",
+      "openApiType": {
+        "path": "/CABPPaytEnhcdForDspCrcy/{P_DisplayCurrency}/Set/{CABusPartnerPaymentUUID-1}",
+        "method": "get",
+        "parameters": [
+          {
+            "name": "P_DisplayCurrency",
+            "description": "Currency Key",
+            "in": "path",
+            "newParameterName": "p_displaycurrency"
+          },
+          {
+            "name": "CABusPartnerPaymentUUID-1",
+            "description": "Document Container ID",
+            "in": "path",
+            "newParameterName": "cabuspartnerpaymentuuid_1"
+          },
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "newParameterName": "select"
+          },
+          {
+            "name": "$expand",
+            "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "newParameterName": "expand"
+          }
+        ],
+        "requestBody": {},
+        "responseHeaders": [
+          {
+            "name": "age"
+          },
+          {
+            "name": "cache-control"
+          },
+          {
+            "name": "expires"
+          },
+          {
+            "name": "last-modified"
+          },
+          {
+            "name": "x-request-id"
+          },
+          {
+            "name": "x-correlation-id"
+          },
+          {
+            "name": "content-type"
+          },
+          {
+            "name": "content-encoding"
+          },
+          {
+            "name": "content-language"
+          },
+          {
+            "name": "content-length"
+          }
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true
+      }
+    },
+    {
+      "name": "GET_CABPPaytItemEnhcdForDspCrcy_PDisplayCurrency_Set",
+      "title": "GET_CABPPaytItemEnhcdForDspCrcy_PDisplayCurrency_Set",
+      "description": "Get entities from related Set",
+      "openApiType": {
+        "path": "/CABPPaytItemEnhcdForDspCrcy/{P_DisplayCurrency}/Set",
+        "method": "get",
+        "parameters": [
+          {
+            "name": "P_DisplayCurrency",
+            "description": "Currency Key",
+            "in": "path",
+            "newParameterName": "p_displaycurrency"
+          },
+          {
+            "name": "$top",
+            "description": "Show only the first n items, see [Paging - Top](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptiontop)",
+            "in": "query",
+            "newParameterName": "top"
+          },
+          {
+            "name": "$skip",
+            "description": "Skip the first n items, see [Paging - Skip](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionskip)",
+            "in": "query",
+            "newParameterName": "skip"
+          },
+          {
+            "name": "$search",
+            "description": "Search items by search phrases, see [Searching](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionsearch)",
+            "in": "query",
+            "newParameterName": "search"
+          },
+          {
+            "name": "$filter",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "in": "query",
+            "newParameterName": "filter"
+          },
+          {
+            "name": "$count",
+            "description": "Include count of items, see [Count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount)",
+            "in": "query",
+            "newParameterName": "count"
+          },
+          {
+            "name": "$orderby",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "in": "query",
+            "newParameterName": "orderby"
+          },
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "newParameterName": "select"
+          },
+          {
+            "name": "$expand",
+            "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "newParameterName": "expand"
+          }
+        ],
+        "requestBody": {},
+        "responseHeaders": [
+          {
+            "name": "age"
+          },
+          {
+            "name": "cache-control"
+          },
+          {
+            "name": "expires"
+          },
+          {
+            "name": "last-modified"
+          },
+          {
+            "name": "x-request-id"
+          },
+          {
+            "name": "x-correlation-id"
+          },
+          {
+            "name": "content-type"
+          },
+          {
+            "name": "content-encoding"
+          },
+          {
+            "name": "content-language"
+          },
+          {
+            "name": "content-length"
+          }
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true
+      }
+    },
+    {
+      "name": "GET_CABPPaytItemEnhcdForDspCrcy_PDisplayCurrency_Set_CABusPartne",
+      "title": "GET_CABPPaytItemEnhcdForDspCrcy_PDisplayCurrency_Set_CABusPartnerPaymentUUID1_CABusPartnerPaymentItem1",
+      "description": "Get entity from related Set by key",
+      "openApiType": {
+        "path": "/CABPPaytItemEnhcdForDspCrcy/{P_DisplayCurrency}/Set/{CABusPartnerPaymentUUID-1}/{CABusPartnerPaymentItem-1}",
+        "method": "get",
+        "parameters": [
+          {
+            "name": "P_DisplayCurrency",
+            "description": "Currency Key",
+            "in": "path",
+            "newParameterName": "p_displaycurrency"
+          },
+          {
+            "name": "CABusPartnerPaymentUUID-1",
+            "description": "Document Container ID",
+            "in": "path",
+            "newParameterName": "cabuspartnerpaymentuuid_1"
+          },
+          {
+            "name": "CABusPartnerPaymentItem-1",
+            "description": "Sequence Number",
+            "in": "path",
+            "newParameterName": "cabuspartnerpaymentitem_1"
+          },
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "newParameterName": "select"
+          },
+          {
+            "name": "$expand",
+            "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "newParameterName": "expand"
+          }
+        ],
+        "requestBody": {},
+        "responseHeaders": [
+          {
+            "name": "age"
+          },
+          {
+            "name": "cache-control"
+          },
+          {
+            "name": "expires"
+          },
+          {
+            "name": "last-modified"
+          },
+          {
+            "name": "x-request-id"
+          },
+          {
+            "name": "x-correlation-id"
+          },
+          {
+            "name": "content-type"
+          },
+          {
+            "name": "content-encoding"
+          },
+          {
+            "name": "content-language"
+          },
+          {
+            "name": "content-length"
+          }
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true
+      }
+    },
+    {
+      "name": "GET_ContrAcctgBusPartnerPayment",
+      "title": "GET_ContrAcctgBusPartnerPayment",
+      "description": "Get entities from ContrAcctgBusPartnerPayment",
+      "openApiType": {
+        "path": "/ContrAcctgBusPartnerPayment",
+        "method": "get",
+        "parameters": [
+          {
+            "name": "$top",
+            "description": "Show only the first n items, see [Paging - Top](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptiontop)",
+            "in": "query",
+            "newParameterName": "top"
+          },
+          {
+            "name": "$skip",
+            "description": "Skip the first n items, see [Paging - Skip](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionskip)",
+            "in": "query",
+            "newParameterName": "skip"
+          },
+          {
+            "name": "$filter",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "in": "query",
+            "newParameterName": "filter"
+          },
+          {
+            "name": "$count",
+            "description": "Include count of items, see [Count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount)",
+            "in": "query",
+            "newParameterName": "count"
+          },
+          {
+            "name": "$orderby",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "in": "query",
+            "newParameterName": "orderby"
+          },
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "newParameterName": "select"
+          }
+        ],
+        "requestBody": {},
+        "responseHeaders": [
+          {
+            "name": "age"
+          },
+          {
+            "name": "cache-control"
+          },
+          {
+            "name": "expires"
+          },
+          {
+            "name": "last-modified"
+          },
+          {
+            "name": "x-request-id"
+          },
+          {
+            "name": "x-correlation-id"
+          },
+          {
+            "name": "content-type"
+          },
+          {
+            "name": "content-encoding"
+          },
+          {
+            "name": "content-language"
+          },
+          {
+            "name": "content-length"
+          }
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true
+      }
+    },
+    {
+      "name": "GET_ContrAcctgBusPartnerPayment_CABusPartnerPaymentUUID",
+      "title": "GET_ContrAcctgBusPartnerPayment_CABusPartnerPaymentUUID",
+      "description": "Get entity from ContrAcctgBusPartnerPayment by key",
+      "openApiType": {
+        "path": "/ContrAcctgBusPartnerPayment/{CABusPartnerPaymentUUID}",
+        "method": "get",
+        "parameters": [
+          {
+            "name": "CABusPartnerPaymentUUID",
+            "description": "Document Container ID",
+            "in": "path",
+            "newParameterName": "cabuspartnerpaymentuuid"
+          },
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "newParameterName": "select"
+          }
+        ],
+        "requestBody": {},
+        "responseHeaders": [
+          {
+            "name": "age"
+          },
+          {
+            "name": "cache-control"
+          },
+          {
+            "name": "expires"
+          },
+          {
+            "name": "last-modified"
+          },
+          {
+            "name": "x-request-id"
+          },
+          {
+            "name": "x-correlation-id"
+          },
+          {
+            "name": "content-type"
+          },
+          {
+            "name": "content-encoding"
+          },
+          {
+            "name": "content-language"
+          },
+          {
+            "name": "content-length"
+          }
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true
+      }
+    }
+  ]
+}

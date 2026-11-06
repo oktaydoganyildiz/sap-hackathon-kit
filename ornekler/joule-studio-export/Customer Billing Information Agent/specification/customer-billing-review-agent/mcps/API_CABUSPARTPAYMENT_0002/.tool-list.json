@@ -1,0 +1,817 @@
+[
+  {
+    "name": "GET_CABPPaytEnhcdForDspCrcy_PDisplayCurrency_Set",
+    "title": "GET_CABPPaytEnhcdForDspCrcy_PDisplayCurrency_Set",
+    "description": "Get entities from related Set",
+    "openApiType": {
+      "path": "/CABPPaytEnhcdForDspCrcy/{P_DisplayCurrency}/Set",
+      "method": "get",
+      "parameters": [
+        {
+          "name": "P_DisplayCurrency",
+          "description": "Currency Key",
+          "in": "path",
+          "newParameterName": "p_displaycurrency"
+        },
+        {
+          "name": "$top",
+          "description": "Show only the first n items, see [Paging - Top](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptiontop)",
+          "in": "query",
+          "newParameterName": "top"
+        },
+        {
+          "name": "$skip",
+          "description": "Skip the first n items, see [Paging - Skip](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionskip)",
+          "in": "query",
+          "newParameterName": "skip"
+        },
+        {
+          "name": "$search",
+          "description": "Search items by search phrases, see [Searching](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionsearch)",
+          "in": "query",
+          "newParameterName": "search"
+        },
+        {
+          "name": "$filter",
+          "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+          "in": "query",
+          "newParameterName": "filter"
+        },
+        {
+          "name": "$count",
+          "description": "Include count of items, see [Count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount)",
+          "in": "query",
+          "newParameterName": "count"
+        },
+        {
+          "name": "$orderby",
+          "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+          "in": "query",
+          "newParameterName": "orderby"
+        },
+        {
+          "name": "$select",
+          "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+          "in": "query",
+          "newParameterName": "select"
+        },
+        {
+          "name": "$expand",
+          "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+          "in": "query",
+          "newParameterName": "expand"
+        }
+      ],
+      "requestBody": {},
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        }
+      ]
+    },
+    "annotations": {
+      "readOnlyHint": true
+    }
+  },
+  {
+    "name": "GET_CABPPaytEnhcdForDspCrcy_PDisplayCurrency_Set_CABusPartnerPay",
+    "title": "GET_CABPPaytEnhcdForDspCrcy_PDisplayCurrency_Set_CABusPartnerPaymentUUID1",
+    "description": "Get entity from related Set by key",
+    "openApiType": {
+      "path": "/CABPPaytEnhcdForDspCrcy/{P_DisplayCurrency}/Set/{CABusPartnerPaymentUUID-1}",
+      "method": "get",
+      "parameters": [
+        {
+          "name": "P_DisplayCurrency",
+          "description": "Currency Key",
+          "in": "path",
+          "newParameterName": "p_displaycurrency"
+        },
+        {
+          "name": "CABusPartnerPaymentUUID-1",
+          "description": "Document Container ID",
+          "in": "path",
+          "newParameterName": "cabuspartnerpaymentuuid_1"
+        },
+        {
+          "name": "$select",
+          "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+          "in": "query",
+          "newParameterName": "select"
+        },
+        {
+          "name": "$expand",
+          "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+          "in": "query",
+          "newParameterName": "expand"
+        }
+      ],
+      "requestBody": {},
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        }
+      ]
+    },
+    "annotations": {
+      "readOnlyHint": true
+    }
+  },
+  {
+    "name": "GET_CABPPaytItemEnhcdForDspCrcy_PDisplayCurrency_Set",
+    "title": "GET_CABPPaytItemEnhcdForDspCrcy_PDisplayCurrency_Set",
+    "description": "Get entities from related Set",
+    "openApiType": {
+      "path": "/CABPPaytItemEnhcdForDspCrcy/{P_DisplayCurrency}/Set",
+      "method": "get",
+      "parameters": [
+        {
+          "name": "P_DisplayCurrency",
+          "description": "Currency Key",
+          "in": "path",
+          "newParameterName": "p_displaycurrency"
+        },
+        {
+          "name": "$top",
+          "description": "Show only the first n items, see [Paging - Top](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptiontop)",
+          "in": "query",
+          "newParameterName": "top"
+        },
+        {
+          "name": "$skip",
+          "description": "Skip the first n items, see [Paging - Skip](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionskip)",
+          "in": "query",
+          "newParameterName": "skip"
+        },
+        {
+          "name": "$search",
+          "description": "Search items by search phrases, see [Searching](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionsearch)",
+          "in": "query",
+          "newParameterName": "search"
+        },
+        {
+          "name": "$filter",
+          "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+          "in": "query",
+          "newParameterName": "filter"
+        },
+        {
+          "name": "$count",
+          "description": "Include count of items, see [Count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount)",
+          "in": "query",
+          "newParameterName": "count"
+        },
+        {
+          "name": "$orderby",
+          "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+          "in": "query",
+          "newParameterName": "orderby"
+        },
+        {
+          "name": "$select",
+          "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+          "in": "query",
+          "newParameterName": "select"
+        },
+        {
+          "name": "$expand",
+          "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+          "in": "query",
+          "newParameterName": "expand"
+        }
+      ],
+      "requestBody": {},
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        }
+      ]
+    },
+    "annotations": {
+      "readOnlyHint": true
+    }
+  },
+  {
+    "name": "GET_CABPPaytItemEnhcdForDspCrcy_PDisplayCurrency_Set_CABusPartne",
+    "title": "GET_CABPPaytItemEnhcdForDspCrcy_PDisplayCurrency_Set_CABusPartnerPaymentUUID1_CABusPartnerPaymentItem1",
+    "description": "Get entity from related Set by key",
+    "openApiType": {
+      "path": "/CABPPaytItemEnhcdForDspCrcy/{P_DisplayCurrency}/Set/{CABusPartnerPaymentUUID-1}/{CABusPartnerPaymentItem-1}",
+      "method": "get",
+      "parameters": [
+        {
+          "name": "P_DisplayCurrency",
+          "description": "Currency Key",
+          "in": "path",
+          "newParameterName": "p_displaycurrency"
+        },
+        {
+          "name": "CABusPartnerPaymentUUID-1",
+          "description": "Document Container ID",
+          "in": "path",
+          "newParameterName": "cabuspartnerpaymentuuid_1"
+        },
+        {
+          "name": "CABusPartnerPaymentItem-1",
+          "description": "Sequence Number",
+          "in": "path",
+          "newParameterName": "cabuspartnerpaymentitem_1"
+        },
+        {
+          "name": "$select",
+          "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+          "in": "query",
+          "newParameterName": "select"
+        },
+        {
+          "name": "$expand",
+          "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+          "in": "query",
+          "newParameterName": "expand"
+        }
+      ],
+      "requestBody": {},
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        }
+      ]
+    },
+    "annotations": {
+      "readOnlyHint": true
+    }
+  },
+  {
+    "name": "GET_ContrAcctgBusPartnerPayment",
+    "title": "GET_ContrAcctgBusPartnerPayment",
+    "description": "Get entities from ContrAcctgBusPartnerPayment",
+    "openApiType": {
+      "path": "/ContrAcctgBusPartnerPayment",
+      "method": "get",
+      "parameters": [
+        {
+          "name": "$top",
+          "description": "Show only the first n items, see [Paging - Top](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptiontop)",
+          "in": "query",
+          "newParameterName": "top"
+        },
+        {
+          "name": "$skip",
+          "description": "Skip the first n items, see [Paging - Skip](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionskip)",
+          "in": "query",
+          "newParameterName": "skip"
+        },
+        {
+          "name": "$filter",
+          "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+          "in": "query",
+          "newParameterName": "filter"
+        },
+        {
+          "name": "$count",
+          "description": "Include count of items, see [Count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount)",
+          "in": "query",
+          "newParameterName": "count"
+        },
+        {
+          "name": "$orderby",
+          "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+          "in": "query",
+          "newParameterName": "orderby"
+        },
+        {
+          "name": "$select",
+          "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+          "in": "query",
+          "newParameterName": "select"
+        }
+      ],
+      "requestBody": {},
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        }
+      ]
+    },
+    "annotations": {
+      "readOnlyHint": true
+    }
+  },
+  {
+    "name": "POST_ContrAcctgBusPartnerPayment_SAPselfPayByPaymentCard",
+    "title": "POST_ContrAcctgBusPartnerPayment_SAPselfPayByPaymentCard",
+    "description": "Invoke action PayByPaymentCard",
+    "openApiType": {
+      "path": "/ContrAcctgBusPartnerPayment/SAP__self.PayByPaymentCard",
+      "method": "post",
+      "parameters": [
+        {
+          "name": "body",
+          "description": "Action parameters",
+          "newParameterName": "body"
+        }
+      ],
+      "requestBody": {
+        "contentType": "application/json"
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        }
+      ]
+    },
+    "annotations": {
+      "readOnlyHint": false
+    }
+  },
+  {
+    "name": "POST_ContrAcctgBusPartnerPayment_SAPselfReleasePaymentByBankID",
+    "title": "POST_ContrAcctgBusPartnerPayment_SAPselfReleasePaymentByBankID",
+    "description": "Invoke action ReleasePaymentByBankID",
+    "openApiType": {
+      "path": "/ContrAcctgBusPartnerPayment/SAP__self.ReleasePaymentByBankID",
+      "method": "post",
+      "parameters": [
+        {
+          "name": "body",
+          "description": "Action parameters",
+          "newParameterName": "body"
+        }
+      ],
+      "requestBody": {
+        "contentType": "application/json"
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        }
+      ]
+    },
+    "annotations": {
+      "readOnlyHint": false
+    }
+  },
+  {
+    "name": "POST_ContrAcctgBusPartnerPayment_SAPselfReleasePaymentByPaymentC",
+    "title": "POST_ContrAcctgBusPartnerPayment_SAPselfReleasePaymentByPaymentCard",
+    "description": "Invoke action ReleasePaymentByPaymentCard",
+    "openApiType": {
+      "path": "/ContrAcctgBusPartnerPayment/SAP__self.ReleasePaymentByPaymentCard",
+      "method": "post",
+      "parameters": [
+        {
+          "name": "body",
+          "description": "Action parameters",
+          "newParameterName": "body"
+        }
+      ],
+      "requestBody": {
+        "contentType": "application/json"
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        }
+      ]
+    },
+    "annotations": {
+      "readOnlyHint": false
+    }
+  },
+  {
+    "name": "POST_ContrAcctgBusPartnerPayment_SAPselfPayByPaymentServiceProvi",
+    "title": "POST_ContrAcctgBusPartnerPayment_SAPselfPayByPaymentServiceProvider",
+    "description": "Invoke action PayByPaymentServiceProvider",
+    "openApiType": {
+      "path": "/ContrAcctgBusPartnerPayment/SAP__self.PayByPaymentServiceProvider",
+      "method": "post",
+      "parameters": [
+        {
+          "name": "body",
+          "description": "Action parameters",
+          "newParameterName": "body"
+        }
+      ],
+      "requestBody": {
+        "contentType": "application/json"
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        }
+      ]
+    },
+    "annotations": {
+      "readOnlyHint": false
+    }
+  },
+  {
+    "name": "POST_ContrAcctgBusPartnerPayment_SAPselfReleasePaymentByPaymen_2",
+    "title": "POST_ContrAcctgBusPartnerPayment_SAPselfReleasePaymentByPaymentCardID",
+    "description": "Invoke action ReleasePaymentByPaymentCardID",
+    "openApiType": {
+      "path": "/ContrAcctgBusPartnerPayment/SAP__self.ReleasePaymentByPaymentCardID",
+      "method": "post",
+      "parameters": [
+        {
+          "name": "body",
+          "description": "Action parameters",
+          "newParameterName": "body"
+        }
+      ],
+      "requestBody": {
+        "contentType": "application/json"
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        }
+      ]
+    },
+    "annotations": {
+      "readOnlyHint": false
+    }
+  },
+  {
+    "name": "GET_ContrAcctgBusPartnerPayment_CABusPartnerPaymentUUID",
+    "title": "GET_ContrAcctgBusPartnerPayment_CABusPartnerPaymentUUID",
+    "description": "Get entity from ContrAcctgBusPartnerPayment by key",
+    "openApiType": {
+      "path": "/ContrAcctgBusPartnerPayment/{CABusPartnerPaymentUUID}",
+      "method": "get",
+      "parameters": [
+        {
+          "name": "CABusPartnerPaymentUUID",
+          "description": "Document Container ID",
+          "in": "path",
+          "newParameterName": "cabuspartnerpaymentuuid"
+        },
+        {
+          "name": "$select",
+          "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+          "in": "query",
+          "newParameterName": "select"
+        }
+      ],
+      "requestBody": {},
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        }
+      ]
+    },
+    "annotations": {
+      "readOnlyHint": true
+    }
+  },
+  {
+    "name": "POST_ContrAcctgBusPartnerPayment_CABusPartnerPaymentUUID_SAPself",
+    "title": "POST_ContrAcctgBusPartnerPayment_CABusPartnerPaymentUUID_SAPselfWithdrawPayment",
+    "description": "Invoke action WithdrawPayment",
+    "openApiType": {
+      "path": "/ContrAcctgBusPartnerPayment/{CABusPartnerPaymentUUID}/SAP__self.WithdrawPayment",
+      "method": "post",
+      "parameters": [
+        {
+          "name": "CABusPartnerPaymentUUID",
+          "description": "Document Container ID",
+          "in": "path",
+          "newParameterName": "cabuspartnerpaymentuuid"
+        }
+      ],
+      "requestBody": {},
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        }
+      ]
+    },
+    "annotations": {
+      "readOnlyHint": false
+    }
+  }
+]

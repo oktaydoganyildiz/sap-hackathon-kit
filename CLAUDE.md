@@ -14,6 +14,7 @@ Türkçe, kısa, samimi. SAP ve ürün terimleri İngilizce kalır. Sonucu ilk c
 - `NOTLAR.md` — etkinlik bilgisi, ön hazırlık listesi, brifingte sorulacaklar.
 - `skills/hackathon/` — bilgi router'ı. `skills/kickoff/` — proje başlatma ve takım liderliği. `skills/gorevim/` — takım üyesinin kendi görevini alması. `skills/takip/` — kaptan için takım takibi, PR denetimi, `docs/DURUM.md` hafızası.
 - `sablon/proje/` — proje reposu şablonu: `CLAUDE.md` (sahiplik), `docs/spec.md`, `docs/contract.md`, `.github/` (CODEOWNERS, PR ve issue şablonu).
+- `ornekler/joule-studio-export/` — gerçek Joule Studio export örnekleri. **Referans, kalıp değil:** agent fikrini/kapsamını bağlamaz, planlama buradan başlamaz. Analiz: `egitim/14`.
 - `egitim/13-takim-calismasi.md` — roller, ritüeller, paralel Claude çalışma modeli.
 - `kurulum/` — kurulum script'leri (grilling, brainstorming dahil süreç skill'lerini de kurar).
 - `CEP.md` — tek sayfalık cep kartı: kit VDI'a inmezse kickoff ve görev akışının özeti.

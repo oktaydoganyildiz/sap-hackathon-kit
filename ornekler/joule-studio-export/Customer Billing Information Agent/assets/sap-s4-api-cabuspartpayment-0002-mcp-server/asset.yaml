@@ -1,0 +1,21 @@
+apiVersion: asset.sap/v1
+kind: Asset
+type: mcp-server
+
+metadata:
+  name: sap-s4-api-cabuspartpayment-0002-mcp-server
+  description: MCP server exposing read-only SAP S/4HANA Contract Accounting Business Partner Payment API as MCP tools for the Customer Billing Review Agent.
+  version: "1.0.0"
+  translation: mcp-translation/translation.json
+  apiSpec: mcp-translation/api-spec.json
+
+provides:
+  apis:
+    - name: sap-s4-api-cabuspartpayment-0002-mcp-server
+      kind: mcp-server
+      ordId: customer.build:apiResource:customer-billing-review-45995.sap-s4-api-cabuspartpayment-0002-mcp-server:v1
+
+requires:
+  - name: API_CABUSPARTPAYMENT_0002
+    kind: api
+    ordId: sap.s4:apiResource:API_CABUSPARTPAYMENT_0002:v2

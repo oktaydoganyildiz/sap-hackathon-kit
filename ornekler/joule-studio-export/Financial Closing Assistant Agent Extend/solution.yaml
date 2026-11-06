@@ -1,0 +1,10 @@
+apiVersion: solution.sap/v1
+kind: Solution
+
+metadata:
+  name: closing-escalation-extension-e50bb
+  version: 1.0.0
+  description: Extends the SAP Financial Closing Assistant for Stonebridge Equipment Group with company-specific period-end closing escalation rules. Automatically classifies issues as Critical, Urgent, or Flag and delivers a consolidated advisory escalation summary — reducing issue identification time from 2 hours to 15 minutes.
+
+assets:
+  - ref: ./assets/closing-escalation-agent-extension/asset.yaml

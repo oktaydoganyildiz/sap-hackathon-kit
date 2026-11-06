@@ -1,0 +1,44 @@
+apiVersion: asset.sap/v1
+kind: Asset
+type: agent
+
+metadata:
+  name: customer-billing-review-agent
+  description: Read-only AI agent for Barton Industrial Supply that retrieves customer billing information and contract payment terms, compares payment behavior against agreed terms, identifies discrepancies, and generates Customer Billing Review Summaries.
+
+provides:
+  apis:
+    - name: customer-billing-review-agent
+      kind: a2a
+      ordId: customer.build:apiResource:customer-billing-review-45995.customer-billing-review-agent:v1
+
+requires:
+  - name: customer-billing-information-mcp-server
+    kind: mcp-server
+    ordId: customer.build:apiResource:customer-billing-review-45995.sap-s4-ce-billingdocument-0001-mcp-server:v1
+  - name: contract-information-mcp-server
+    kind: mcp-server
+    ordId: customer.build:apiResource:customer-billing-review-45995.sap-s4-api-cabuspartpayment-0002-mcp-server:v1
+
+container:
+  buildPath: .
+  port: 5000
+
+probes:
+  startup:
+    path: /.well-known/agent.json
+    periodSeconds: 5
+    timeoutSeconds: 3
+    failureThreshold: 18
+  liveness:
+    path: /.well-known/agent.json
+    initialDelaySeconds: 15
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 3
+  readiness:
+    path: /.well-known/agent.json
+    initialDelaySeconds: 5
+    periodSeconds: 5
+    timeoutSeconds: 3
+    failureThreshold: 3

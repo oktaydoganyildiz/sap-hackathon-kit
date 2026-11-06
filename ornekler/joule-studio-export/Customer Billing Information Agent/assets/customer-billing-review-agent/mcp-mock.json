@@ -1,0 +1,538 @@
+{
+  "servers": {
+    "sap-billing-document": {
+      "mcp_server_name": "sap.mcp/sap_self",
+      "description": "MCP server for SAP S/4HANA Billing Document API — provides read-only access to billing documents, items, and partners.",
+      "tools": {
+        "get_metadata_sap_self": {
+          "description": "Get metadata of the OData service with optional filtering to reduce token consumption.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "$filter": {"type": "string", "description": "Filter to reduce metadata"}
+            },
+            "required": []
+          },
+          "mock_response": {
+            "EntitySets": ["BillingDocument", "BillingDocumentItem", "BillingDocumentPartner", "BillingDocumentItemPartner", "BillingDocumentText"],
+            "Version": "4.0"
+          }
+        },
+        "batch_for_sap_self": {
+          "description": "Execute multiple OData operations in a single batch request.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "requests": {"type": "array", "description": "Array of OData requests"}
+            },
+            "required": ["requests"]
+          },
+          "mock_response": {"responses": []}
+        },
+        "list_billingdocument_for_sap_self": {
+          "description": "Retrieve a list of billing documents.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "$top": {"type": "string", "description": "Max results"},
+              "$filter": {"type": "string", "description": "OData filter expression"},
+              "$select": {"type": "string", "description": "Fields to return"},
+              "$orderby": {"type": "string", "description": "Sort order"}
+            },
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "BillingDocument": "9000001001",
+                "BillingDocumentType": "F2",
+                "BillingDocumentDate": "/Date(1730419200000)/",
+                "BillingDocumentIsCancelled": "X",
+                "SoldToParty": "C-10045",
+                "PayerParty": "C-10045",
+                "TotalNetAmount": "48750.00",
+                "TransactionCurrency": "USD",
+                "CustomerPaymentTerms": "0030",
+                "DueCalculationBaseDate": "/Date(1730419200000)/",
+                "PaymentDueDate": "/Date(1732924800000)/",
+                "InvoiceDate": "/Date(1730419200000)/",
+                "CreatedByUser": "BILLING_USER",
+                "CreationDate": "/Date(1730419200000)/",
+                "BillingDocumentProcessingStatus": "C"
+              },
+              {
+                "BillingDocument": "9000001002",
+                "BillingDocumentType": "F2",
+                "BillingDocumentDate": "/Date(1727740800000)/",
+                "BillingDocumentIsCancelled": "",
+                "SoldToParty": "C-10045",
+                "PayerParty": "C-10045",
+                "TotalNetAmount": "32100.00",
+                "TransactionCurrency": "USD",
+                "CustomerPaymentTerms": "0030",
+                "DueCalculationBaseDate": "/Date(1727740800000)/",
+                "PaymentDueDate": "/Date(1730246400000)/",
+                "InvoiceDate": "/Date(1727740800000)/",
+                "CreatedByUser": "BILLING_USER",
+                "CreationDate": "/Date(1727740800000)/",
+                "BillingDocumentProcessingStatus": "O"
+              },
+              {
+                "BillingDocument": "9000002001",
+                "BillingDocumentType": "F2",
+                "BillingDocumentDate": "/Date(1730419200000)/",
+                "BillingDocumentIsCancelled": "",
+                "SoldToParty": "C-20087",
+                "PayerParty": "C-20087",
+                "TotalNetAmount": "67400.00",
+                "TransactionCurrency": "USD",
+                "CustomerPaymentTerms": "0060",
+                "DueCalculationBaseDate": "/Date(1730419200000)/",
+                "PaymentDueDate": "/Date(1735516800000)/",
+                "InvoiceDate": "/Date(1730419200000)/",
+                "CreatedByUser": "BILLING_USER",
+                "CreationDate": "/Date(1730419200000)/",
+                "BillingDocumentProcessingStatus": "O"
+              }
+            ]
+          }
+        },
+        "get_billingdocument_for_sap_self": {
+          "description": "Retrieve a single billing document by key.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "BillingDocument": {"type": "string", "description": "Billing document number"}
+            },
+            "required": ["BillingDocument"]
+          },
+          "mock_response": {
+            "BillingDocument": "9000001002",
+            "BillingDocumentType": "F2",
+            "BillingDocumentDate": "/Date(1727740800000)/",
+            "SoldToParty": "C-10045",
+            "PayerParty": "C-10045",
+            "TotalNetAmount": "32100.00",
+            "TransactionCurrency": "USD",
+            "CustomerPaymentTerms": "0030",
+            "DueCalculationBaseDate": "/Date(1727740800000)/",
+            "PaymentDueDate": "/Date(1730246400000)/",
+            "BillingDocumentProcessingStatus": "O"
+          }
+        },
+        "count_billingdocument_for_sap_self": {
+          "description": "Get the total count of billing documents.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "$filter": {"type": "string", "description": "OData filter expression"}
+            },
+            "required": []
+          },
+          "mock_response": {"count": 3}
+        },
+        "list_billingdocumentitem_for_sap_self": {
+          "description": "Retrieve a list of billing document items.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "$top": {"type": "string", "description": "Max results"},
+              "$filter": {"type": "string", "description": "OData filter expression"},
+              "$select": {"type": "string", "description": "Fields to return"}
+            },
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "BillingDocument": "9000001002",
+                "BillingDocumentItem": "000010",
+                "Material": "PIPE-STEEL-4IN",
+                "BillingQuantity": "150.000",
+                "BillingQuantityUnit": "EA",
+                "NetAmount": "18750.00",
+                "TransactionCurrency": "USD",
+                "MaterialDescription": "Steel Pipe 4 Inch"
+              },
+              {
+                "BillingDocument": "9000001002",
+                "BillingDocumentItem": "000020",
+                "Material": "FITTING-90DEG-4IN",
+                "BillingQuantity": "75.000",
+                "BillingQuantityUnit": "EA",
+                "NetAmount": "13350.00",
+                "TransactionCurrency": "USD",
+                "MaterialDescription": "90 Degree Pipe Fitting 4 Inch"
+              }
+            ]
+          }
+        },
+        "get_billingdocumentitem_for_sap_self": {
+          "description": "Retrieve a single billing document item by key.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "BillingDocument": {"type": "string", "description": "Billing document number"},
+              "BillingDocumentItem": {"type": "string", "description": "Item number"}
+            },
+            "required": ["BillingDocument", "BillingDocumentItem"]
+          },
+          "mock_response": {
+            "BillingDocument": "9000001002",
+            "BillingDocumentItem": "000010",
+            "Material": "PIPE-STEEL-4IN",
+            "BillingQuantity": "150.000",
+            "NetAmount": "18750.00",
+            "TransactionCurrency": "USD"
+          }
+        },
+        "count_billingdocumentitem_for_sap_self": {
+          "description": "Get total count of billing document items.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "$filter": {"type": "string", "description": "OData filter expression"}
+            },
+            "required": []
+          },
+          "mock_response": {"count": 2}
+        },
+        "list_billingdocumentitempartner_for_sap_self": {
+          "description": "Retrieve billing document item partners.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "$filter": {"type": "string", "description": "OData filter expression"}
+            },
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "BillingDocument": "9000001002",
+                "BillingDocumentItem": "000010",
+                "PartnerFunction": "AG",
+                "Customer": "C-10045"
+              }
+            ]
+          }
+        },
+        "get_billingdocumentitempartner_for_sap_self": {
+          "description": "Retrieve a single billing document item partner by key.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "BillingDocument": {"type": "string", "description": "Billing document number"},
+              "BillingDocumentItem": {"type": "string", "description": "Item number"},
+              "PartnerFunction": {"type": "string", "description": "Partner function code"}
+            },
+            "required": ["BillingDocument", "BillingDocumentItem", "PartnerFunction"]
+          },
+          "mock_response": {
+            "BillingDocument": "9000001002",
+            "BillingDocumentItem": "000010",
+            "PartnerFunction": "AG",
+            "Customer": "C-10045"
+          }
+        },
+        "count_billingdocumentitempartner_for_sap_self": {
+          "description": "Get count of billing document item partners.",
+          "input_schema": {"type": "object", "properties": {}, "required": []},
+          "mock_response": {"count": 1}
+        },
+        "list_billingdocumentpartner_for_sap_self": {
+          "description": "Retrieve billing document header partners.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "$filter": {"type": "string", "description": "OData filter expression"}
+            },
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "BillingDocument": "9000001002",
+                "PartnerFunction": "RE",
+                "Customer": "C-10045",
+                "CustomerName": "Apex Contracting LLC"
+              }
+            ]
+          }
+        },
+        "get_billingdocumentpartner_for_sap_self": {
+          "description": "Retrieve a single billing document partner by key.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "BillingDocument": {"type": "string", "description": "Billing document number"},
+              "PartnerFunction": {"type": "string", "description": "Partner function code"}
+            },
+            "required": ["BillingDocument", "PartnerFunction"]
+          },
+          "mock_response": {
+            "BillingDocument": "9000001002",
+            "PartnerFunction": "RE",
+            "Customer": "C-10045",
+            "CustomerName": "Apex Contracting LLC"
+          }
+        },
+        "count_billingdocumentpartner_for_sap_self": {
+          "description": "Get count of billing document partners.",
+          "input_schema": {"type": "object", "properties": {}, "required": []},
+          "mock_response": {"count": 1}
+        },
+        "list_billingdocumenttext_for_sap_self": {
+          "description": "Retrieve billing document texts.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "$filter": {"type": "string", "description": "OData filter expression"}
+            },
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "BillingDocument": "9000001002",
+                "Language": "EN",
+                "LongTextID": "0001",
+                "BillingDocumentText": "Industrial supply order - Q4 2024"
+              }
+            ]
+          }
+        },
+        "get_billingdocumenttext_for_sap_self": {
+          "description": "Retrieve a single billing document text entry.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "BillingDocument": {"type": "string", "description": "Billing document number"},
+              "Language": {"type": "string", "description": "Language code"},
+              "LongTextID": {"type": "string", "description": "Long text ID"}
+            },
+            "required": ["BillingDocument", "Language", "LongTextID"]
+          },
+          "mock_response": {
+            "BillingDocument": "9000001002",
+            "Language": "EN",
+            "LongTextID": "0001",
+            "BillingDocumentText": "Industrial supply order - Q4 2024"
+          }
+        },
+        "count_billingdocumenttext_for_sap_self": {
+          "description": "Get count of billing document texts.",
+          "input_schema": {"type": "object", "properties": {}, "required": []},
+          "mock_response": {"count": 1}
+        }
+      }
+    },
+    "sap-contract-payment": {
+      "mcp_server_name": "sap.mcp/contract_accounting_business_partner_payment_manage",
+      "description": "MCP server for SAP S/4HANA Contract Accounting Business Partner Payment API — provides read-only access to customer contract payment terms.",
+      "tools": {
+        "GET_CABPPaytEnhcdForDspCrcy_PDisplayCurrency_Set": {
+          "description": "Get entities from related Set — enhanced payment data by display currency.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "P_DisplayCurrency": {"type": "string", "description": "Display currency (e.g., USD)"},
+              "$top": {"type": "string", "description": "Max results"},
+              "$filter": {"type": "string", "description": "OData filter expression"}
+            },
+            "required": ["P_DisplayCurrency"]
+          },
+          "mock_response": {
+            "results": [
+              {
+                "CABusPartnerPaymentUUID": "550e8400-e29b-41d4-a716-446655440001",
+                "BusinessPartner": "C-10045",
+                "BusinessPartnerName": "Apex Contracting LLC",
+                "PaymentTerms": "0030",
+                "PaymentTermsDescription": "Net 30 Days",
+                "CashDiscount1Days": "10",
+                "CashDiscount1Percentage": "2.000",
+                "CashDiscount2Days": "0",
+                "NetPaymentDays": "30",
+                "DisplayCurrency": "USD",
+                "TotalOpenAmount": "32100.00",
+                "OverdueAmount": "32100.00",
+                "OldestDueDateInDays": "22"
+              },
+              {
+                "CABusPartnerPaymentUUID": "550e8400-e29b-41d4-a716-446655440002",
+                "BusinessPartner": "C-20087",
+                "BusinessPartnerName": "Greenfield Fabrication Inc",
+                "PaymentTerms": "0060",
+                "PaymentTermsDescription": "Net 60 Days",
+                "CashDiscount1Days": "0",
+                "CashDiscount1Percentage": "0.000",
+                "CashDiscount2Days": "0",
+                "NetPaymentDays": "60",
+                "DisplayCurrency": "USD",
+                "TotalOpenAmount": "67400.00",
+                "OverdueAmount": "0.00",
+                "OldestDueDateInDays": "-10"
+              }
+            ]
+          }
+        },
+        "GET_CABPPaytEnhcdForDspCrcy_PDisplayCurrency_Set_CABusPartnerPay": {
+          "description": "Get entity from related Set by key — single customer payment record.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "P_DisplayCurrency": {"type": "string", "description": "Display currency"},
+              "CABusPartnerPaymentUUID-1": {"type": "string", "description": "Payment UUID"}
+            },
+            "required": ["P_DisplayCurrency", "CABusPartnerPaymentUUID-1"]
+          },
+          "mock_response": {
+            "CABusPartnerPaymentUUID": "550e8400-e29b-41d4-a716-446655440001",
+            "BusinessPartner": "C-10045",
+            "BusinessPartnerName": "Apex Contracting LLC",
+            "PaymentTerms": "0030",
+            "PaymentTermsDescription": "Net 30 Days",
+            "CashDiscount1Days": "10",
+            "CashDiscount1Percentage": "2.000",
+            "NetPaymentDays": "30",
+            "DisplayCurrency": "USD",
+            "TotalOpenAmount": "32100.00",
+            "OverdueAmount": "32100.00",
+            "OldestDueDateInDays": "22"
+          }
+        },
+        "GET_CABPPaytItemEnhcdForDspCrcy_PDisplayCurrency_Set": {
+          "description": "Get enhanced payment item entities by display currency.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "P_DisplayCurrency": {"type": "string", "description": "Display currency"},
+              "$filter": {"type": "string", "description": "OData filter expression"}
+            },
+            "required": ["P_DisplayCurrency"]
+          },
+          "mock_response": {
+            "results": [
+              {
+                "CABusPartnerPaymentUUID": "550e8400-e29b-41d4-a716-446655440001",
+                "CABusPartnerPaymentItem": "001",
+                "BusinessPartner": "C-10045",
+                "NetDueDate": "/Date(1730246400000)/",
+                "AmountInDisplayCurrency": "32100.00",
+                "DisplayCurrency": "USD",
+                "ClearingStatus": "O",
+                "DocumentNumber": "9000001002",
+                "PostingDate": "/Date(1727740800000)/"
+              }
+            ]
+          }
+        },
+        "GET_CABPPaytItemEnhcdForDspCrcy_PDisplayCurrency_Set_CABusPartne": {
+          "description": "Get a single enhanced payment item by key.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "P_DisplayCurrency": {"type": "string", "description": "Display currency"},
+              "CABusPartnerPaymentUUID-1": {"type": "string", "description": "Payment UUID"},
+              "CABusPartnerPaymentItem-1": {"type": "string", "description": "Payment item number"}
+            },
+            "required": ["P_DisplayCurrency", "CABusPartnerPaymentUUID-1", "CABusPartnerPaymentItem-1"]
+          },
+          "mock_response": {
+            "CABusPartnerPaymentUUID": "550e8400-e29b-41d4-a716-446655440001",
+            "CABusPartnerPaymentItem": "001",
+            "BusinessPartner": "C-10045",
+            "NetDueDate": "/Date(1730246400000)/",
+            "AmountInDisplayCurrency": "32100.00",
+            "DisplayCurrency": "USD",
+            "ClearingStatus": "O",
+            "DocumentNumber": "9000001002"
+          }
+        },
+        "GET_ContrAcctgBusPartnerPayment": {
+          "description": "Get entities from ContrAcctgBusPartnerPayment — contract accounting payment records.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "$top": {"type": "string", "description": "Max results"},
+              "$filter": {"type": "string", "description": "OData filter expression"},
+              "$select": {"type": "string", "description": "Fields to return"}
+            },
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "CABusPartnerPaymentUUID": "550e8400-e29b-41d4-a716-446655440001",
+                "BusinessPartner": "C-10045",
+                "BusinessPartnerName": "Apex Contracting LLC",
+                "PaymentMethod": "C",
+                "PaymentReference": "APEX-2024-1002",
+                "HouseBank": "BOFA",
+                "HouseBankAccount": "CHK001",
+                "ValidityStartDate": "/Date(1609459200000)/",
+                "ValidityEndDate": "/Date(9999999999000)/",
+                "PaymentBlock": "",
+                "PaymentTerms": "0030",
+                "PaymentTermsDescription": "Net 30 Days"
+              },
+              {
+                "CABusPartnerPaymentUUID": "550e8400-e29b-41d4-a716-446655440002",
+                "BusinessPartner": "C-20087",
+                "BusinessPartnerName": "Greenfield Fabrication Inc",
+                "PaymentMethod": "T",
+                "PaymentReference": "GFI-2024-0087",
+                "HouseBank": "WELLS",
+                "HouseBankAccount": "ACH002",
+                "ValidityStartDate": "/Date(1609459200000)/",
+                "ValidityEndDate": "/Date(9999999999000)/",
+                "PaymentBlock": "",
+                "PaymentTerms": "0060",
+                "PaymentTermsDescription": "Net 60 Days"
+              }
+            ]
+          }
+        },
+        "GET_ContrAcctgBusPartnerPayment_CABusPartnerPaymentUUID": {
+          "description": "Get entity from ContrAcctgBusPartnerPayment by key — single contract payment record.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "CABusPartnerPaymentUUID": {"type": "string", "description": "Contract Accounting Business Partner Payment UUID"}
+            },
+            "required": ["CABusPartnerPaymentUUID"]
+          },
+          "mock_response": {
+            "CABusPartnerPaymentUUID": "550e8400-e29b-41d4-a716-446655440001",
+            "BusinessPartner": "C-10045",
+            "BusinessPartnerName": "Apex Contracting LLC",
+            "PaymentMethod": "C",
+            "PaymentTerms": "0030",
+            "PaymentTermsDescription": "Net 30 Days",
+            "ValidityStartDate": "/Date(1609459200000)/",
+            "ValidityEndDate": "/Date(9999999999000)/",
+            "PaymentBlock": ""
+          }
+        }
+      }
+    }
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "created_for_agent": "customer-billing-review-agent",
+    "mock_mode": true,
+    "deterministic": true,
+    "total_servers": 2,
+    "total_tools": 23,
+    "generated_from": [
+      "assets/sap-s4-ce-billingdocument-0001-mcp-server/mcp-translation/translation.json",
+      "assets/sap-s4-api-cabuspartpayment-0002-mcp-server/mcp-translation/translation.json"
+    ],
+    "generation_date": "2026-11-06",
+    "mock_scenarios": {
+      "C-10045": "Apex Contracting LLC — NON-COMPLIANT. Invoice 9000001002 (USD 32,100) overdue 22 days beyond Net-30 terms. Agent should flag payment discrepancy.",
+      "C-20087": "Greenfield Fabrication Inc — COMPLIANT. Invoice 9000002001 (USD 67,400) within Net-60 terms. Agent should confirm no discrepancies."
+    }
+  }
+}

@@ -1,0 +1,12 @@
+apiVersion: solution.sap/v1
+kind: Solution
+
+metadata:
+  name: customer-billing-review-45995
+  version: 1.0.0
+  description: Read-only Customer Billing Review Agent for Barton Industrial Supply — retrieves billing information and contractual payment terms, compares payment behavior, identifies discrepancies, and generates structured Customer Billing Review Summaries.
+
+assets:
+  - ref: ./assets/customer-billing-review-agent/asset.yaml
+  - ref: ./assets/sap-s4-ce-billingdocument-0001-mcp-server/asset.yaml
+  - ref: ./assets/sap-s4-api-cabuspartpayment-0002-mcp-server/asset.yaml
