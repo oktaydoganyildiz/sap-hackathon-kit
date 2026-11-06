@@ -31,6 +31,7 @@ Repo kökündeki `CLAUDE.md` takım kurallarıdır, önce onu oku. Sahiplik tabl
 - Hata/login/deploy sorununda önce `.claude/sorun-giderme.md`'de belirtiyi eşle (araç eksikse `.claude/tools/kontrol.ps1`). Hata metnini tam iste, tahminle düzeltme.
 - 30 dakika tıkandıysan kullanıcıya söyle; 60 dakikaysa mentora gitmesini öner.
 - **Kaptan seni GitHub'dan takip ediyor, görünür ol:** her 1–2 saatte bir push et (draft PR açık olabilir: `gh pr create --draft`). Tıkanınca issue'ya yorum + etiket: `gh issue comment <no> --body "Blocked: <neden, kime ihtiyaç var>"` ve `gh issue edit <no> --add-label blocked`. Çözülünce etiketi kaldır.
+- **Görev el değiştirebilir — kaptan issue'yu başkasına verebilir.** Bir issue'ya başlamadan, her yeni oturumun başında, her push'tan ve PR açmadan önce `gh issue view <no> --json assignees,labels` ile sahibini yeniden kontrol et. Issue senin sayılır sadece: assignee sensin **ve** `kisi:<ad>` etiketi varsa o senin adın. Atama veya `kisi:` etiketi başkasına geçtiyse: **dur** — push etme, PR açma, o issue'nun dosyalarına dokunma; kullanıcıya tek cümleyle "#<no> artık <kişi>'de" de, issue'ya `gh issue comment <no> --body "Reassigned, stopping my work on this"` yaz, yarım kalan branch'in adını yorumda yeni sahibe bırak ve Başlarken §3'e dönüp sıradaki görevini al. Kaptana sormadan geri alma. Provada herkes aynı GitHub hesabını kullanıyorsa sahibi ayıran tek şey `kisi:` etiketidir.
 
 ## Bitirirken
 
