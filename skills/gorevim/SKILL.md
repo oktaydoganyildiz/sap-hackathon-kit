@@ -18,9 +18,13 @@ Repo kökündeki `CLAUDE.md` takım kurallarıdır, önce onu oku. Sahiplik tabl
 ## Başlarken
 
 1. `git pull --rebase origin main`
-2. Kimsin: `gh api user --jq .login` → sahiplik tablosunda hangi klasörler senin?
+2. Kimsin (sırayla dene, ilk net olanı kullan):
+   a. `.claude/ben.md` varsa içindeki kişi adını kullan (bir kez yazılır, git'e girmez).
+   b. `gh api user --jq .login` → `CLAUDE.md` takım tablosunda **tek** satırın GitHub sütunuyla eşleşiyorsa o kişisin.
+   c. Eşleşme yoksa ya da **birden fazla satır aynı GitHub hesabını** gösteriyorsa (prova, paylaşılan hesap) tahmin etme, sor: "Tablodaki hangi kişisin: <adlar>?" Cevabı `.claude/ben.md` dosyasına tek satır olarak yaz (`Ali`). Kullanıcı "ben Ali'yim" diye kendini söylediyse (a–b'den önce) onu kabul et ve aynı dosyaya yaz.
+   Sonra tabloda o satırın klasörlerini ve sohbet dilini al. Görevleri **adınla** süz: assignee sen + `kisi:<ad>` etiketi (varsa) senin adın.
 3. Görevlerin: `gh issue list --assignee @me --state open` (enterprise ise önce `GH_HOST=github.tools.sap`). `gh` çalışmıyor ya da repoda `TASKS.md` varsa oradan, `Sahip` sütununda sen olan satırları oku. Bloke olmayan ve hedef saati en yakın olanı öner, kullanıcıya onaylat.
-4. Başla: `gh issue comment <no> --body "Başladım"`, branch `git switch -c <kullanıcı>/<no>-<kısa-ad>`.
+4. Başla: `gh issue comment <no> --body "Başladım"`, branch `git switch -c <ad>/<no>-<kısa-ad>` (`<ad>` = tablodaki küçük harfli ilk adın, örn. `ali`).
 
 ## Çalışırken
 

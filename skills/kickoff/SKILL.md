@@ -96,6 +96,7 @@ Kişi sayısına göre (`egitim/13` §2):
 
 | Kişi | Roller |
 |---|---|
+| 2 | **Kaptan + platform + MCP tool + entegrasyon sahibi** · **Agent** (happy path + istisna + eval) |
 | 3 | **Kaptan + platform/deploy** · **Agent** (happy path + HITL + eval) · **Veri + MCP tool** |
 | 4 | Kaptan + sunum · Agent · Veri + MCP tool · Platform + kimlik + deploy |
 | 5 | Kaptan + sunum · Agent (happy path) · Agent (istisna/HITL/eval) · Veri + MCP tool · Platform + kimlik + deploy |
@@ -108,6 +109,8 @@ Tabloyu göster, onay al.
 
 ## Faz 5 — Repo kurulumu (onaylı)
 
+
+**Onay paketi (sürtünmeyi azalt):** Faz 4 onaylanınca Faz 5 ve Faz 6'yı ayrı ayrı onaya bölme. Tek tabloda sun: *repoya yazılacak dosyalar · açılacak etiketler · açılacak issue'lar (Faz 6 tablosu) · push edilecek branch*. Kaptan tek "evet" derse hepsini sırayla yap. Altın kural geçerli: dışa dönük her şeyi önce göster. Ama Faz 1–4 onayları ayrı kalır; paket sadece Faz 5+6 içindir. Collaborator daveti paketin dışında, ayrı onaylanır.
 **Faz E iskeleti varsa:** repo açma; `git pull`, `CLAUDE.md` tablosuna Role/Owns sütunlarını doldur, CODEOWNERS'ı yaz, sahip klasörlerini ve `docs/spec.md` + `docs/contract.md`'yi ekle, `BASLA.md`'yi kişi bölümleriyle yeniden yaz. Aşağıdaki adımlardan sadece eksik olanları yap. SAP brifingte ayrı bir repo verdiyse iskelet dosyalarını oraya kopyala, arkadaşlara yeni repo linkini ver.
 
 1. Repo: kullanıcının Faz 1'de söylediği yerde. Enterprise ise `export GH_HOST=github.tools.sap` (PowerShell: `$env:GH_HOST='github.tools.sap'`). Sırayla dene, ilk çalışanı kullan:
@@ -123,6 +126,7 @@ Tabloyu göster, onay al.
    - `.github/pull_request_template.md`, `.github/ISSUE_TEMPLATE/gorev.md`.
    - `docs/spec.md`, `docs/contract.md` (Faz 3'ten).
    - Her sahip klasörüne boş bir `README.md` (klasörün amacı + sahibi).
+- Kök dosyalar: `.gitattributes` (LF satır sonu, CRLF uyarısını önler), `.gitignore` (`.claude/ben.md` yerel kimlik dosyası git'e girmesin), `AGENTS.md` (opencode ve diğer ajanlar `CLAUDE.md`'ye yönlensin). Şablondan aynen kopyala.
    - **Takım araçlarını repoya göm:** `<kit>/kurulum/kontrol.ps1` ve `kontrol.sh` → `<repo>/.claude/tools/`; `<kit>/katalog/13-sorun-giderme.md` → `<repo>/.claude/sorun-giderme.md`. `.claude/` ekibin araç klasörüdür, SAP'ye teslim edilen ürün değildir; İngilizce kuralı ürün dosyaları içindir.
    - **Takım skill'lerini repoya göm:** `<kit>/skills/gorevim/` ve `<kit>/skills/kickoff/` → `<repo>/.claude/skills/`. Böylece takım üyelerinin kiti kurmasına gerek kalmaz; repoyu clone'layıp `claude` açınca `gorevim` hazırdır. (Kit yoksa ve bu skill zaten `.claude/skills/`'ten geliyorsa atla.)
    - Kit'te `sablon/proje/` yoksa (kit inmediyse) şablonları bu dosyadaki tanımlardan sıfırdan yaz: sahiplik tablosu + 5 akış kuralı (`CLAUDE.md`), spec başlıkları (Problem, Persona, KPI, Demo story, Architecture, Out of scope, Risks), contract (tool başına: kind, owner, description, input, output, example, errors).
@@ -190,3 +194,13 @@ Kısa yedek (takip skill'i yoksa): `gh issue list --state all --json number,titl
 Saat bazlı hatırlatma: kullanıcı saati söylerse ya da sistem saatine göre milestone yaklaşıyorsa (Pzt akşam entegrasyon iskeleti, Sal 12:00, Sal 17:00, Çar 12:00, Çar 18:00 freeze) proaktif uyar: neyin hazır olması gerektiği, ne riskte, ne kesilebilir.
 
 Yeni görev çıkarsa (bug, eksik tool, istek): issue aç (onayla), sahibini sahiplik tablosundan seç, kaptana o kişiye atılacak tek satırlık mesajı ver.
+
+## Görev devri (devret)
+
+Kaptan "#5'i Ali'den Ayşe'ye ver", "Ali'nin işini Ayşe alsın", "bunu ben alayım" dediğinde tek hamlede yap (onayla, sonra uygula):
+1. `gh issue edit <no> --add-assignee <yeni> --remove-assignee <eski>`
+2. Etiket: `--remove-label kisi:<eski> --add-label kisi:<yeni>` (rol etiketi de değişecekse onu da).
+3. Issue yorumu (İngilizce): `Reassigned from <eski> to <yeni>. Branch/PR to continue from: <varsa branch veya PR no>.`
+4. Yeni sahip başka birinin klasörüne yazacaksa: ya `CLAUDE.md` Owns + `CODEOWNERS` güncelle ya da issue'ya "bu issue için <klasör> altına yazabilir" yorumu.
+5. `docs/DURUM.md` People tablosunu ve Decisions satırını (tarihli) güncelle.
+6. Kaptana iki tek satırlık mesaj ver: eski sahibe ("#<no> artık <yeni>'de, dur") ve yeni sahibe ("#<no> sende, <branch/PR> üzerinden devam et"), her biri kendi dilinde. `gorevim` skill'i eski sahibin oturumunda bunu zaten kendisi fark edip durur ama oturumu boştaysa kaptanın söylemesi gerekir.

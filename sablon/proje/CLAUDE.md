@@ -23,10 +23,11 @@ Roles stay flexible: the captain can move a task to another person at any time (
 1. Start: `git pull --rebase origin main` → `gh issue list --assignee @me`.
 2. Write **only** inside folders you own. Need a change elsewhere? Open an issue, assign the owner, stop.
 3. The agent ↔ tool interface lives in `docs/contract.md`. Do not change it; mock against it until the real side exists. Changes go through the captain.
-4. Branch `<user>/<issue>-<short-name>`, push at least every 1–2 hours, PR body `Closes #<issue>`.
+4. Branch `<name>/<issue>-<short-name>` (`<name>` = your lowercase first name from the table above), push at least every 1–2 hours, PR body `Closes #<issue>`.
 5. **Merging:** if the PR touches only your own folders and it runs, merge it yourself (`gh pr merge --squash`). PRs touching shared files, `docs/contract.md` or someone else's folder need the captain's approval. After the Wednesday 18:00 freeze only the captain merges.
 6. Blocked? Comment `Blocked: <reason>` on the issue and add the `blocked` label.
-7. Never commit secrets, tokens, passwords or customer data.
+7. **Issues can be reassigned.** The captain may move any issue to another person at any time. Before starting, at the start of every session and before every push or PR, re-check the issue (`gh issue view <no> --json assignees,labels`). If the assignee or the `kisi:<name>` label is no longer you: stop, do not push or open a PR, comment `Reassigned, stopping my work on this` with your branch name, tell the user, and pick your next issue. Never take an issue back without asking the captain.
+8. Never commit secrets, tokens, passwords or customer data.
 
 ## Milestones
 

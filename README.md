@@ -55,3 +55,12 @@ Then start `claude` inside the repo folder. `CLAUDE.md` and the `hackathon` skil
 | `kurulum/` | Install scripts |
 
 No credentials, user IDs or SAP-internal documents are stored here. Pull only; don't push from SAP environments.
+
+## Other coding agents (opencode etc.)
+
+Rehearsal result (2026-11-06): opencode 1.2.26 picked up the repo's `.claude/skills/` (`gorevim`, `kickoff`, `takip`, `hackathon`) and followed `CLAUDE.md` / `BASLA.md`. Notes:
+- Start the agent **inside the team repo folder**, otherwise skills and rules are not found.
+- opencode also loads the user's global `~/.claude/skills`; extra skills can distract a free/small model.
+- The template ships `AGENTS.md` (points to `CLAUDE.md`) for agents that look for that file first.
+- Free models may drift on the language rule or ownership rule: re-check after the first PR.
+- Several people on one GitHub account (rehearsal only): `gorevim` asks "which person are you?" and stores the answer in `.claude/ben.md` (git-ignored).
