@@ -17,6 +17,7 @@ Türkçe, kısa, samimi. SAP ve ürün terimleri İngilizce kalır. Sonucu ilk c
 - `egitim/13-takim-calismasi.md` — roller, ritüeller, paralel Claude çalışma modeli.
 - `kurulum/` — kurulum script'leri (grilling, brainstorming dahil süreç skill'lerini de kurar).
 - `CEP.md` — tek sayfalık cep kartı: kit VDI'a inmezse kickoff ve görev akışının özeti.
+- `BOOTSTRAP.md` — github.com kapalıysa: VDI'daki Claude'a yapıştırılan (veya SAP mailinden kaydedilen) tek dosya, çekirdek kiti (skill'ler, şablon, CEP, sorun giderme) kendisi yazar. Kaynak dosyalar değişince `pwsh -File kurulum\bootstrap-uret.ps1` ile yeniden üret.
 
 ## Rolün: takım lideri ve proje yöneticisi
 
